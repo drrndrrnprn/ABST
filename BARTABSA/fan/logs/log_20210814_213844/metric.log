@@ -1,0 +1,50 @@
+Step:102	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 59.040000000000006, "oe_rec": 51.849999999999994, "oe_pre": 68.53, "em": 0.5021, "invalid": 0.1091}, "step": 102, "epoch": 1}, "step": 102, "epoch": 1}
+Step:204	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 69.89999999999999, "oe_rec": 64.73, "oe_pre": 75.98, "em": 0.5579, "invalid": 0.0651}, "step": 204, "epoch": 2}, "step": 204, "epoch": 2}
+Step:306	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 71.64, "oe_rec": 66.84, "oe_pre": 77.19, "em": 0.5897, "invalid": 0.0462}, "step": 306, "epoch": 3}, "step": 306, "epoch": 3}
+Step:408	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 75.19, "oe_rec": 71.08, "oe_pre": 79.80000000000001, "em": 0.6118, "invalid": 0.0352}, "step": 408, "epoch": 4}, "step": 408, "epoch": 4}
+Step:510	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 73.7, "oe_rec": 75.13, "oe_pre": 72.33000000000001, "em": 0.6127, "invalid": 0.0294}}, "step": 510, "epoch": 5}
+Step:612	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 76.94, "oe_rec": 76.19, "oe_pre": 77.7, "em": 0.6233, "invalid": 0.0245}, "step": 612, "epoch": 6}, "step": 612, "epoch": 6}
+Step:714	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 75.66000000000001, "oe_rec": 75.66000000000001, "oe_pre": 75.66000000000001, "em": 0.6246, "invalid": 0.0219}}, "step": 714, "epoch": 7}
+Step:816	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 76.64999999999999, "oe_rec": 73.54, "oe_pre": 80.04, "em": 0.6324, "invalid": 0.0194}}, "step": 816, "epoch": 8}
+Step:918	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 75.94999999999999, "oe_rec": 72.13000000000001, "oe_pre": 80.2, "em": 0.6382, "invalid": 0.0177}}, "step": 918, "epoch": 9}
+Step:1020	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 75.92999999999999, "oe_rec": 72.31, "oe_pre": 79.92, "em": 0.643, "invalid": 0.0164}}, "step": 1020, "epoch": 10}
+Step:1122	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 74.95, "oe_rec": 71.25, "oe_pre": 79.06, "em": 0.6455, "invalid": 0.0164}}, "step": 1122, "epoch": 11}
+Step:1224	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 78.12, "oe_rec": 76.19, "oe_pre": 80.15, "em": 0.6496, "invalid": 0.015}, "step": 1224, "epoch": 12}, "step": 1224, "epoch": 12}
+Step:1326	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 76.84, "oe_rec": 71.96000000000001, "oe_pre": 82.42, "em": 0.6536, "invalid": 0.0147}}, "step": 1326, "epoch": 13}
+Step:1428	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 77.94, "oe_rec": 74.78, "oe_pre": 81.38, "em": 0.6576, "invalid": 0.0139}}, "step": 1428, "epoch": 14}
+Step:1530	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 77.75, "oe_rec": 75.49, "oe_pre": 80.15, "em": 0.6605, "invalid": 0.0133}}, "step": 1530, "epoch": 15}
+Step:1632	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 79.13, "oe_rec": 77.25, "oe_pre": 81.11, "em": 0.6641, "invalid": 0.0128}, "step": 1632, "epoch": 16}, "step": 1632, "epoch": 16}
+Step:1734	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 79.3, "oe_rec": 75.66000000000001, "oe_pre": 83.3, "em": 0.668, "invalid": 0.0122}, "step": 1734, "epoch": 17}, "step": 1734, "epoch": 17}
+Step:1836	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 78.60000000000001, "oe_rec": 75.13, "oe_pre": 82.39999999999999, "em": 0.6709, "invalid": 0.0116}}, "step": 1836, "epoch": 18}
+Step:1938	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 78.01, "oe_rec": 76.01, "oe_pre": 80.11, "em": 0.673, "invalid": 0.011}}, "step": 1938, "epoch": 19}
+Step:2040	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 69.53, "oe_rec": 67.02, "oe_pre": 72.24000000000001, "em": 0.6683, "invalid": 0.0139}}, "step": 2040, "epoch": 20}
+Step:2142	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 73.79, "oe_rec": 71.25, "oe_pre": 76.52, "em": 0.6675, "invalid": 0.0142}}, "step": 2142, "epoch": 21}
+Step:2244	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 76.2, "oe_rec": 74.25, "oe_pre": 78.25, "em": 0.6681, "invalid": 0.014}}, "step": 2244, "epoch": 22}
+Step:2346	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 73.16, "oe_rec": 70.89999999999999, "oe_pre": 75.56, "em": 0.6671, "invalid": 0.0137}}, "step": 2346, "epoch": 23}
+Step:2448	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 73.63, "oe_rec": 69.66, "oe_pre": 78.06, "em": 0.6663, "invalid": 0.0149}}, "step": 2448, "epoch": 24}
+Step:2550	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 73.78, "oe_rec": 69.49, "oe_pre": 78.64, "em": 0.6663, "invalid": 0.0153}}, "step": 2550, "epoch": 25}
+Step:2652	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 69.57, "oe_rec": 64.9, "oe_pre": 74.95, "em": 0.6642, "invalid": 0.0172}}, "step": 2652, "epoch": 26}
+Step:2754	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 78.86, "oe_rec": 75.31, "oe_pre": 82.75, "em": 0.6665, "invalid": 0.0165}}, "step": 2754, "epoch": 27}
+Step:2856	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 77.18, "oe_rec": 73.37, "oe_pre": 81.41000000000001, "em": 0.6681, "invalid": 0.0161}}, "step": 2856, "epoch": 28}
+Step:2958	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 79.35, "oe_rec": 77.95, "oe_pre": 80.80000000000001, "em": 0.6696, "invalid": 0.0155}, "step": 2958, "epoch": 29}, "step": 2958, "epoch": 29}
+Step:3060	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 78.58000000000001, "oe_rec": 76.01, "oe_pre": 81.32000000000001, "em": 0.6711, "invalid": 0.015}}, "step": 3060, "epoch": 30}
+Step:3162	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 78.75, "oe_rec": 75.84, "oe_pre": 81.89999999999999, "em": 0.6727, "invalid": 0.0146}}, "step": 3162, "epoch": 31}
+Step:3264	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 80.41, "oe_rec": 76.72, "oe_pre": 84.47, "em": 0.6747, "invalid": 0.0142}, "step": 3264, "epoch": 32}, "step": 3264, "epoch": 32}
+Step:3366	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 79.3, "oe_rec": 76.01, "oe_pre": 82.88, "em": 0.676, "invalid": 0.0141}}, "step": 3366, "epoch": 33}
+Step:3468	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 78.68, "oe_rec": 75.84, "oe_pre": 81.75, "em": 0.677, "invalid": 0.0139}}, "step": 3468, "epoch": 34}
+Step:3570	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 78.46, "oe_rec": 75.49, "oe_pre": 81.67999999999999, "em": 0.678, "invalid": 0.0138}}, "step": 3570, "epoch": 35}
+Step:3672	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 76.75, "oe_rec": 74.25, "oe_pre": 79.43, "em": 0.678, "invalid": 0.0142}}, "step": 3672, "epoch": 36}
+Step:3774	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 78.85, "oe_rec": 74.96000000000001, "oe_pre": 83.17, "em": 0.6793, "invalid": 0.014}}, "step": 3774, "epoch": 37}
+Step:3876	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 78.18, "oe_rec": 74.25, "oe_pre": 82.55, "em": 0.6802, "invalid": 0.0138}}, "step": 3876, "epoch": 38}
+Step:3978	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 79.52, "oe_rec": 75.66000000000001, "oe_pre": 83.78999999999999, "em": 0.6817, "invalid": 0.0135}}, "step": 3978, "epoch": 39}
+Step:4080	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 79.11, "oe_rec": 75.49, "oe_pre": 83.11, "em": 0.6828, "invalid": 0.0133}}, "step": 4080, "epoch": 40}
+Step:4182	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 79.49000000000001, "oe_rec": 77.25, "oe_pre": 81.87, "em": 0.6837, "invalid": 0.0131}}, "step": 4182, "epoch": 41}
+Step:4284	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 79.45, "oe_rec": 76.72, "oe_pre": 82.39, "em": 0.6847, "invalid": 0.0128}}, "step": 4284, "epoch": 42}
+Step:4386	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 79.03999999999999, "oe_rec": 75.49, "oe_pre": 82.95, "em": 0.6857, "invalid": 0.0126}}, "step": 4386, "epoch": 43}
+Step:4488	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 78.35, "oe_rec": 75.31, "oe_pre": 81.64, "em": 0.6865, "invalid": 0.0124}}, "step": 4488, "epoch": 44}
+Step:4590	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 79.45, "oe_rec": 76.01, "oe_pre": 83.2, "em": 0.6875, "invalid": 0.0123}}, "step": 4590, "epoch": 45}
+Step:4692	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 78.79, "oe_rec": 75.66000000000001, "oe_pre": 82.17999999999999, "em": 0.6884, "invalid": 0.0121}}, "step": 4692, "epoch": 46}
+Step:4794	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 78.75, "oe_rec": 75.49, "oe_pre": 82.31, "em": 0.6892, "invalid": 0.0119}}, "step": 4794, "epoch": 47}
+Step:4896	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 78.72, "oe_rec": 75.66000000000001, "oe_pre": 82.03, "em": 0.69, "invalid": 0.0118}}, "step": 4896, "epoch": 48}
+Step:4998	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 79.16, "oe_rec": 76.01, "oe_pre": 82.57, "em": 0.6908, "invalid": 0.0116}}, "step": 4998, "epoch": 49}
+Step:5100	{"metric": {"Seq2SeqSpanMetric": {"oe_f": 79.3, "oe_rec": 76.01, "oe_pre": 82.88, "em": 0.6915, "invalid": 0.0115}}, "step": 5100, "epoch": 50}
