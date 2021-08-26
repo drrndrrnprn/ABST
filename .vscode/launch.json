@@ -1,15 +1,15 @@
 {
-    // IntelliSense を使用して利用可能な属性を学べます。
-    // 既存の属性の説明をホバーして表示します。
-    // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Current File",
+            "name": "Python: inference.py",
             "type": "python",
             "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal"
+            "cwd": "/home/drrndrrnprn/nlp/ABST/BARTABSA/peng",
+            "program": "/home/drrndrrnprn/nlp/ABST/BARTABSA/peng/inference.py",
+            "console": "integratedTerminal",
+            "pythonPath": "/home/drrndrrnprn/anaconda3/envs/bartabsa/bin/python",
+            "args": ["--model_path", "/home/drrndrrnprn/nlp/ABST/BARTABSA/peng/save_models/16resbest_SequenceGeneratorModel_triple_f_2021-08-22-21-38-18-679060"]
         }
     ]
 }
