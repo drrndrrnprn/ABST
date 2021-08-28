@@ -8,7 +8,7 @@
             "cwd": "/home/drrndrrnprn/nlp/ABST/BARTABSA/peng",
             "program": "/home/drrndrrnprn/nlp/ABST/BARTABSA/peng/inference.py",
             "console": "integratedTerminal",
-            "pythonPath": "/home/drrndrrnprn/anaconda3/envs/bartabsa/bin/python",
+            "python": "/home/drrndrrnprn/anaconda3/envs/bartabsa/bin/python",
             "args": ["--model_path", "/home/drrndrrnprn/nlp/ABST/BARTABSA/peng/save_models/16resbest_SequenceGeneratorModel_triple_f_2021-08-22-21-38-18-679060"]
         }
     ]

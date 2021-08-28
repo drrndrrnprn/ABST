@@ -1,3 +1,4 @@
+from collections import OrderedDict
 import json
 import os
 
@@ -51,19 +52,22 @@ def process_aos(output, mapping, data=None):
                 l.append(mapping[sent])
                 p_line.append(l)     
         aos.append(p_line)
-        if data:
-            target_span = list(data['target_span'])
-            tgt_s = list()
-            new_aos = list()
-            for t in target_span:
-                s = [l[-1] for l in t] 
-            tgt_s.append(s)
-            for line, s in zip(aos, tgt_s):
-                line[-1] = s
-                new_aos.append(line)
-            aos = new_aos
-            
-    return aos
+    if data:
+        target_span = list(data['target_span'])
+        replaced_aos = list()
+        new_l_aos = list()
+        for l_aos, t in zip(aos, target_span):
+            ll_aos_ins = list()
+            for ll_aos, l_t in zip(l_aos, t):
+                if ll_aos == 'error':
+                    continue           
+                ll_aos[-1] = mapping[l_t[-1]-2]
+                ll_aos_ins.append(ll_aos)
+            new_l_aos.append(ll_aos_ins)
+        replaced_aos.append(new_l_aos)
+        return replaced_aos
+    else:
+        return aos
 
 
 def output_json(data, aos, output_path):
@@ -73,8 +77,9 @@ def output_json(data, aos, output_path):
         if aos_ins[0] == 'error':
             continue
         for i in range(len(aos_ins)):
-            if aos_ins[i][1] > len(raw_words) or aos_ins[i][3] > len(raw_words):
-                continue
+            for j in range(len(aos_ins[i])):
+                if aos_ins[i][j][1] > len(raw_words) or aos_ins[i][j][3] > len(raw_words):
+                    continue #何も入ってないやつしたで消して
         aspects = list()
         opinions = list()
         for i in range(len(aos_ins)):

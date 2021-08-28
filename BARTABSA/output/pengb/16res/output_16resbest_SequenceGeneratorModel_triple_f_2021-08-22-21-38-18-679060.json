@@ -1,0 +1,33 @@
+[
+    {
+        "aspects": [
+            {
+                "from": 4,
+                "index": 0,
+                "polarity": "POS",
+                "term": [
+                    "."
+                ],
+                "to": 5
+            }
+        ],
+        "opinions": [
+            {
+                "from": 3,
+                "index": 0,
+                "term": [
+                    "sushi"
+                ],
+                "to": 4
+            }
+        ],
+        "raw_words": "Serves really good sushi .",
+        "words": [
+            "Serves",
+            "really",
+            "good",
+            "sushi",
+            "."
+        ]
+    }
+]
