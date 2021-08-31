@@ -45,10 +45,6 @@ pred = Predictor(model)
 data = data_bundle.get_dataset('test')
 output = pred.predict(data)
 
-#data_bundle.get_dataset('train') class fastNLP.core.dataset.DataSet
-#pprint.pprint(output)
-#exclude outputs with format error
-# i.e. array([[ 0, 13, 13, 12, 12,  2, 15, 15, 12, 12,  2, 18, 18, 18, 12, 12, 2, 1]])
 output = output['pred']
 output = list(itertools.chain.from_iterable(output))
 

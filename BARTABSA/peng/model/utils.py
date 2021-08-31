@@ -31,6 +31,7 @@ def get_num_parameters(model):
     
 
 def process_aos(output, mapping, data=None):
+    print('process_aos')
     aos = list()
     offset = len(mapping) + 3
     mapping = list(mapping.keys())
@@ -54,7 +55,6 @@ def process_aos(output, mapping, data=None):
         aos.append(p_line)
     if data:
         target_span = list(data['target_span'])
-        replaced_aos = list()
         new_l_aos = list()
         for l_aos, t in zip(aos, target_span):
             ll_aos_ins = list()
@@ -64,43 +64,44 @@ def process_aos(output, mapping, data=None):
                 ll_aos[-1] = mapping[l_t[-1]-2]
                 ll_aos_ins.append(ll_aos)
             new_l_aos.append(ll_aos_ins)
-        replaced_aos.append(new_l_aos)
-        return replaced_aos
+        return new_l_aos
     else:
         return aos
 
 
 def output_json(data, aos, output_path):
     json_out = list()
-    for d_ins, aos_ins in zip(data, aos):# 極性のつけ方どうしよ
+    for d_ins, aos_ins in zip(data, aos):
         raw_words = d_ins['raw_words']
-        if aos_ins[0] == 'error':
-            continue
+        f = False
+        if aos_ins == None:
+            f = True
         for i in range(len(aos_ins)):
-            for j in range(len(aos_ins[i])):
-                if aos_ins[i][j][1] > len(raw_words) or aos_ins[i][j][3] > len(raw_words):
-                    continue #何も入ってないやつしたで消して
+            if aos_ins[i][1] > len(raw_words) or aos_ins[i][3] > len(raw_words):
+                f = True #何も入ってないやつしたで消して
+        if f:
+            continue
         aspects = list()
         opinions = list()
         for i in range(len(aos_ins)):
-            aspect =  \
-                {'index' : i,
-                'from' : int(aos_ins[i][0]),
-                'to' : int(aos_ins[i][1]),
-                'polarity' : aos_ins[i][4],
-                'term' : raw_words[aos_ins[i][0]:aos_ins[i][1]]}
-            opinion = \
-                {'index' : i,
-                'from' : int(aos_ins[i][2]),
-                'to' : int(aos_ins[i][3]),
-                'term' : raw_words[aos_ins[i][2]:aos_ins[i][3]]}
+            aspect =  OrderedDict()
+            aspect['index'] = i
+            aspect['from'] = int(aos_ins[i][0])
+            aspect['to'] = int(aos_ins[i][1])
+            aspect['polarity'] = aos_ins[i][4]
+            aspect['term'] = raw_words[aos_ins[i][0]:aos_ins[i][1]]
+            opinion = OrderedDict()
+            opinion['index'] = i
+            opinion['from'] = int(aos_ins[i][2])
+            opinion['to'] = int(aos_ins[i][3])
+            opinion['term'] = raw_words[aos_ins[i][2]:aos_ins[i][3]]
             aspects.append(aspect)
             opinions.append(opinion)
-        json_ins = \
-            {'raw_words': ' '.join(raw_words),
-            'words': raw_words,
-            'aspects': aspects,
-            'opinions': opinions}
+        json_ins = OrderedDict()
+        json_ins['raw_words'] = ' '.join(raw_words)
+        json_ins['words'] = raw_words
+        json_ins['aspects'] = aspects
+        json_ins['opinions'] = opinions
         json_out.append(json_ins)
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     with open(output_path, mode='w') as f:
