@@ -105,4 +105,4 @@ def output_json(data, aos, output_path):
         json_out.append(json_ins)
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     with open(output_path, mode='w') as f:
-        json.dump(json_out, f, sort_keys=True, indent=4)
+        json.dump(json_out, f, sort_keys=False, indent=4)
