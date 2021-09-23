@@ -264,7 +264,6 @@ class BartSeq2SeqModel(Seq2SeqModel):
 
     def forward(self, src_tokens, tgt_tokens, src_seq_len, tgt_seq_len, first):
         """
-
         :param torch.LongTensor src_tokens: source的token
         :param torch.LongTensor tgt_tokens: target的token
         :param torch.LongTensor first: 显示每个, bsz x max_word_len
