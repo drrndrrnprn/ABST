@@ -2,6 +2,16 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Python: Current File (Integrated Terminal)",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "python": "/home/drrndrrnprn/anaconda3/envs/bartabsa/bin/python",
+            "args": ["data_path", ""]
+        },
+
+        {
             "name": "Python: inference.py",
             "type": "python",
             "request": "launch",
