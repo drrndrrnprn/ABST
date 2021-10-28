@@ -8,7 +8,7 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "python": "/home/drrndrrnprn/anaconda3/envs/bartabsa/bin/python",
-            "args": ["data_path", ""]
+            "args": ["/home/drrndrrnprn/nlp/ABST/data/semeval-pengb/analyzed/concat.json"]
         },
 
         {

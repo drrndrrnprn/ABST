@@ -24,36 +24,34 @@ def extract_aspect(data):
         
 #raw text(.txt) and aspect infomation(.txt) --> train(.txt), dev(.txt), test(.txt) 
 def separate_data(lines, n_dev=2000, n_test=500):
-    n_lines = float(len(lines))
+    n_lines = len(lines)
     sep1, sep2 = 0, 0
     if n_lines > n_test*10:
         sep2 = n_lines - n_test
         sep1 = sep2 - n_dev
     else:
-        sep2 = n_lines - n_lines*0.1
-        sep1 = sep1 = n_lines*0.2
+        sep2 = int(n_lines - n_lines*0.1)
+        sep1 = int(sep2 - n_lines*0.2)
         
     test = lines[sep2:]
-    dev = lines[sep1:]
+    dev = lines[sep1:sep2]
     train = lines[:sep1]
     return [train, dev, test]
 
 def output_file(filename, text, aspect):
     output_path = filename + '.txt'
     with open(output_path, 'w') as f:
-        #f.write('\n'.join(text))
-        pass
+        f.write('\n'.join(text))
     
     output_path = filename + '_asp.txt'
     with open(output_path, 'w') as f:
-        #f.write('\n'.join(aspect))
-        pass    
-
-def concat_jsonfiles(self):
-    pass
+        for line in aspect:
+            line = [','.join(map(str,a)) for a in line]
+            f.write('\t'.join(line))
+            f.write('\n')
+            
 
 def main():
-    
     parser = argparse.ArgumentParser()
     parser.add_argument('data_path', type=str)
     parser.add_argument('--only_extract', action='store_true', default=False)
@@ -70,8 +68,8 @@ def main():
     else:  
         separated_text = separate_data(text)
         separated_aspect = separate_data(aspect)
-        for st, sa in zip(separated_text, separated_aspect):
-            output_path = data_dir + '/' + str(st)
+        for sep, st, sa in zip(['train','dev','test'], separated_text, separated_aspect):
+            output_path = data_dir + '/' + sep
             output_file(output_path, st, sa)
 
 
