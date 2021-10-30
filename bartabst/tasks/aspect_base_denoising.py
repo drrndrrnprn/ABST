@@ -126,42 +126,42 @@ class AspectBaseDenoisingTask(TranslationTask):
         return dataset
     
     
-def fill_mask(
-    self,
-    masked_inputs: List[str],
-    topk: int = 5,
-    match_source_len: bool = True,
-    **generate_kwargs
-):
-    masked_token = '<mask>'
-    batch_tokens = []
-    for masked_input in masked_inputs:
-        assert masked_token in masked_input, \
-            "please add one {} token for the input".format(masked_token)
+    def fill_mask(
+        self,
+        masked_inputs: List[str],
+        topk: int = 5,
+        match_source_len: bool = True,
+        **generate_kwargs
+    ):
+        masked_token = '<mask>'
+        batch_tokens = []
+        for masked_input in masked_inputs:
+            assert masked_token in masked_input, \
+                "please add one {} token for the input".format(masked_token)
 
-        text_spans = masked_input.split(masked_token)
-        text_spans_bpe = (' {0} '.format(masked_token)).join(
-            [self.bpe.encode(text_span.rstrip()) for text_span in text_spans]
-        ).strip()
-        tokens = self.task.source_dictionary.encode_line(
-            '<s> ' + text_spans_bpe + ' </s>',
-            append_eos=False,
-            add_if_not_exist=False,
-        ).long()
-        batch_tokens.append(tokens)
+            text_spans = masked_input.split(masked_token)
+            text_spans_bpe = (' {0} '.format(masked_token)).join(
+                [self.bpe.encode(text_span.rstrip()) for text_span in text_spans]
+            ).strip()
+            tokens = self.task.source_dictionary.encode_line(
+                '<s> ' + text_spans_bpe + ' </s>',
+                append_eos=False,
+                add_if_not_exist=False,
+            ).long()
+            batch_tokens.append(tokens)
 
-    # ensure beam size is at least as big as topk
-    generate_kwargs['beam'] = max(
-        topk,
-        generate_kwargs.get('beam', -1),
-    )
-    generate_kwargs['match_source_len'] = match_source_len
-    batch_hypos = self.generate(batch_tokens, **generate_kwargs)
+        # ensure beam size is at least as big as topk
+        generate_kwargs['beam'] = max(
+            topk,
+            generate_kwargs.get('beam', -1),
+        )
+        generate_kwargs['match_source_len'] = match_source_len
+        batch_hypos = self.generate(batch_tokens, **generate_kwargs)
 
-    return [
-        [(self.decode(hypo['tokens']), hypo['score']) for hypo in hypos[:topk]]
-        for hypos in batch_hypos
-    ]
+        return [
+            [(self.decode(hypo['tokens']), hypo['score']) for hypo in hypos[:topk]]
+            for hypos in batch_hypos
+        ]
     
 
 import fairseq
