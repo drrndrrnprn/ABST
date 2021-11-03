@@ -6,8 +6,8 @@
 """
 TODO
 1. @BARTEncoderLMHead 
-2. ~register_mlm_head~     from_pretrained
-3. ~BARTHubInterface.register_mlm_head~    from_pretrained 
+2. register_mlm_head     from_pretrained hub_models bart.abst どうやって事前学習済みモデルをよみこんでるのか確認 model_name_or_path=archive_map.key()
+3. BARTHubInterface.register_mlm_head   from_pretrained 
 4. BARTModel attach mlm head 
 5. @register model architecture 'bart-abst'??
 """
@@ -35,18 +35,15 @@ from .hub_interface import BARTHubInterface
 logger = logging.getLogger(__name__)
 
 
-@register_model("bart")
-class BARTModel(TransformerModel):
+@register_model("bart-mlm")
+class BARTMLModel(TransformerModel):
     __jit_unused_properties__ = ["supported_targets"]
 
     @classmethod
     def hub_models(cls):
         return {
-            "bart.base": "http://dl.fbaipublicfiles.com/fairseq/models/bart.base.tar.gz",
-            "bart.large": "http://dl.fbaipublicfiles.com/fairseq/models/bart.large.tar.gz",
-            "bart.large.mnli": "http://dl.fbaipublicfiles.com/fairseq/models/bart.large.mnli.tar.gz",
-            "bart.large.cnn": "http://dl.fbaipublicfiles.com/fairseq/models/bart.large.cnn.tar.gz",
-            "bart.large.xsum": "http://dl.fbaipublicfiles.com/fairseq/models/bart.large.xsum.tar.gz",
+            "bart.abst": "http://dl.fbaipublicfiles.com/fairseq/models/bart.base.tar.gz",
+            "bart.abst.large": "http://dl.fbaipublicfiles.com/fairseq/models/bart.large.tar.gz"
         }
 
     def __init__(self, args, encoder, decoder):
@@ -63,10 +60,10 @@ class BARTModel(TransformerModel):
         self.lm_head = self.build_lm_head(
         embed_dim=args.encoder_embed_dim,
         #output_dim=len(task.source_dictionary),
-        #output_dim=len(encoder.dictionary),
+        output_dim=len(self.encoder.dictionary),
         activation_fn=args.activation_fn,
         weight=(
-            self.sentence_encoder.embed_tokens.weight
+            encoder.embed_tokens.weight
             if not args.untie_weights_roberta
             else None
         )
@@ -74,7 +71,7 @@ class BARTModel(TransformerModel):
 
     @staticmethod
     def add_args(parser):
-        super(BARTModel, BARTModel).add_args(parser)
+        super(BARTMLModel, BARTMLModel).add_args(parser)
         parser.add_argument(
             "--pooler-dropout",
             type=float,
@@ -91,7 +88,12 @@ class BARTModel(TransformerModel):
             action="store_true",
             help="Apply spectral normalization on the classification head",
         )
-
+        parser.add_argument(
+            "--untie-weights-roberta",
+            action="store_true",
+            help="Untie weights between embeddings and classifiers in RoBERTa",
+        )
+        
     @property
     def supported_targets(self):
         return {"self"}
@@ -380,8 +382,16 @@ class BARTEncoderLMHead(nn.Module):
         x = F.linear(x, self.weight) + self.bias
         return x
     
-    
-@register_model_architecture("bart", "bart_large")
+
+def safe_getattr(obj, k, default=None):
+    from omegaconf import OmegaConf
+
+    if OmegaConf.is_config(obj):
+        return obj[k] if k in obj and obj[k] is not None else default
+
+    return getattr(obj, k, default)
+
+@register_model_architecture("bart-mlm", "bart_abst_large")
 def bart_large_architecture(args):
     args.encoder_embed_path = getattr(args, "encoder_embed_path", None)
     args.encoder_embed_dim = getattr(args, "encoder_embed_dim", 1024)
@@ -422,20 +432,29 @@ def bart_large_architecture(args):
     args.activation_fn = getattr(args, "activation_fn", "gelu")
     args.pooler_activation_fn = getattr(args, "pooler_activation_fn", "tanh")
     args.pooler_dropout = getattr(args, "pooler_dropout", 0.0)
+    
+  # BERT has a few structural differences compared to the original Transformer
+    args.untie_weights_roberta = safe_getattr(args, "untie_weights_roberta", False)
 
+    # Adaptive input config
+    args.adaptive_input = safe_getattr(args, "adaptive_input", False)
 
-@register_model_architecture("bart", "bart_base")
-def bart_base_architecture(args):
-    args.encoder_embed_dim = getattr(args, "encoder_embed_dim", 768)
-    args.encoder_ffn_embed_dim = getattr(args, "encoder_ffn_embed_dim", 4 * 768)
-    args.encoder_layers = getattr(args, "encoder_layers", 6)
-    args.encoder_attention_heads = getattr(args, "encoder_attention_heads", 12)
-    args.decoder_layers = getattr(args, "decoder_layers", 6)
-    args.decoder_attention_heads = getattr(args, "decoder_attention_heads", 12)
-    bart_large_architecture(args)
+    # LayerDrop config
+    args.encoder_layerdrop = safe_getattr(args, "encoder_layerdrop", 0.0)
+    args.encoder_layers_to_keep = safe_getattr(args, "encoder_layers_to_keep", None)
 
-@register_model_architecture("bart", "bart_abst")
-def bart_base_architecture(args):
+    # Quantization noise config
+    args.quant_noise_pq = safe_getattr(args, "quant_noise_pq", 0)
+    args.quant_noise_pq_block_size = safe_getattr(args, "quant_noise_pq_block_size", 8)
+    args.quant_noise_scalar = safe_getattr(args, "quant_noise_scalar", 0)
+
+    # R4F config
+    args.spectral_norm_classification_head = safe_getattr(
+        args, "spectral_norm_classification_head", False
+    )
+
+@register_model_architecture("bart-mlm", "bart_abst")
+def bart_abst_architecture(args):
     args.encoder_embed_dim = getattr(args, "encoder_embed_dim", 768)
     args.encoder_ffn_embed_dim = getattr(args, "encoder_ffn_embed_dim", 4 * 768)
     args.encoder_layers = getattr(args, "encoder_layers", 6)
@@ -446,19 +465,3 @@ def bart_base_architecture(args):
     #embed_dim, output_dim, activation_fn
     bart_large_architecture(args)
     
-@register_model_architecture("bart", "mbart_large")
-def mbart_large_architecture(args):
-    args.no_scale_embedding = getattr(args, "no_scale_embedding", False)
-    bart_large_architecture(args)
-
-
-@register_model_architecture("bart", "mbart_base")
-def mbart_base_architecture(args):
-    args.no_scale_embedding = getattr(args, "no_scale_embedding", False)
-    bart_base_architecture(args)
-
-
-@register_model_architecture("bart", "mbart_base_wmt20")
-def mbart_base_wmt20_architecture(args):
-    args.layernorm_embedding = getattr(args, "layernorm_embedding", False)
-    mbart_base_architecture(args)

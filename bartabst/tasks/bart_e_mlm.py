@@ -29,7 +29,7 @@ from fairseq.data.shorten_dataset import maybe_shorten_dataset
 from fairseq.dataclass import FairseqDataclass
 from fairseq.tasks import FairseqTask, register_task
 
-from .language_modeling import SAMPLE_BREAK_MODE_CHOICES, SHORTEN_METHOD_CHOICES
+from fairseq.tasks.language_modeling import SAMPLE_BREAK_MODE_CHOICES, SHORTEN_METHOD_CHOICES
 
 
 logger = logging.getLogger(__name__)
@@ -102,8 +102,8 @@ class MaskedLMConfig(FairseqDataclass):
     seed: int = II("common.seed")
 
 
-@register_task("masked_lm", dataclass=MaskedLMConfig)
-class MaskedLMTask(FairseqTask):
+@register_task("bart-e-mlm", dataclass=MaskedLMConfig)
+class BARTEncoderMLMTask(FairseqTask):
 
     cfg: MaskedLMConfig
 

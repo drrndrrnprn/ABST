@@ -1,8 +1,10 @@
+from typing import List
+
 import torch
 from fairseq import utils
 from fairseq.data import LanguagePairDataset
 
-from . import register_task
+from fairseq.tasks import register_task
 from fairseq.tasks.translation import TranslationTask, load_langpair_dataset
 
 @register_task("aspect_base_denoising")
@@ -163,6 +165,3 @@ class AspectBaseDenoisingTask(TranslationTask):
             for hypos in batch_hypos
         ]
     
-
-import fairseq
-fairseq.tasks.fairseq_task.build_generator()

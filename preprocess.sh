@@ -9,9 +9,9 @@ OUTPUT_PATH="$DATA_PATH/$PREFIX/$DOMAIN"
 
 mkdir -p "$OUTPUT_PATH"
 
-for SPLIT in train valid
+for SPLIT in train dev
 do
-	python -m fairseq.examples.roberta.multiprocessing_bpe_encoder \
+	python -m examples.roberta.multiprocessing_bpe_encoder \
 	--encoder-json "$DATA_PATH/gpt2_bpe/encoder.json" \
 	--vocab-bpe "$DATA_PATH/gpt2_bpe/vocab.bpe" \
 	--inputs "$INPUT_PATH/$SPLIT.txt" \
@@ -23,8 +23,8 @@ done
 fairseq-preprocess \
 	--only-source \
 	--trainpref "$OUTPUT_PATH/train.bpe" \
-	--validpref "$OUTPUT_PATH/valid.bpe" \
+	--validpref "$OUTPUT_PATH/dev.bpe" \
 	--destdir "$OUTPUT_PATH/data-bin/" \
 	--workers 60 \
-	--srcdict "$DATA_PATH/bart.base/dict.txt" \
-	--tgtdict "$DATA_PATH/bart.base/dict.txt"
+	--srcdict "$INPUT_PATH/dict.txt" \
+	--tgtdict "$INPUT_PATH/dict.txt"
