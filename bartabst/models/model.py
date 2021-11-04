@@ -6,9 +6,9 @@
 """
 TODO
 1. @BARTEncoderLMHead 
-2. register_mlm_head     from_pretrained hub_models bart.abst どうやって事前学習済みモデルをよみこんでるのか確認 model_name_or_path=archive_map.key()
-3. BARTHubInterface.register_mlm_head   from_pretrained 
-4. BARTModel attach mlm head 
+2. *register_mlm_head     from_pretrained hub_models bart.abst どうやって事前学習済みモデルをよみこんでるのか確認 --> --save-dir からcheckpointを指定model_name_or_path=archive_map.key()
+3. *BARTHubInterface.register_mlm_head   from_pretrained 
+4. @BARTMLModel attach mlm head 
 5. @register model architecture 'bart-abst'??
 """
 
@@ -16,9 +16,8 @@ TODO
 BART: Denoising Sequence-to-Sequence Pre-training for
 Natural Language Generation, Translation, and Comprehension
 """
-from typing import Optional
-
 import logging
+from typing import Optional
 
 import torch
 import torch.nn as nn
@@ -93,6 +92,15 @@ class BARTMLModel(TransformerModel):
             action="store_true",
             help="Untie weights between embeddings and classifiers in RoBERTa",
         )
+        # output config
+        parser.add_argument(
+            "--encoder_mlm",
+            action="store_true",
+            default=False,
+            help="change model output (encoder MLM head or decoder)",
+        )        
+        
+
         
     @property
     def supported_targets(self):
@@ -109,6 +117,7 @@ class BARTMLModel(TransformerModel):
         return_all_hiddens: bool = True,
         alignment_layer: Optional[int] = None,
         alignment_heads: Optional[int] = None,
+        masked_tokens=None
     ):
         if classification_head_name is not None:
             features_only = True
@@ -119,29 +128,39 @@ class BARTMLModel(TransformerModel):
             token_embeddings=token_embeddings,
             return_all_hiddens=return_all_hiddens
         )
-        x, extra = self.decoder(
-            prev_output_tokens,
-            encoder_out=encoder_out,
-            features_only=features_only,
-            alignment_layer=alignment_layer,
-            alignment_heads=alignment_heads,
-            src_lengths=src_lengths,
-            return_all_hiddens=return_all_hiddens,
-        )
-        eos: int = self.eos
-        if classification_head_name is not None:
-            sentence_representation = x[
-                src_tokens.eq(eos), :
-            ].view(x.size(0), -1, x.size(-1))[:, -1, :]
-            for k, head in self.classification_heads.items():
-                # for torch script only supports iteration
-                if k == classification_head_name:
-                    x = head(sentence_representation)
-                    break
+        if self.args.encoder_mlm:
+            # T x B x C -> B x T x C
+            features = encoder_out["encoder_out"][0].transpose(0, 1)
+            inner_states = encoder_out["encoder_states"] if return_all_hiddens else None
+
+            x = self.lm_head(
+                features, 
+                masked_tokens=masked_tokens
+            )           
+            return x, {"inner_states": inner_states}
         
-        #extra['mlm_out'] = self.lm_head(x, masked_tokens=masked_tokens)
-            
-        return x, extra
+        else:
+            x, extra = self.decoder(
+                prev_output_tokens,
+                encoder_out=encoder_out,
+                features_only=features_only,
+                alignment_layer=alignment_layer,
+                alignment_heads=alignment_heads,
+                src_lengths=src_lengths,
+                return_all_hiddens=return_all_hiddens,
+            )
+            eos: int = self.eos
+            if classification_head_name is not None:
+                sentence_representation = x[
+                    src_tokens.eq(eos), :
+                ].view(x.size(0), -1, x.size(-1))[:, -1, :]
+                for k, head in self.classification_heads.items():
+                    # for torch script only supports iteration
+                    if k == classification_head_name:
+                        x = head(sentence_representation)
+                        break
+        
+            return x, extra
 
     @classmethod
     def from_pretrained(
@@ -192,20 +211,12 @@ class BARTMLModel(TransformerModel):
                 self.args, "spectral_norm_classification_head", False
             ),
         )
-
-        self.classification_heads[name] = BARTEncoderLMHead(
-            input_dim=self.args.encoder_embed_dim,
-            inner_dim=inner_dim or self.args.encoder_embed_dim,
-            num_classes=num_classes,
-            activation_fn=self.args.pooler_activation_fn,
-            pooler_dropout=self.args.pooler_dropout,
-            do_spectral_norm=getattr(
-                self.args, "spectral_norm_classification_head", False
-            ),
-        )
     
     def build_lm_head(self, embed_dim, output_dim, activation_fn, weight):
         return BARTEncoderLMHead(embed_dim, output_dim, activation_fn, weight)
+
+    def output_layer(self, features, masked_tokens=None, **unused):
+        return self.lm_head(features, masked_tokens)
 
     def upgrade_state_dict_named(self, state_dict, name):
         super().upgrade_state_dict_named(state_dict, name)
@@ -452,7 +463,7 @@ def bart_large_architecture(args):
     args.spectral_norm_classification_head = safe_getattr(
         args, "spectral_norm_classification_head", False
     )
-
+    
 @register_model_architecture("bart-mlm", "bart_abst")
 def bart_abst_architecture(args):
     args.encoder_embed_dim = getattr(args, "encoder_embed_dim", 768)
@@ -461,7 +472,6 @@ def bart_abst_architecture(args):
     args.encoder_attention_heads = getattr(args, "encoder_attention_heads", 12)
     args.decoder_layers = getattr(args, "decoder_layers", 6)
     args.decoder_attention_heads = getattr(args, "decoder_attention_heads", 12)
-    args.activation_fn = getattr(args, "activation_fn", "gelu")
     #embed_dim, output_dim, activation_fn
     bart_large_architecture(args)
     

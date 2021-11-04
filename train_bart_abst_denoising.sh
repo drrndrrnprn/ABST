@@ -1,16 +1,11 @@
 #!/bin/bash
-
+USER_DIR='/home/drrndrrnprn/nlp/ABST/bartabst/'
 DATA_PATH='/home/drrndrrnprn/nlp/ABST/datasets'
 PREFIX='semeval-pengb'
 DOMAIN='analyzed'
 
 INPUT_PATH="$DATA_PATH/$PREFIX/$DOMAIN"
 OUTPUT_PATH="$INPUT_PATH"
-
-# Add this parameter to the conmmand below
-# to support the wandb backend, make sure you 
-# install and setup your account first
-# --wandb-project <wandb-project-name> 
 
 fairseq-train "$INPUT_PATH/data-bin" \
     --log-interval=10 \
@@ -59,11 +54,12 @@ fairseq-train "$INPUT_PATH/data-bin" \
     --layernorm-embedding \
     --fp16 \
     --activation-fn=gelu \
-    --restore-file "bart.base/model.pt" \
+    --restore-file "bartabst/checkpoints/bart.mlm/checkpoint_best.pt" \
     --reset-optimizer \
     --reset-meters \
     --reset-dataloader \
     --reset-lr-scheduler \
     --pooler-activation-fn=tanh \
     --tensorboard-logdir="$OUTPUT_PATH/tensorboard" \
-    --save-dir="$OUTPUT_PATH/checkpoints" | tee "$OUTPUT_PATH/train.log"
+    --user-dir "$USER_DIR" \
+    --save-dir="bartabst/checkpoints/bart.abst" | tee "$OUTPUT_PATH/train.log"

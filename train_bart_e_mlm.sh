@@ -12,6 +12,7 @@ fairseq-train "$INPUT_PATH/data-bin" \
         --fp16 \
         --arch bart_abst --layernorm-embedding \
         --task masked_lm \
+        --encoder_mlm \
         --criterion masked_lm \
         --optimizer adam \
         --adam-eps 1e-06 \
@@ -34,14 +35,14 @@ fairseq-train "$INPUT_PATH/data-bin" \
         --seed 222 \
         --log-format simple \
         --log-interval 20 \
-        --restore-file "bart.base/model.pt" \
+        --restore-file "bartabst/checkpoints/bart.base/model.pt" \
         --reset-optimizer \
         --reset-meters \
         --reset-dataloader \
         --reset-lr-scheduler \
         --ddp-backend=no_c10d \
         --skip-invalid-size-inputs-valid-test \
-        --save-dir "$OUTPUT_PATH/checkpoints" \
+        --save-dir "bartabst/checkpoints/bart.mlm" \
         --user-dir "$USER_DIR" \
         --tensorboard-logdir "$OUTPUT_PATH/tensorboard" | tee -a "$OUTPUT_PATH train.log" 
         
