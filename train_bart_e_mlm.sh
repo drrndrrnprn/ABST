@@ -12,7 +12,7 @@ fairseq-train "$INPUT_PATH/data-bin" \
         --fp16 \
         --arch bart_abst --layernorm-embedding \
         --task masked_lm \
-        --encoder_mlm \
+        --finetune-from-model \
         --criterion masked_lm \
         --optimizer adam \
         --adam-eps 1e-06 \

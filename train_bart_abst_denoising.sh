@@ -16,6 +16,7 @@ fairseq-train "$INPUT_PATH/data-bin" \
     --optimizer=adam \
     --lr-scheduler=polynomial_decay \
     --task=denoising  \
+    --finetune-from-model \
     --skip-invalid-size-inputs-valid-test \
     --max-tokens=8192 \
     --required-batch-size-multiple=1 \
