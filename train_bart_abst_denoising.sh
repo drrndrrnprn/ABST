@@ -16,7 +16,6 @@ fairseq-train "$INPUT_PATH/data-bin" \
     --optimizer=adam \
     --lr-scheduler=polynomial_decay \
     --task=denoising  \
-    --finetune-from-model \
     --skip-invalid-size-inputs-valid-test \
     --max-tokens=8192 \
     --required-batch-size-multiple=1 \
@@ -64,3 +63,6 @@ fairseq-train "$INPUT_PATH/data-bin" \
     --tensorboard-logdir="$OUTPUT_PATH/tensorboard" \
     --user-dir "$USER_DIR" \
     --save-dir="bartabst/checkpoints/bart.abst" | tee "$OUTPUT_PATH/train.log"
+
+
+    #--finetune-from-model \

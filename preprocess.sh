@@ -7,6 +7,7 @@ DOMAIN='analyzed'
 INPUT_PATH="$DATA_PATH/$PREFIX/$DOMAIN"
 OUTPUT_PATH="$DATA_PATH/$PREFIX/$DOMAIN"
 
+CHECKPOINT_PATH="/home/drrndrrnprn/nlp/ABST/bartabst/checkpoints/bart.base"
 mkdir -p "$OUTPUT_PATH"
 
 for SPLIT in train dev
@@ -26,5 +27,5 @@ fairseq-preprocess \
 	--validpref "$OUTPUT_PATH/dev.bpe" \
 	--destdir "$OUTPUT_PATH/data-bin/" \
 	--workers 60 \
-	--srcdict "$INPUT_PATH/dict.txt" \
-	--tgtdict "$INPUT_PATH/dict.txt"
+	--srcdict "$CHECKPOINT_PATH/dict.txt" \
+	--tgtdict "$CHECKPOINT_PATH/dict.txt"

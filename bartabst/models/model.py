@@ -56,7 +56,20 @@ class BARTMLModel(TransformerModel):
         self.classification_heads = nn.ModuleDict()
         if hasattr(self.encoder, "dictionary"):
             self.eos: int = self.encoder.dictionary.eos()
-
+            
+        #self.lm_head = nn.ModuleDict()
+        if self.args.task == 'masked_lm':
+            self.lm_head = BARTEncoderLMHead(
+            embed_dim=self.args.encoder_embed_dim,
+            #output_dim=len(task.source_dictionary),
+            output_dim=len(self.encoder.dictionary),
+            activation_fn=self.args.activation_fn,
+            weight=(
+                self.encoder.embed_tokens.weight
+                if not self.args.untie_weights_roberta
+                else None
+            )
+            )
     @staticmethod
     def add_args(parser):
         super(BARTMLModel, BARTMLModel).add_args(parser)
@@ -80,16 +93,7 @@ class BARTMLModel(TransformerModel):
             "--untie-weights-roberta",
             action="store_true",
             help="Untie weights between embeddings and classifiers in RoBERTa",
-        )
-        # output config
-        parser.add_argument(
-            "--encoder_mlm",
-            action="store_true",
-            default=False,
-            help="change model output (encoder MLM head or decoder)",
-        )        
-        
-
+        )  
         
     @property
     def supported_targets(self):
@@ -99,7 +103,7 @@ class BARTMLModel(TransformerModel):
         self,
         src_tokens,
         src_lengths,
-        prev_output_tokens,
+        prev_output_tokens=None, # unnecessary, in case of e_masked_lm
         features_only: bool = False,
         classification_head_name: Optional[str] = None,
         token_embeddings: Optional[torch.Tensor] = None,
@@ -203,6 +207,8 @@ class BARTMLModel(TransformerModel):
     
     def register_mlm_head(self):
         #copied form roberta model
+        logger.info("Registering masked lm head")
+        
         self.lm_head = BARTEncoderLMHead(
         embed_dim=self.args.encoder_embed_dim,
         #output_dim=len(task.source_dictionary),
@@ -218,6 +224,9 @@ class BARTMLModel(TransformerModel):
     def upgrade_state_dict_named(self, state_dict, name):
         super().upgrade_state_dict_named(state_dict, name)
 
+        #if self.args.task == 'masked_lm':
+            #self.register_mlm_head()
+            
         prefix = name + "." if name != "" else ""
         current_head_names = (
             []
@@ -327,18 +336,21 @@ class BARTMLModel(TransformerModel):
         # with their current weights.
         if hasattr(self, "classification_heads"):
             cur_state = self.classification_heads.state_dict()
+            #print(cur_state)
             for k, v in cur_state.items():
                 if prefix + "classification_heads." + k not in state_dict:
                     logger.info("Overwriting " + prefix + "classification_heads." + k)
                     state_dict[prefix + "classification_heads." + k] = v
-
+        #print(state_dict)
         if self.args.task == 'masked_lm':
-            self.register_mlm_head(self)
+            #self.register_mlm_head()
             cur_state = self.lm_head.state_dict()
+            #print(cur_state)
             for k, v in cur_state.items():
-                if "masked_lm_head." + k not in state_dict:
-                    logger.info("Overwriting " + "masked_lm_head." + k)
-                    state_dict["masked_lm_head." + k] = v
+                if "lm_head." + k not in state_dict:
+                    logger.info("Overwriting " + "lm_head." + k)
+                    state_dict["lm_head." + k] = v
+            #print(state_dict)
 
 class BARTClassificationHead(nn.Module):
     """Head for sentence-level classification tasks."""

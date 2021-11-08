@@ -12,7 +12,6 @@ fairseq-train "$INPUT_PATH/data-bin" \
         --fp16 \
         --arch bart_abst --layernorm-embedding \
         --task masked_lm \
-        --finetune-from-model \
         --criterion masked_lm \
         --optimizer adam \
         --adam-eps 1e-06 \
@@ -46,3 +45,6 @@ fairseq-train "$INPUT_PATH/data-bin" \
         --user-dir "$USER_DIR" \
         --tensorboard-logdir "$OUTPUT_PATH/tensorboard" | tee -a "$OUTPUT_PATH train.log" 
         
+
+
+        #--finetune-from-model \
