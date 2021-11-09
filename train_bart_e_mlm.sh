@@ -11,7 +11,7 @@ mkdir -p $OUTPUT_PATH
 fairseq-train "$INPUT_PATH/data-bin" \
         --fp16 \
         --arch bart_abst --layernorm-embedding \
-        --task masked_lm \
+        --task bart_e_mlm \
         --criterion masked_lm \
         --optimizer adam \
         --adam-eps 1e-06 \
@@ -19,11 +19,13 @@ fairseq-train "$INPUT_PATH/data-bin" \
         --lr-scheduler polynomial_decay \
         --lr 3e-05 \
         --stop-min-lr -1 \
+        --patience 10 \
         --warmup-updates 10000 \
         --total-num-update 40000 \
         --dropout 0.3 \
         --weight-decay 0.01 \
         --attention-dropout 0.1 \
+        --batch-size 8 \
         --clip-norm 0.1 \
         --max-tokens 4096 \
         --update-freq 2 \

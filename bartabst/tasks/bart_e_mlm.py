@@ -31,7 +31,7 @@ from fairseq.tasks import FairseqTask, register_task
 
 from fairseq.tasks.language_modeling import SAMPLE_BREAK_MODE_CHOICES, SHORTEN_METHOD_CHOICES
 
-
+from bartabst.data.aspect_base_mask_token_dataset import AspectBaseMaskTokensDataset
 logger = logging.getLogger(__name__)
 
 
@@ -102,7 +102,7 @@ class MaskedLMConfig(FairseqDataclass):
     seed: int = II("common.seed")
 
 
-@register_task("bart-e-mlm", dataclass=MaskedLMConfig)
+@register_task("bart_e_mlm", dataclass=MaskedLMConfig)
 class BARTEncoderMLMTask(FairseqTask):
 
     cfg: MaskedLMConfig
@@ -114,8 +114,13 @@ class BARTEncoderMLMTask(FairseqTask):
         self.dictionary = dictionary
 
         # add mask token
-        self.mask_idx = dictionary.add_symbol("<mask>")
-
+        self.mask_idx = {}
+        self.mask_idx['mask'] = dictionary.add_symbol("<mask>")
+        self.mask_idx['asp_mask'] = self.dictionary.add_symbol("<asp_mask>")
+        self.mask_idx['pos_mask'] = self.dictionary.add_symbol("<pos_mask>")
+        self.mask_idx['neu_mask'] = self.dictionary.add_symbol("<neu_mask>")
+        self.mask_idx['neg_mask'] = self.dictionary.add_symbol("<neg_mask>")
+        
     @classmethod
     def setup_task(cls, cfg: MaskedLMConfig, **kwargs):
         paths = utils.split_paths(cfg.data)
@@ -175,7 +180,7 @@ class BARTEncoderMLMTask(FairseqTask):
             else None
         )
 
-        src_dataset, tgt_dataset = MaskTokensDataset.apply_mask(
+        src_dataset, tgt_dataset = AspectBaseMaskTokensDataset.apply_mask(
             dataset,
             self.source_dictionary,
             pad_idx=self.source_dictionary.pad(),

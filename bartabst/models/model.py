@@ -58,7 +58,7 @@ class BARTMLModel(TransformerModel):
             self.eos: int = self.encoder.dictionary.eos()
             
         #self.lm_head = nn.ModuleDict()
-        if self.args.task == 'masked_lm':
+        if self.args.task == 'bart_e_mlm':
             self.lm_head = BARTEncoderLMHead(
             embed_dim=self.args.encoder_embed_dim,
             #output_dim=len(task.source_dictionary),
@@ -103,7 +103,7 @@ class BARTMLModel(TransformerModel):
         self,
         src_tokens,
         src_lengths,
-        prev_output_tokens=None, # unnecessary, in case of e_masked_lm
+        prev_output_tokens = None, # unnecessary in case of e_masked_lm
         features_only: bool = False,
         classification_head_name: Optional[str] = None,
         token_embeddings: Optional[torch.Tensor] = None,
@@ -121,7 +121,7 @@ class BARTMLModel(TransformerModel):
             token_embeddings=token_embeddings,
             return_all_hiddens=return_all_hiddens
         )
-        if self.args.task == 'masked_lm':
+        if self.args.task == 'bart_e_mlm':
             # T x B x C -> B x T x C
             features = encoder_out["encoder_out"][0].transpose(0, 1)
             inner_states = encoder_out["encoder_states"] if return_all_hiddens else None
@@ -332,6 +332,59 @@ class BARTMLModel(TransformerModel):
                 ]
             )
 
+        if self.args.task == ("bart_e_mlm" or "aspect_base_denoising") and loaded_dict_size < len(
+            self.encoder.dictionary
+        ):
+            logger.info(
+                "Adding extra mask tokens embeddings not found in pretrained model for "
+                "continued pretraining of BARTMLModel with extra mask tokens."
+            )
+            loaded_mask_token_embedding = state_dict["encoder.embed_tokens.weight"][
+                -1, :
+            ]
+
+            num_emaskids_to_add = len(self.encoder.dictionary) - loaded_dict_size
+            embed_dim = state_dict["encoder.embed_tokens.weight"].size(1)
+
+            new_emask_embed_to_add = torch.zeros(num_emaskids_to_add, embed_dim)
+            nn.init.normal_(new_emask_embed_to_add, mean=0, std=embed_dim ** -0.5)
+            new_emask_embed_to_add = new_emask_embed_to_add.to(
+                dtype=state_dict["encoder.embed_tokens.weight"].dtype,
+            )
+
+            state_dict["encoder.embed_tokens.weight"] = torch.cat(
+                [
+                    state_dict["encoder.embed_tokens.weight"][
+                        : loaded_dict_size - 1, :
+                    ],
+                    loaded_mask_token_embedding.unsqueeze(0),
+                    new_emask_embed_to_add,
+                ]
+            )
+            state_dict["decoder.embed_tokens.weight"] = torch.cat(
+                [
+                    state_dict["decoder.embed_tokens.weight"][
+                        : loaded_dict_size - 1, :
+                    ],
+                    loaded_mask_token_embedding.unsqueeze(0),
+                    new_emask_embed_to_add,
+                ]
+            )
+            # 考えて
+            new_mask_hidden_to_add = torch.zeros(num_emaskids_to_add+1, embed_dim)
+            nn.init.normal_(new_mask_hidden_to_add, mean=0, std=embed_dim ** -0.5)
+            new_mask_hidden_to_add = new_mask_hidden_to_add.to(
+                dtype=state_dict["encoder.embed_tokens.weight"].dtype,
+            )
+            state_dict["decoder.output_projection.weight"] = torch.cat(
+                [
+                    state_dict["decoder.output_projection.weight"][
+                        : loaded_dict_size - 1, :
+                    ],
+                    new_mask_hidden_to_add,
+                ]
+            )
+            
         # Copy any newly-added classification heads into the state dict
         # with their current weights.
         if hasattr(self, "classification_heads"):
@@ -342,7 +395,7 @@ class BARTMLModel(TransformerModel):
                     logger.info("Overwriting " + prefix + "classification_heads." + k)
                     state_dict[prefix + "classification_heads." + k] = v
         #print(state_dict)
-        if self.args.task == 'masked_lm':
+        if self.args.task == 'bart_e_mlm':
             #self.register_mlm_head()
             cur_state = self.lm_head.state_dict()
             #print(cur_state)

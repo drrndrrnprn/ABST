@@ -15,7 +15,7 @@ fairseq-train "$INPUT_PATH/data-bin" \
     --criterion=cross_entropy \
     --optimizer=adam \
     --lr-scheduler=polynomial_decay \
-    --task=denoising  \
+    --task=aspect_base_denoising  \
     --skip-invalid-size-inputs-valid-test \
     --max-tokens=8192 \
     --required-batch-size-multiple=1 \
@@ -30,6 +30,7 @@ fairseq-train "$INPUT_PATH/data-bin" \
     --update-freq=1 \
     --lr 3e-5 \
     --stop-min-lr -1 \
+    --patience 10 \
     --keep-last-epochs=10 \
     --best-checkpoint-metric=loss \
     --adam-betas="(0.9, 0.98)" \
