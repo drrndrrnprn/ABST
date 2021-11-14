@@ -1,6 +1,7 @@
 {
     "version": "0.2.0",
     "configurations": [
+
         {
             "name": "Python: Current File (Integrated Terminal)",
             "type": "python",
@@ -20,6 +21,17 @@
             "console": "integratedTerminal",
             "python": "/home/drrndrrnprn/anaconda3/envs/bartabsa/bin/python",
             "args": ["--model_path", "/home/drrndrrnprn/nlp/ABST/BARTABSA/peng/save_models/16resbest_SequenceGeneratorModel_triple_f_2021-08-22-21-38-18-679060"]
+        },
+        {
+            "name": "python train bart_e_lml cli_main",
+            "type": "python",
+            "request": "launch",
+            "cwd": "/home/drrndrrnprn/nlp/ABST",
+            "program": "/home/drrndrrnprn/nlp/ABST/fairseq/fairseq_cli/train.py",
+            "console": "integratedTerminal",
+            "python": "/home/drrndrrnprn/anaconda3/envs/bartabsa/bin/python",
+            "args": ["/home/drrndrrnprn/nlp/ABST/datasets/semeval-pengb/analyzed/data-bin","--fp16", "--arch=bart_abst", "--layernorm-embedding", "--task=bart_e_mlm","--criterion=masked_lm", "--optimizer=adam", "--adam-eps=1e-06","--adam-betas=(0.9, 0.98)", "--lr-scheduler=polynomial_decay", "--lr=3e-05", "--stop-min-lr=-1", "--patience=10", "--warmup-updates=10000", "--total-num-update=40000", "--dropout=0.3", "--weight-decay=0.01", "--attention-dropout=0.1", "--batch-size=8", "--clip-norm=0.1", "--max-tokens=4096", "--update-freq=2", "--save-interval=1" , "--save-interval-updates=500",  "--keep-interval-updates=10" , "--no-epoch-checkpoints",  "--seed=222",  "--log-format=simple",  "--log-interval=20", "--restore-file='bartabst/checkpoints/bart.base/model.pt'", "--reset-optimizer",  "--reset-meters", "--reset-dataloader", "--reset-lr-scheduler", "--ddp-backend=no_c10d", "--skip-invalid-size-inputs-valid-test", "--save-dir", "bartabst/checkpoints/bart.mlm", "--user-dir", "/home/drrndrrnprn/nlp/ABST/bartabst/" 
+            ]
         }
     ]
 }

@@ -17,7 +17,7 @@ do
 	--vocab-bpe "$DATA_PATH/gpt2_bpe/vocab.bpe" \
 	--inputs "$INPUT_PATH/$SPLIT.txt" \
 	--outputs "$OUTPUT_PATH/$SPLIT.bpe" \
-	--workers 60 \
+	--workers=60 \
 	--keep-empty;
 done
 
@@ -26,6 +26,7 @@ fairseq-preprocess \
 	--trainpref "$OUTPUT_PATH/train.bpe" \
 	--validpref "$OUTPUT_PATH/dev.bpe" \
 	--destdir "$OUTPUT_PATH/data-bin/" \
-	--workers 60 \
+	--dataset-impl=raw \
+	--workers=60 \
 	--srcdict "$CHECKPOINT_PATH/dict.txt" \
 	--tgtdict "$CHECKPOINT_PATH/dict.txt"

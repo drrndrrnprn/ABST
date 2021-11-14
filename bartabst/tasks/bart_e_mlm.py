@@ -99,6 +99,13 @@ class MaskedLMConfig(FairseqDataclass):
             'e.g., "train,valid" (default: all dataset splits)'
         },
     )
+    dataset_implem: str = field(
+        default="raw",
+        metadata={
+            "help": "select dataset implementation"
+            'e.g., raw, mmap ...'
+        },
+    )
     seed: int = II("common.seed")
 
 
@@ -144,12 +151,13 @@ class BARTEncoderMLMTask(FairseqTask):
             split_path,
             self.source_dictionary,
             combine=combine,
+            dataset_impl=self.cfg.dataset_implem
         )
         if dataset is None:
             raise FileNotFoundError(
                 "Dataset not found: {} ({})".format(split, split_path)
             )
-
+        
         dataset = maybe_shorten_dataset(
             dataset,
             split,
@@ -169,7 +177,7 @@ class BARTEncoderMLMTask(FairseqTask):
             break_mode=self.cfg.sample_break_mode,
         )
         logger.info("loaded {} blocks from: {}".format(len(dataset), split_path))
-
+        
         # prepend beginning-of-sentence token (<s>, equiv. to [CLS] in BERT)
         dataset = PrependTokenDataset(dataset, self.source_dictionary.bos())
 
