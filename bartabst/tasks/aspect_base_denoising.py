@@ -20,6 +20,7 @@ from fairseq.data import (
     TokenBlockDataset,
     data_utils,
 )
+from fairseq.data.encoders.gpt2_bpe import GPT2BPE as bpe
 from fairseq.data.encoders.utils import get_whole_word_mask
 from fairseq.data.shorten_dataset import maybe_shorten_dataset
 from fairseq.tasks import LegacyFairseqTask, register_task

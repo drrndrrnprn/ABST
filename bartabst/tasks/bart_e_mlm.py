@@ -24,13 +24,14 @@ from fairseq.data import (
     TokenBlockDataset,
     data_utils,
 )
+from fairseq.data.encoders.gpt2_bpe import GPT2BPE
 from fairseq.data.encoders.utils import get_whole_word_mask
 from fairseq.data.shorten_dataset import maybe_shorten_dataset
 from fairseq.dataclass import FairseqDataclass
 from fairseq.tasks import FairseqTask, register_task
 
 from fairseq.tasks.language_modeling import SAMPLE_BREAK_MODE_CHOICES, SHORTEN_METHOD_CHOICES
-
+import torch
 from bartabst.data.aspect_base_mask_token_dataset import AspectBaseMaskTokensDataset
 logger = logging.getLogger(__name__)
 
@@ -106,6 +107,12 @@ class MaskedLMConfig(FairseqDataclass):
             'e.g., raw, mmap ...'
         },
     )
+    gpt2_encoder_json: str = field(
+        default='dummy', metadata={"help": "path to encoder.json"}
+    )
+    gpt2_vocab_bpe: str = field(
+        default='dummy', metadata={"help": "path to vocab.bpe"}
+    )
     seed: int = II("common.seed")
 
 
@@ -157,7 +164,9 @@ class BARTEncoderMLMTask(FairseqTask):
             raise FileNotFoundError(
                 "Dataset not found: {} ({})".format(split, split_path)
             )
-        
+
+        aos_list = self.get_aos(split_path, dataset.lines, self.cfg)
+                
         dataset = maybe_shorten_dataset(
             dataset,
             split,
@@ -259,6 +268,65 @@ class BARTEncoderMLMTask(FairseqTask):
             src_dataset = SortDataset(src_dataset, sort_order=[src_lengths])
         return src_dataset
 
+    def get_aos(self, path, lines, cfg):
+        cfg.gpt2_encoder_json = os.path.join(self.cfg.data, 'gpt2_bpe/encoder.json')
+        cfg.gpt2_vocab_bpe = os.path.join(self.cfg.data, 'gpt2_bpe/vocab.bpe')
+        bpe = GPT2BPE(cfg)
+        aos_path = path + '_asp.txt'
+        aos_list = []
+        raw_aos_list = []
+        with open(aos_path, "r", encoding="utf-8") as f:
+            for aos_line in f:
+                new_aos_line = [aos.split(',') for aos in aos_line.strip("\n").split('\t')]
+                raw_aos_list.append(new_aos_line)
+        
+        for line, raw_aos in zip(lines, raw_aos_list):
+            raw_aos = raw_aos[0]
+            a_s, a_e, o_s, o_e = int(raw_aos[0]), int(raw_aos[1])-1, int(raw_aos[2]), int(raw_aos[3])-1
+            raw_line = bpe.decode(line).split(' ')
+            if a_s < o_s:
+                sep_raw_line = [raw_line[:a_s+1],
+                                raw_line[a_s:a_e+1],
+                                raw_line[a_e:o_s+1],
+                                raw_line[o_s:o_e+1],
+                                raw_line[o_e:]]
+            else:
+                sep_raw_line = [raw_line[:o_s+1],
+                                raw_line[o_s:o_e+1],
+                                raw_line[o_e:a_s+1],
+                                raw_line[a_s:a_e+1],
+                                raw_line[a_e:]]
+            for i in range(1,len(sep_raw_line)):
+                sep_raw_line[i] = (' ' + ','.join(sep_raw_line[i])).split(',')]
+            cumsum_length = 0
+            aos = []
+            encoded_line = np.empty(1)
+            for sep in sep_raw_line:
+                encoded = self.dictionary.encode_line(bpe.encode(' '.join(sep)))
+                encoded = encoded[:-1]
+                cumsum_length += len(encoded)
+                aos.append(cumsum_length)
+                encoded_line = np.append(encoded_line, encoded.cpu().numpy())
+            
+            encoded_line = encoded_line[1:]
+            encoded_line = np.append(encoded_line, np.array([2]))
+            encoded_line = list(map(int,encoded_line.tolist()))
+            sentence = bpe.decode(self.dictionary.string(encoded_line))
+
+            if a_s > o_s:
+                buf_s, buf_e = aos[0], aos[1]
+                aos[0], aos[1] = aos[2], aos[3]
+                aos[2], aos[3] = buf_s, buf_e
+            aos = aos[:-1]
+            aos[1] += 1
+            aos[3] += 1
+            aos.append(raw_aos[4])
+            aos_list.append(aos)
+            raw_sentence = ' '.join(raw_line)
+            assert sentence == raw_sentence, 'boooooooooooooooooo'
+            
+        return aos_list
+                
     @property
     def source_dictionary(self):
         return self.dictionary

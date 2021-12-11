@@ -103,7 +103,7 @@ class BARTMLModel(TransformerModel):
         self,
         src_tokens,
         src_lengths,
-        prev_output_tokens = None, # unnecessary in case of e_masked_lm
+        prev_output_tokens = None, 
         features_only: bool = False,
         classification_head_name: Optional[str] = None,
         token_embeddings: Optional[torch.Tensor] = None,
