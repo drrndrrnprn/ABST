@@ -22,7 +22,6 @@ from fairseq.data import (
     RightPadDataset,
     SortDataset,
     TokenBlockDataset,
-    data_utils,
 )
 from fairseq.data.encoders.gpt2_bpe import GPT2BPE
 from fairseq.data.encoders.utils import get_whole_word_mask
@@ -33,6 +32,8 @@ from fairseq.tasks import FairseqTask, register_task
 from fairseq.tasks.language_modeling import SAMPLE_BREAK_MODE_CHOICES, SHORTEN_METHOD_CHOICES
 import torch
 from bartabst.data.aspect_base_mask_token_dataset import AspectBaseMaskTokensDataset
+from bartabst.data import data_utils
+
 logger = logging.getLogger(__name__)
 
 

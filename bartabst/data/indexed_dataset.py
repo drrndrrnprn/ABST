@@ -2,20 +2,34 @@
 #
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
-
+import os
 import shutil
 import struct
 from functools import lru_cache
 
 import numpy as np
 import torch
+class GPT2BPE(object):
+    def __init__(self, encoder_json, vocab_bpe):
+        self.bpe = get_encoder(encoder_json, vocab_bpe)
+
+    def encode(self, x: str) -> str:
+        return " ".join(map(str, self.bpe.encode(x)))
+
+    def decode(self, x: str) -> str:
+        return self.bpe.decode(
+            [int(tok) if tok not in {"<unk>", "<mask>"} else tok for tok in x.split()]
+        )
+
+    def is_beginning_of_word(self, x: str) -> bool:
+        return self.decode(x).startswith(" ")
+from fairseq.data.encoders.gpt2_bpe_utils import get_encoder
 from fairseq.dataclass.constants import DATASET_IMPL_CHOICES
 from fairseq.data.fasta_dataset import FastaDataset
-from fairseq.data.encoders.gpt2_bpe import GPT2BPE as bpe
 from fairseq.file_io import PathManager
 from fairseq.data.huffman import HuffmanMMapIndexedDataset, HuffmanMMapIndex
 
-from . import FairseqDataset
+from fairseq.data import FairseqDataset
 
 from typing import Union
 
@@ -272,9 +286,9 @@ class IndexedRawTextDataset(FairseqDataset):
         self.aos_list = []
         self.append_eos = append_eos
         self.reverse_order = reverse_order
-        self.read_data(path, dictionary)
-        self.size = len(self.tokens_list)
+        # self.read_data(path, dictionary)
         self.get_aos(path, dictionary)
+        self.size = len(self.tokens_list)
 
     def read_data(self, path, dictionary):
         with open(path, "r", encoding="utf-8") as f:
@@ -320,17 +334,31 @@ class IndexedRawTextDataset(FairseqDataset):
         return PathManager.exists(path)
     
     def get_aos(self, path, dictionary):
-        aos_path = path + '_asp.txt'
+        gpt2_encoder_json = os.path.join(os.path.dirname(path), 'gpt2_bpe/encoder.json')
+        gpt2_vocab_bpe = os.path.join(os.path.dirname(path), 'gpt2_bpe/vocab.bpe')
+        bpe = GPT2BPE(gpt2_encoder_json, gpt2_vocab_bpe)
+        aos_path = path + '_asp.txt'       
+        
+        with open(path, "r", encoding="utf-8") as f:
+            for line in f:
+                self.lines.append(line.strip("\n"))       
+        
         raw_aos_list = []
         with open(aos_path, "r", encoding="utf-8") as f:
             for aos_line in f:
                 new_aos_line = [aos.split(',') for aos in aos_line.strip("\n").split('\t')]
                 raw_aos_list.append(new_aos_line)
-                
+        
         for line, raw_aos in zip(self.lines, raw_aos_list):
             raw_aos = raw_aos[0]
-            a_s, a_e, o_s, o_e = raw_aos[0], raw_aos[1], raw_aos[2], raw_aos[3]
-            raw_line = bpe.decode(line)
+            a_s, a_e, o_s, o_e = int(raw_aos[0]), int(raw_aos[1]), int(raw_aos[2]), int(raw_aos[3])
+            # assert a_s < a_e, 'a_s >= a_e'
+            # assert o_s < o_e, 'o_s >= o_e'
+            # assert a_e-1 < o_s or o_e-1 < a_s, 'aos overlapping '
+            if not ((a_s < a_e) and (o_s < o_e) and (a_e-1 < o_s or o_e-1 < a_s)):
+                continue
+
+            raw_line = bpe.decode(line).split(' ')
             if a_s < o_s:
                 sep_raw_line = [raw_line[:a_s],
                                 raw_line[a_s:a_e],
@@ -338,20 +366,56 @@ class IndexedRawTextDataset(FairseqDataset):
                                 raw_line[o_s:o_e],
                                 raw_line[o_e:]]
             else:
-                sep_raw_line = [raw_line[:a_s],
+                sep_raw_line = [raw_line[:o_s],
                                 raw_line[o_s:o_e],
                                 raw_line[o_e:a_s],
                                 raw_line[a_s:a_e],
                                 raw_line[a_e:]]
+            for i in range(1,len(sep_raw_line)):
+                if sep_raw_line[i] != [] and not (i==1 and sep_raw_line[0] == []):
+                    sep_raw_line[i] = (' ' + '#$%'.join(sep_raw_line[i])).split('#$%')
+                if sep_raw_line[0] == []:
+                    sep_raw_line[1][0].strip(' ')
+            #sep_raw_line = '#$%'.join(sep_raw_line).strip().split('#$%')
             cumsum_length = 0
+            aos = []
+            encoded_line = torch.empty(1)
             for sep in sep_raw_line:
-                encoded = dictionary.encode_line(bpe.encode(sep))
+                encoded = dictionary.encode_line(bpe.encode(' '.join(sep))).long()
+                encoded = encoded[:-1]
                 cumsum_length += len(encoded)
-                aos.apeend(cumsum_length)
+                aos.append(cumsum_length)
+                encoded_line = torch.cat([encoded_line, encoded], dim=0)
+            
+            encoded_line = encoded_line[1:] # remove init value
+            encoded_line = torch.cat([encoded_line, torch.full((1,),fill_value=2)])
+            tokens = encoded_line.long()
+            self.tokens_list.append(tokens)
+            self.sizes.append(len(tokens))
+            encoded_line = list(map(int,encoded_line.tolist()))
+            sentence = bpe.decode(dictionary.string(encoded_line))
+
+            if a_s > o_s:
+                buf_s, buf_e = aos[0], aos[1]
+                aos[0], aos[1] = aos[2], aos[3]
+                aos[2], aos[3] = buf_s, buf_e
             aos = aos[:-1]
-            aos[1] += 1
-            aos[3] += 1
-            self.aos_list.apeend(aos)
+            aos.append(raw_aos[4])
+            self.aos_list.append(aos)
+            
+            
+            raw_sentence = ' '.join(raw_line)
+            assert sentence == raw_sentence, 'bpe encodeing error'
+            
+            a_t = bpe.decode(dictionary.string(encoded_line[aos[0]:aos[1]]))
+            o_p = bpe.decode(dictionary.string(encoded_line[aos[2]:aos[3]]))
+            r_a_t = ' '.join(raw_line[a_s:a_e])
+            r_o_p = ' '.join(raw_line[o_s:o_e])
+            assert a_t.strip() == r_a_t, 'bpe encoding error'
+            assert o_p.strip() == r_o_p, 'bpe encoding error'
+            
+        assert len(self.aos_list) == len(self.tokens_list), 'read_data error'
+        self.sizes = np.array(self.sizes)
 
 class IndexedDatasetBuilder:
     element_sizes = {
