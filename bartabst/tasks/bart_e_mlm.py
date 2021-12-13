@@ -165,7 +165,9 @@ class BARTEncoderMLMTask(FairseqTask):
             raise FileNotFoundError(
                 "Dataset not found: {} ({})".format(split, split_path)
             )
-                
+        
+        aos_list = dataset.aos_list
+        
         dataset = maybe_shorten_dataset(
             dataset,
             split,
@@ -209,6 +211,7 @@ class BARTEncoderMLMTask(FairseqTask):
             mask_whole_words=mask_whole_words,
             mask_multiple_length=self.cfg.mask_multiple_length,
             mask_stdev=self.cfg.mask_stdev,
+            aos_list=aos_list,
         )
 
         with data_utils.numpy_seed(self.cfg.seed):

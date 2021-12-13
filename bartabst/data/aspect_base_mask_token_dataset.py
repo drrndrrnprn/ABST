@@ -69,6 +69,7 @@ class AspectBaseMaskTokensDataset(BaseWrapperDataset):
         mask_whole_words: torch.Tensor = None,
         mask_multiple_length: int = 1,
         mask_stdev: float = 0.1,
+        aos_list: list = [[]],
     ):
         assert 0.0 <= mask_prob < 1.0
         assert 0.0 <= random_token_prob <= 1.0
@@ -89,6 +90,7 @@ class AspectBaseMaskTokensDataset(BaseWrapperDataset):
         self.mask_whole_words = mask_whole_words
         self.mask_multiple_length = mask_multiple_length
         self.mask_stdev = mask_stdev
+        self.aos_list = aos_list
 
         if random_token_prob > 0.0:
             if freq_weighted_replacement:
@@ -139,7 +141,7 @@ class AspectBaseMaskTokensDataset(BaseWrapperDataset):
                 + np.random.rand()
             )
 
-            a_s, a_e, o_s, o_e, p = self.dataset.dataset.dataset.aos_list[index]
+            a_s, a_e, o_s, o_e, p = self.aos_list[index]
             a_s, a_e, o_s, o_e = a_s + 1, a_e + 1, o_s + 1, o_e +1
             asp_mask = np.full(sz, False)
             opn_mask = np.full(sz, False)

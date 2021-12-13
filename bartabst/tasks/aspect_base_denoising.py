@@ -18,13 +18,13 @@ from fairseq.data import (
     PrependTokenDataset,
     StripTokenDataset,
     TokenBlockDataset,
-    data_utils,
 )
 from fairseq.data.encoders.gpt2_bpe import GPT2BPE as bpe
 from fairseq.data.encoders.utils import get_whole_word_mask
 from fairseq.data.shorten_dataset import maybe_shorten_dataset
 from fairseq.tasks import LegacyFairseqTask, register_task
 from bartabst.data.aspect_base_denoising_dataset import AspectBaseDenoisingDataset
+from bartabst.data import data_utils
 import numpy as np
 
 
@@ -78,7 +78,7 @@ class AspectBaseDenoisingTask(LegacyFairseqTask):
         )
         parser.add_argument(
             "--rotate",
-            default=0.5,
+            default=0.0,
             type=float,
             help="rotate this proportion of inputs",
         )
@@ -182,6 +182,8 @@ class AspectBaseDenoisingTask(LegacyFairseqTask):
                 "Dataset not found: {} ({})".format(split, split_path)
             )
 
+        aos_list = dataset.aos_list
+        
         dataset = StripTokenDataset(dataset, self.dictionary.eos())
 
         dataset = maybe_shorten_dataset(
@@ -193,17 +195,17 @@ class AspectBaseDenoisingTask(LegacyFairseqTask):
             self.args.seed,
         )
 
-        # create continuous blocks of tokens
-        dataset = TokenBlockDataset(
-            dataset,
-            dataset.sizes,
-            self.args.tokens_per_sample - 2,  # one less for <s> and one for </s>
-            pad=self.dictionary.pad(),
-            eos=self.dictionary.eos(),
-            break_mode=self.args.sample_break_mode,
-            document_sep_len=0,
-        )
-        logger.info("loaded {} blocks from: {}".format(len(dataset), split_path))
+        # # create continuous blocks of tokens
+        # dataset = TokenBlockDataset(
+        #     dataset,
+        #     dataset.sizes,
+        #     self.args.tokens_per_sample - 2,  # one less for <s> and one for </s>
+        #     pad=self.dictionary.pad(),
+        #     eos=self.dictionary.eos(),
+        #     break_mode=self.args.sample_break_mode,
+        #     document_sep_len=0,
+        # )
+        # logger.info("loaded {} blocks from: {}".format(len(dataset), split_path))
 
         # prepend beginning-of-sentence token (<s>, equiv. to [CLS] in BERT)
         dataset = PrependTokenDataset(dataset, self.source_dictionary.bos())
@@ -224,6 +226,7 @@ class AspectBaseDenoisingTask(LegacyFairseqTask):
             shuffle=self.args.shuffle_instance,
             seed=self.seed,
             args=self.args,
+            aos_list=aos_list,
         )
         logger.info(
             "Split: {0}, Loaded {1} samples of denoising_dataset".format(
