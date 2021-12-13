@@ -61,15 +61,15 @@ class MaskedLMConfig(FairseqDataclass):
         metadata={"help": "max number of tokens per sample for LM dataset"},
     )
     mask_prob: float = field(
-        default=0.15,
+        default=0.0,
         metadata={"help": "probability of replacing a token with mask"},
     )
     leave_unmasked_prob: float = field(
-        default=0.1,
+        default=0.0,
         metadata={"help": "probability that a masked token is unmasked"},
     )
     random_token_prob: float = field(
-        default=0.1,
+        default=0.0,
         metadata={"help": "probability of replacing a token with a random token"},
     )
     freq_weighted_replacement: bool = field(
@@ -165,8 +165,6 @@ class BARTEncoderMLMTask(FairseqTask):
             raise FileNotFoundError(
                 "Dataset not found: {} ({})".format(split, split_path)
             )
-
-        aos_list = self.get_aos(split_path, dataset.lines, self.cfg)
                 
         dataset = maybe_shorten_dataset(
             dataset,
@@ -177,16 +175,16 @@ class BARTEncoderMLMTask(FairseqTask):
             self.cfg.seed,
         )
 
-        # create continuous blocks of tokens
-        dataset = TokenBlockDataset(
-            dataset,
-            dataset.sizes,
-            self.cfg.tokens_per_sample - 1,  # one less for <s>
-            pad=self.source_dictionary.pad(),
-            eos=self.source_dictionary.eos(),
-            break_mode=self.cfg.sample_break_mode,
-        )
-        logger.info("loaded {} blocks from: {}".format(len(dataset), split_path))
+        # # create continuous blocks of tokens
+        # dataset = TokenBlockDataset(
+        #     dataset,
+        #     dataset.sizes,
+        #     self.cfg.tokens_per_sample - 1,  # one less for <s>
+        #     pad=self.source_dictionary.pad(),
+        #     eos=self.source_dictionary.eos(),
+        #     break_mode=self.cfg.sample_break_mode,
+        # )
+        # logger.info("loaded {} blocks from: {}".format(len(dataset), split_path))
         
         # prepend beginning-of-sentence token (<s>, equiv. to [CLS] in BERT)
         dataset = PrependTokenDataset(dataset, self.source_dictionary.bos())
@@ -268,81 +266,6 @@ class BARTEncoderMLMTask(FairseqTask):
         if sort:
             src_dataset = SortDataset(src_dataset, sort_order=[src_lengths])
         return src_dataset
-
-    def get_aos(self, path, lines, cfg):
-        cfg.gpt2_encoder_json = os.path.join(self.cfg.data, 'gpt2_bpe/encoder.json')
-        cfg.gpt2_vocab_bpe = os.path.join(self.cfg.data, 'gpt2_bpe/vocab.bpe')
-        bpe = GPT2BPE(cfg)
-        aos_path = path + '_asp.txt'
-        aos_list = []
-        raw_aos_list = []
-        with open(aos_path, "r", encoding="utf-8") as f:
-            for aos_line in f:
-                new_aos_line = [aos.split(',') for aos in aos_line.strip("\n").split('\t')]
-                raw_aos_list.append(new_aos_line)
-        
-        for line, raw_aos in zip(lines, raw_aos_list):
-            raw_aos = raw_aos[0]
-            a_s, a_e, o_s, o_e = int(raw_aos[0]), int(raw_aos[1]), int(raw_aos[2]), int(raw_aos[3])
-            # assert a_s < a_e, 'a_s >= a_e'
-            # assert o_s < o_e, 'o_s >= o_e'
-            # assert a_e-1 < o_s or o_e-1 < a_s, 'aos overlapping '
-            if not ((a_s < a_e) and (o_s < o_e) and (a_e-1 < o_s or o_e-1 < a_s)):
-                continue
-
-            raw_line = bpe.decode(line).split(' ')
-            if a_s < o_s:
-                sep_raw_line = [raw_line[:a_s],
-                                raw_line[a_s:a_e],
-                                raw_line[a_e:o_s],
-                                raw_line[o_s:o_e],
-                                raw_line[o_e:]]
-            else:
-                sep_raw_line = [raw_line[:o_s],
-                                raw_line[o_s:o_e],
-                                raw_line[o_e:a_s],
-                                raw_line[a_s:a_e],
-                                raw_line[a_e:]]
-            for i in range(1,len(sep_raw_line)):
-                if sep_raw_line[i] != [] and not (i==1 and sep_raw_line[0] == []):
-                    sep_raw_line[i] = (' ' + '#$%'.join(sep_raw_line[i])).split('#$%')
-                if sep_raw_line[0] == []:
-                    sep_raw_line[1][0].strip(' ')
-            #sep_raw_line = '#$%'.join(sep_raw_line).strip().split('#$%')
-            cumsum_length = 0
-            aos = []
-            encoded_line = np.empty(1)
-            for sep in sep_raw_line:
-                encoded = self.dictionary.encode_line(bpe.encode(' '.join(sep)))
-                encoded = encoded[:-1]
-                cumsum_length += len(encoded)
-                aos.append(cumsum_length)
-                encoded_line = np.append(encoded_line, encoded.cpu().numpy())
-            
-            encoded_line = encoded_line[1:]
-            #encoded_line = np.append(encoded_line, np.array([2]))
-            encoded_line = list(map(int,encoded_line.tolist()))
-            sentence = bpe.decode(self.dictionary.string(encoded_line))
-
-            if a_s > o_s:
-                buf_s, buf_e = aos[0], aos[1]
-                aos[0], aos[1] = aos[2], aos[3]
-                aos[2], aos[3] = buf_s, buf_e
-            aos = aos[:-1]
-            # aos[1] += 1
-            # aos[3] += 1
-            aos.append(raw_aos[4])
-            aos_list.append(aos)
-            raw_sentence = ' '.join(raw_line)
-            assert sentence == raw_sentence, 'bpe encodeing error'
-            
-            a_t = bpe.decode(self.dictionary.string(encoded_line[aos[0]:aos[1]]))
-            o_p = bpe.decode(self.dictionary.string(encoded_line[aos[2]:aos[3]]))
-            r_a_t = ' '.join(raw_line[a_s:a_e])
-            r_o_p = ' '.join(raw_line[o_s:o_e])
-            assert a_t.strip() == r_a_t, 'bpe encoding error'
-            assert o_p.strip() == r_o_p, 'bpe encoding error'
-        return aos_list
                 
     @property
     def source_dictionary(self):

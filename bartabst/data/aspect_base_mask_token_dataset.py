@@ -68,9 +68,9 @@ class AspectBaseMaskTokensDataset(BaseWrapperDataset):
         freq_weighted_replacement: bool = False,
         mask_whole_words: torch.Tensor = None,
         mask_multiple_length: int = 1,
-        mask_stdev: float = 0.0,
+        mask_stdev: float = 0.1,
     ):
-        assert 0.0 < mask_prob < 1.0
+        assert 0.0 <= mask_prob < 1.0
         assert 0.0 <= random_token_prob <= 1.0
         assert 0.0 <= leave_unmasked_prob <= 1.0
         assert random_token_prob + leave_unmasked_prob <= 1.0
@@ -139,6 +139,16 @@ class AspectBaseMaskTokensDataset(BaseWrapperDataset):
                 + np.random.rand()
             )
 
+            a_s, a_e, o_s, o_e, p = self.dataset.dataset.dataset.aos_list[index]
+            a_s, a_e, o_s, o_e = a_s + 1, a_e + 1, o_s + 1, o_e +1
+            asp_mask = np.full(sz, False)
+            opn_mask = np.full(sz, False)
+            asp_mask_idc = np.asarray([a_s+i for i in range(a_e-a_s)])
+            opn_mask_idc = np.asarray([o_s+i for i in range(o_e-o_s)])
+            asp_mask[asp_mask_idc] = True
+            opn_mask[opn_mask_idc] = True
+            
+            
             # multiple masking as described in the vq-wav2vec paper (https://arxiv.org/abs/1910.05453)
             mask_idc = np.random.choice(sz, num_mask, replace=False)
             if self.mask_stdev > 0.0:
@@ -174,6 +184,8 @@ class AspectBaseMaskTokensDataset(BaseWrapperDataset):
                 # (i.e., the targets for masked LM training)
                 if self.mask_whole_words is not None:
                     mask = np.repeat(mask, word_lens)
+                mask = np.logical_or(mask,asp_mask)
+                mask = np.logical_or(mask,opn_mask)
                 new_item = np.full(len(mask), self.pad_idx)
                 new_item[mask] = item[torch.from_numpy(mask.astype(np.uint8)) == 1]
                 return torch.from_numpy(new_item)
@@ -203,7 +215,12 @@ class AspectBaseMaskTokensDataset(BaseWrapperDataset):
                 mask = np.repeat(mask, word_lens)
 
             new_item = np.copy(item)
-            new_item[mask] = self.mask_idx['mask']
+            new_item[mask] = self.mask_idx['mask']  
+            new_item[asp_mask] = self.mask_idx['asp_mask']
+            dic_mask = {'POS':'pos_mask', 'NEU':'neu_mask','NEG':'neg_mask'}
+            new_item[opn_mask] = self.mask_idx[dic_mask[p]]
+
+            
             if rand_mask is not None:
                 num_rand = rand_mask.sum()
                 if num_rand > 0:

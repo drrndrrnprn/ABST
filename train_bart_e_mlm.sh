@@ -12,7 +12,7 @@ fairseq-train "$INPUT_PATH/data-bin" \
         --fp16 \
         --arch bart_abst --layernorm-embedding \
         --task bart_e_mlm \
-        --criterion masked_lm \
+        --criterion e_masked_lm \
         --optimizer adam \
         --adam-eps 1e-06 \
         --adam-betas '(0.9, 0.98)' \
@@ -25,7 +25,7 @@ fairseq-train "$INPUT_PATH/data-bin" \
         --dropout 0.3 \
         --weight-decay 0.01 \
         --attention-dropout 0.1 \
-        --batch-size 8 \
+        --batch-size 256 \
         --clip-norm 0.1 \
         --max-tokens 4096 \
         --update-freq 2 \
