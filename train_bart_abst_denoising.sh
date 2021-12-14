@@ -20,7 +20,7 @@ fairseq-train "$INPUT_PATH/data-bin" \
     --max-tokens=8192 \
     --required-batch-size-multiple=1 \
     --train-subset=train \
-    --valid-subset=dev \
+    --valid-subset=valid \
     --max-tokens-valid=12288 \
     --validate-interval 1 \
     --bucket-cap-mb=25 \
@@ -42,7 +42,7 @@ fairseq-train "$INPUT_PATH/data-bin" \
     --power=1 \
     --tokens-per-sample=512 \
     --sample-break-mode=eos \
-    --mask=0.3 \
+    --mask=0.2 \
     --mask-random=0.1 \
     --poisson-lambda=3.5 \
     --permute-sentences=1 \
@@ -51,6 +51,7 @@ fairseq-train "$INPUT_PATH/data-bin" \
     --total-num-update 20000 \
     --dropout=0.3 \
     --attention-dropout=0.1 \
+    --batch-size 32 \
     --share-all-embeddings \
     --layernorm-embedding \
     --fp16 \

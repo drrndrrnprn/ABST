@@ -57,19 +57,17 @@ class BARTMLModel(TransformerModel):
         if hasattr(self.encoder, "dictionary"):
             self.eos: int = self.encoder.dictionary.eos()
             
-        #self.lm_head = nn.ModuleDict()
-        if self.args.task == 'bart_e_mlm':
-            self.lm_head = BARTEncoderLMHead(
-            embed_dim=self.args.encoder_embed_dim,
-            #output_dim=len(task.source_dictionary),
-            output_dim=len(self.encoder.dictionary),
-            activation_fn=self.args.activation_fn,
-            weight=(
-                self.encoder.embed_tokens.weight
-                if not self.args.untie_weights_roberta
-                else None
-            )
-            )
+        self.lm_head = BARTEncoderLMHead(
+        embed_dim=self.args.encoder_embed_dim,
+        #output_dim=len(task.source_dictionary),
+        output_dim=len(self.encoder.dictionary),
+        activation_fn=self.args.activation_fn,
+        weight=(
+            self.encoder.embed_tokens.weight
+            if not self.args.untie_weights_roberta
+            else None
+        )
+        )
     @staticmethod
     def add_args(parser):
         super(BARTMLModel, BARTMLModel).add_args(parser)
