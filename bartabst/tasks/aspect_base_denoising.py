@@ -84,7 +84,7 @@ class AspectBaseDenoisingTask(LegacyFairseqTask):
         )
         parser.add_argument(
             "--poisson-lambda",
-            default=3.0,
+            default=0.0,
             type=float,
             help="randomly shuffle sentences for this proportion of inputs",
         )
@@ -235,22 +235,53 @@ class AspectBaseDenoisingTask(LegacyFairseqTask):
             )
         )
 
-    def build_dataset_for_inference(self, src_tokens, src_lengths, **kwargs):
+    def build_dataset_for_inference(self, args, combine=False, **kwargs):
         """
         Generate batches for inference. We assume that the input begins with a
         bos symbol (`<s>`) and ends with an eos symbol (`</s>`).
         """
+        split = 'test'
+        paths = utils.split_paths(self.args.data)
+        assert len(paths) > 0
+        data_path = paths[0]
+        split_path = os.path.join(data_path, split)
+
+        src_dataset = data_utils.load_indexed_dataset(
+            split_path,
+            self.dictionary,
+            'raw',
+            combine=combine,
+        )
+        if src_dataset is None:
+            raise FileNotFoundError(
+                "Dataset not found: {} ({})".format(split, split_path)
+            )
+        src_lengths = src_dataset.sizes
+        aos_list = src_dataset.aos_list
+        
+        src_dataset = AspectBaseDenoisingDataset(
+        src_dataset,
+        src_dataset.sizes,
+        self.dictionary,
+        self.mask_idx,
+        mask_whole_words=None,
+        shuffle=False,
+        seed=self.seed,
+        args=args,
+        aos_list=aos_list,
+        )
+        
         pad = self.source_dictionary.pad()
         eos = self.source_dictionary.eos()
-        src_dataset = TokenBlockDataset(
-            src_tokens,
-            src_lengths,
-            block_size=self.args.tokens_per_sample - 2,  # for <s> and </s>
-            pad=pad,
-            eos=eos,
-            break_mode=self.args.sample_break_mode,
-            document_sep_len=0,
-        )
+        # src_dataset = TokenBlockDataset(
+        #     src_dataset,
+        #     src_dataset.sizes,
+        #     block_size=self.args.tokens_per_sample - 2,  # for <s> and </s>
+        #     pad=pad,
+        #     eos=eos,
+        #     break_mode=self.args.sample_break_mode,
+        #     document_sep_len=0,
+        # )
         prev_output_tokens = PrependTokenDataset(
             StripTokenDataset(src_dataset, eos), eos
         )

@@ -16,6 +16,15 @@ fairseq-train "$INPUT_PATH/data-bin" \
     --optimizer=adam \
     --lr-scheduler=polynomial_decay \
     --task=aspect_base_denoising  \
+    --insert=0.0 \
+    --mask=0.0 \
+    --mask-length='subword' \
+    --mask-random=0.0 \
+    --permute=0.0 \
+    --permute-sentences=0.0 \
+    --poisson-lambda=0.0 \
+    --replace-length=-1 \
+    --rotate=0.0 \
     --skip-invalid-size-inputs-valid-test \
     --max-tokens=8192 \
     --required-batch-size-multiple=1 \

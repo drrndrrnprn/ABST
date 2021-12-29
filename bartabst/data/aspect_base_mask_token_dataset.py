@@ -142,7 +142,8 @@ class AspectBaseMaskTokensDataset(BaseWrapperDataset):
             )
 
             a_s, a_e, o_s, o_e, p = self.aos_list[index]
-            a_s, a_e, o_s, o_e = a_s + 1, a_e + 1, o_s + 1, o_e +1
+            if 0 in item:
+                a_s, a_e, o_s, o_e = a_s + 1, a_e + 1, o_s + 1, o_e +1
             asp_mask = np.full(sz, False)
             opn_mask = np.full(sz, False)
             asp_mask_idc = np.asarray([a_s+i for i in range(a_e-a_s)])
