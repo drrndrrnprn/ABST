@@ -41,7 +41,7 @@
             "program": "/home/drrndrrnprn/nlp/ABST/bartabst/inference.py",
             "console": "integratedTerminal",
             "python": "/home/drrndrrnprn/anaconda3/envs/bartabsa/bin/python",
-            "args": ["/home/drrndrrnprn/nlp/ABST/datasets/semeval-pengb/analyzed/data-bin", "--model-dir=/home/drrndrrnprn/nlp/ABST/bartabst/checkpoints/bart.abst","--model-file=checkpoint_best.pt", "--task=aspect_base_denoising","--insert=0.0","--mask=0.0","--mask-length=subword","--mask-random=0.0","--permute=0.0","--permute-sentences=0.0","--poisson-lambda=0.0","--replace-length=-1","--rotate=0.0","--user-dir", "/home/drrndrrnprn/nlp/ABST/bartabst/"
+            "args": ["/home/drrndrrnprn/nlp/ABST/datasets/semeval-pengb/analyzed/data-bin", "--model-dir=/home/drrndrrnprn/nlp/ABST/bartabst/checkpoints/bart.abst","--model-file=checkpoint_best.pt", "--task=aspect_base_denoising", "--output-dir=/home/drrndrrnprn/nlp/ABST/outputs/semeval-pengb", "--user-dir=/home/drrndrrnprn/nlp/ABST/bartabst/"
             ]
         }
 

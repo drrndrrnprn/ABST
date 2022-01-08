@@ -289,6 +289,7 @@ class AspectBaseDenoisingTask(LegacyFairseqTask):
             )
         src_lengths = src_dataset.sizes
         aos_list = src_dataset.aos_list
+        ob_raw_aos_list = src_dataset.ob_raw_aos_list
         
         src_dataset = PrependTokenDataset(src_dataset, self.source_dictionary.bos())
         src_dataset = AppendTokenDataset(src_dataset, self.source_dictionary.eos())
@@ -303,6 +304,7 @@ class AspectBaseDenoisingTask(LegacyFairseqTask):
         seed=self.seed,
         args=args,
         aos_list=aos_list,
+        ob_raw_aos_list=ob_raw_aos_list
         )
         
         # pad = self.source_dictionary.pad()

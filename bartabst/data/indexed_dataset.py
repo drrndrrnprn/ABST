@@ -284,6 +284,7 @@ class IndexedRawTextDataset(FairseqDataset):
         self.lines = []
         self.sizes = []
         self.aos_list = []
+        self.ob_raw_aos_list = []
         self.append_eos = append_eos
         self.reverse_order = reverse_order
         # self.read_data(path, dictionary)
@@ -350,7 +351,10 @@ class IndexedRawTextDataset(FairseqDataset):
                 new_aos_line = [aos.split(',') for aos in aos_line.strip("\n").split('\t')]
                 raw_aos_list.append(new_aos_line)
         
-        for line, raw_aos in zip(self.lines, raw_aos_list):
+        # edit aos_list for translation
+        self.ob_raw_aos_list = raw_aos_list
+        
+        for line, raw_aos in zip(self.lines, self.ob_raw_aos_list):
             raw_aos = raw_aos[0]
             a_s, a_e, o_s, o_e = int(raw_aos[0]), int(raw_aos[1]), int(raw_aos[2]), int(raw_aos[3])
             # assert a_s < a_e, 'a_s >= a_e'

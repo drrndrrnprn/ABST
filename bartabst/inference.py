@@ -1,9 +1,11 @@
-import argparse
+import datetime
+import os
 
 import torch
 from fairseq import tasks, options, utils
 from fairseq.dataclass.utils import convert_namespace_to_omegaconf
 from sacremoses import MosesTokenizer, MosesDetokenizer
+
 def main():
     """
     Usage::
@@ -18,7 +20,6 @@ def main():
         "--model-dir",
         required=True,
         type=str,
-        default="bart.large.cnn/",
         help="path containing model file and src_dict.txt",
     )
     parser.add_argument(
@@ -37,65 +38,14 @@ def main():
         default=8,
         type=int,
     ) 
+    parser.add_argument(
+        "--output-dir",
+        required=True,
+        type=str,
+        help="path savedir for output",
+    )
     args = options.parse_args_and_arch(parser)
     
-    # parser = argparse.ArgumentParser()
-    # parser.add_argument(
-    #     "--mask",
-    #     default=0.0,
-    #     type=float,
-    #     help="fraction of words/subwords that will be masked",
-    # )
-    # parser.add_argument(
-    #     "--mask-random",
-    #     default=0.0,
-    #     type=float,
-    #     help="instead of using [MASK], use random token this often",
-    # )
-    # parser.add_argument(
-    #     "--insert",
-    #     default=0.0,
-    #     type=float,
-    #     help="insert this percentage of additional random tokens",
-    # )
-    # parser.add_argument(
-    #     "--permute",
-    #     default=0.0,
-    #     type=float,
-    #     help="take this proportion of subwords and permute them",
-    # )
-    # parser.add_argument(
-    #     "--rotate",
-    #     default=0.0,
-    #     type=float,
-    #     help="rotate this proportion of inputs",
-    # )
-    # parser.add_argument(
-    #     "--poisson-lambda",
-    #     default=0.0,
-    #     type=float,
-    #     help="randomly shuffle sentences for this proportion of inputs",
-    # )
-    # parser.add_argument(
-    #     "--permute-sentences",
-    #     default=0.0,
-    #     type=float,
-    #     help="shuffle this proportion of sentences in all inputs",
-    # )
-    # parser.add_argument(
-    #     "--mask-length",
-    #     default="subword",
-    #     type=str,
-    #     choices=["subword", "word", "span-poisson"],
-    #     help="mask length to choose",
-    # )
-    # parser.add_argument(
-    #     "--replace-length",
-    #     default=-1,
-    #     type=int,
-    #     help="when masking N tokens, replace with 0, 1, or N tokens (use -1 for N)",
-    # )
-    #new_args = parser.parse_args()
     args.mask = 0.0
     args.mask_random = 0.0
     args.insert = 0.0
@@ -107,11 +57,11 @@ def main():
     args.replace_length = 0.0
     
     md = MosesDetokenizer(lang='en')
-
-    # utils.import_user_module(args)
+    dt_now = datetime.datetime.now()
+    cur_t = dt_now.strftime('%Y%m%d %H:%M:%S')
+    
     task = tasks.setup_task(args)
     
-    cfg = convert_namespace_to_omegaconf(args)
     model = task.build_model(args)
     model = model.from_pretrained(
             args.model_dir,
@@ -139,7 +89,19 @@ def main():
         outputs = model.abst(src_tokens, match_source_len=False)
         
         trans = [o[0][0] for o in outputs]
-        print(trans)
+    aos_list = dataset.ob_raw_aos_list
+    ts_aos_list = []
+    for line_aos in aos_list:
+        l_aos = []
+        for aos in line_aos:
+            l_aos.append(','.join(aos))
+        ts_aos = '\t'.join(l_aos)
+        ts_aos_list.append(ts_aos)
+    output_f = ['\t'.join([t, ts_aos]) for t, ts_aos in zip(trans, ts_aos_list)]
+    output_path = args.output_dir + "/" + cur_t +".tsv"
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    with open(output_path, 'w') as f:
+        f.write('\n'.join(output_f))
         
 if __name__ == "__main__":
     main()
