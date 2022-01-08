@@ -16,9 +16,7 @@ from fairseq.data import encoders
 from fairseq.hub_utils import GeneratorHubInterface
 from omegaconf import open_dict
 
-
 logger = logging.getLogger(__name__)
-
 
 class BARTHubInterface(GeneratorHubInterface):
     """A simple PyTorch Hub interface to BART.
@@ -33,25 +31,6 @@ class BARTHubInterface(GeneratorHubInterface):
     def encode(
         self, sentence: str, *addl_sentences, no_separator=True
     ) -> torch.LongTensor:
-        """
-        BPE-encode a sentence (or multiple sentences).
-
-        Every sequence begins with a beginning-of-sentence (`<s>`) symbol.
-        Every sentence ends with an end-of-sentence (`</s>`).
-
-        Example (single sentence): `<s> a b c </s>`
-        Example (sentence pair): `<s> d e f </s> 1 2 3 </s>`
-
-        The BPE encoding follows GPT-2. One subtle detail is that the GPT-2 BPE
-        requires leading spaces. For example::
-
-            >>> bart.encode('Hello world').tolist()
-            [0, 31414, 232, 2]
-            >>> bart.encode(' world').tolist()
-            [0, 232, 2]
-            >>> bart.encode('world').tolist()
-            [0, 8331, 2]
-        """
         tokens = self.bpe.encode(sentence)
         if len(tokens.split(" ")) > min(self.max_positions) - 2:
             tokens = " ".join(tokens.split(" ")[: min(self.max_positions) - 2])
@@ -201,6 +180,26 @@ class BARTHubInterface(GeneratorHubInterface):
         )
         generate_kwargs['match_source_len'] = match_source_len
         batch_hypos = self.generate(batch_tokens, **generate_kwargs)
+
+        return [
+            [(self.decode(hypo['tokens']), hypo['score']) for hypo in hypos[:topk]]
+            for hypos in batch_hypos
+        ]
+
+    def abst(
+        self,
+        inputs,
+        topk: int = 5,
+        match_source_len: bool = True,
+        **generate_kwargs
+    ):
+        # ensure beam size is at least as big as topk
+        generate_kwargs['beam'] = max(
+            topk,
+            generate_kwargs.get('beam', -1),
+        )
+        generate_kwargs['match_source_len'] = match_source_len
+        batch_hypos = self.generate(inputs, **generate_kwargs)
 
         return [
             [(self.decode(hypo['tokens']), hypo['score']) for hypo in hypos[:topk]]

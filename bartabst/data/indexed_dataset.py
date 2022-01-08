@@ -9,6 +9,7 @@ from functools import lru_cache
 
 import numpy as np
 import torch
+from sacremoses import MosesTokenizer, MosesDetokenizer
 class GPT2BPE(object):
     def __init__(self, encoder_json, vocab_bpe):
         self.bpe = get_encoder(encoder_json, vocab_bpe)
@@ -32,7 +33,6 @@ from fairseq.data.huffman import HuffmanMMapIndexedDataset, HuffmanMMapIndex
 from fairseq.data import FairseqDataset
 
 from typing import Union
-
 
 def best_fitting_int_dtype(
     max_int_to_represent,
@@ -337,6 +337,7 @@ class IndexedRawTextDataset(FairseqDataset):
         gpt2_encoder_json = os.path.join(os.path.dirname(path), 'gpt2_bpe/encoder.json')
         gpt2_vocab_bpe = os.path.join(os.path.dirname(path), 'gpt2_bpe/vocab.bpe')
         bpe = GPT2BPE(gpt2_encoder_json, gpt2_vocab_bpe)
+        moses = MosesTokenizer(lang='en')
         aos_path = path + '_asp.txt'       
         
         with open(path, "r", encoding="utf-8") as f:
@@ -358,7 +359,7 @@ class IndexedRawTextDataset(FairseqDataset):
             if not ((a_s < a_e) and (o_s < o_e) and (a_e-1 < o_s or o_e-1 < a_s)):
                 continue
 
-            raw_line = bpe.decode(line).split(' ')
+            raw_line = bpe.decode(line).split(' ') if line.isdecimal() else moses.tokenize(line)
             if a_s < o_s:
                 sep_raw_line = [raw_line[:a_s],
                                 raw_line[a_s:a_e],
@@ -388,7 +389,7 @@ class IndexedRawTextDataset(FairseqDataset):
                 encoded_line = torch.cat([encoded_line, encoded], dim=0)
             
             encoded_line = encoded_line[1:] # remove init value
-            encoded_line = torch.cat([encoded_line, torch.full((1,),fill_value=2)])
+            #encoded_line = torch.cat([encoded_line, torch.full((1,),fill_value=2)])
             tokens = encoded_line.long()
             self.tokens_list.append(tokens)
             self.sizes.append(len(tokens))

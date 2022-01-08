@@ -3,5 +3,6 @@
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
 
-from bartabst.models.hub_interface import *  # noqa
-from bartabst.models.model import *  # noqa
+# from models.hub_interface import *  # noqa
+# from models.model import *  # noqa
+from bartabst.models import * # noqa

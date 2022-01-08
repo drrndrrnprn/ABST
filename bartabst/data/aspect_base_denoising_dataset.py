@@ -185,7 +185,6 @@ class AspectBaseDenoisingDataset(FairseqDataset):
     def __getitem__(self, index):
         with data_utils.numpy_seed(self.seed, self.epoch, index):
             tokens = self.dataset[index]
-            aos = self.aos_list[index]
 
             assert tokens[-1] == self.eos
             source, target = tokens, tokens.clone()
@@ -195,6 +194,10 @@ class AspectBaseDenoisingDataset(FairseqDataset):
 
             if self.mask_ratio > 0:
                 source = self.add_whole_word_mask(source, self.mask_ratio)
+                
+            if self.aos_list:
+                aos = self.aos_list[index]
+                source = self.add_aspect_base_noise(source, aos)
 
             if self.insert_ratio > 0:
                 source = self.add_insertion_noise(source, self.insert_ratio)
@@ -220,19 +223,20 @@ class AspectBaseDenoisingDataset(FairseqDataset):
         return len(self.dataset)
 
     def add_aspect_base_noise(self, source, aos):
-            a_s, a_e, o_s, o_e, p = aos
-            a_s, a_e, o_s, o_e = a_s + 1, a_e + 1, o_s + 1, o_e +1
-            asp_mask = np.full(len(source), False)
-            opn_mask = np.full(len(source), False)
-            asp_mask_idc = np.asarray([a_s+i for i in range(a_e-a_s)])
-            opn_mask_idc = np.asarray([o_s+i for i in range(o_e-o_s)])
-            asp_mask[asp_mask_idc] = True
-            opn_mask[opn_mask_idc] = True
-            
-            source[asp_mask] = self.mask_idx['asp_mask']
-            dic_mask = {'POS':'pos_mask', 'NEU':'neu_mask','NEG':'neg_mask'}
-            source[opn_mask] = self.mask_idx[dic_mask[p]]
-            return source
+        a_s, a_e, o_s, o_e, p = aos
+        a_s, a_e, o_s, o_e = a_s + 1, a_e + 1, o_s + 1, o_e +1
+        asp_mask = np.full(len(source), False)
+        opn_mask = np.full(len(source), False)
+        asp_mask_idc = np.asarray([a_s+i for i in range(a_e-a_s)])
+        opn_mask_idc = np.asarray([o_s+i for i in range(o_e-o_s)])
+        asp_mask[asp_mask_idc] = True
+        opn_mask[opn_mask_idc] = True
+        
+        source[asp_mask] = self.mask_idx['asp_mask']
+        dic_mask = {'POS':'pos_mask', 'NEU':'neu_mask','NEG':'neg_mask'}
+        source[opn_mask] = self.mask_idx[dic_mask[p]]
+        return source
+    
     def permute_sentences(self, source, p=1.0):
         full_stops = source == self.full_stop_index
         # Pretend it ends with a full stop so last span is a sentence

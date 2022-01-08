@@ -30,7 +30,7 @@ from fairseq.models.transformer import TransformerModel
 from fairseq.modules import LayerNorm
 from fairseq.modules.transformer_sentence_encoder import init_bert_params
 
-from bartabst.models.hub_interface import BARTHubInterface
+from models.hub_interface import BARTHubInterface
 
 
 logger = logging.getLogger(__name__)
@@ -368,7 +368,7 @@ class BARTMLModel(TransformerModel):
                     new_emask_embed_to_add,
                 ]
             )
-            # 考えて
+            
             new_mask_hidden_to_add = torch.zeros(num_emaskids_to_add+1, embed_dim)
             nn.init.normal_(new_mask_hidden_to_add, mean=0, std=embed_dim ** -0.5)
             new_mask_hidden_to_add = new_mask_hidden_to_add.to(
