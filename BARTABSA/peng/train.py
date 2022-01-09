@@ -73,7 +73,7 @@ def get_data():
 
 data_bundle, tokenizer, mapping2id = get_data()
 max_len = 10
-max_len_a = {
+dict_max_len_a =  {
     'penga/14lap': 0.9,
     'penga/14res': 1,
     'penga/15res': 1.2,
@@ -81,8 +81,10 @@ max_len_a = {
     'pengb/14lap': 1.1,
     'pengb/14res': 1.2,
     'pengb/15res': 0.9,
-    'pengb/16res': 1.2
-}[dataset_name]
+    'pengb/16res': 1.2,
+    'pengb/res': 1.0,
+}
+max_len_a = dict_max_len_a[dataset_name] if dataset_name in dict_max_len_a.keys() else 1.0
 
 print("The number of tokens in tokenizer ", len(tokenizer.decoder))
 

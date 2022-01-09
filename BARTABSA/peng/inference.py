@@ -16,14 +16,14 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('--model_path', type=str)
 parser.add_argument('--bart_name', default='facebook/bart-base', type=str)
-parser.add_argument('--dataset_name', default='pengb/16res', type=str)
+parser.add_argument('--dataset_path', default='/home/drrndrrnprn/nlp/ABST/BARTABSA/data/pengb/res', type=str)
 parser.add_argument('--opinion_first', action='store_true', default=False)
 parser.add_argument('--use_output_polarity', action='store_true', default=False)
 
 args= parser.parse_args()
 
 model_path = args.model_path
-dataset_name = args.dataset_name
+dataset_path = args.dataset_path
 
 bart_name = args.bart_name
 opinion_first = args.opinion_first
@@ -31,7 +31,7 @@ use_output_polarity = args.use_output_polarity
 
 def get_data():
     pipe = BartBPEABSAPipe(tokenizer=bart_name, opinion_first=opinion_first)
-    data_bundle = pipe.process_from_file(f'../data/{dataset_name}')
+    data_bundle = pipe.process_from_file(dataset_path)
     return data_bundle, pipe.tokenizer, pipe.mapping2id, pipe.mapping
 
 data_bundle, tokenizer, mapping2id, mapping = get_data()

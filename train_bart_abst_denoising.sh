@@ -16,14 +16,14 @@ fairseq-train "$INPUT_PATH/data-bin" \
     --optimizer=adam \
     --lr-scheduler=polynomial_decay \
     --task=aspect_base_denoising  \
-    --insert=0.0 \
-    --mask=0.0 \
+    --insert=0.1 \
+    --mask=0.1 \
     --mask-length='subword' \
-    --mask-random=0.0 \
+    --mask-random=0.1 \
     --permute=0.0 \
     --permute-sentences=0.0 \
-    --poisson-lambda=0.0 \
-    --replace-length=-1 \
+    --poisson-lambda=3.0 \
+    --replace-length=1 \
     --rotate=0.0 \
     --skip-invalid-size-inputs-valid-test \
     --max-tokens=8192 \
@@ -39,7 +39,7 @@ fairseq-train "$INPUT_PATH/data-bin" \
     --update-freq=1 \
     --lr 3e-5 \
     --stop-min-lr -1 \
-    --patience 10 \
+    --patience 3 \
     --keep-last-epochs=10 \
     --best-checkpoint-metric=loss \
     --adam-betas="(0.9, 0.98)" \
@@ -51,12 +51,6 @@ fairseq-train "$INPUT_PATH/data-bin" \
     --power=1 \
     --tokens-per-sample=512 \
     --sample-break-mode=eos \
-    --mask=0.2 \
-    --mask-random=0.1 \
-    --poisson-lambda=3.5 \
-    --permute-sentences=1 \
-    --mask-length=span-poisson \
-    --replace-length=1 \
     --total-num-update 20000 \
     --dropout=0.3 \
     --attention-dropout=0.1 \

@@ -335,6 +335,9 @@ class IndexedRawTextDataset(FairseqDataset):
         return PathManager.exists(path)
     
     def get_aos(self, path, dictionary):
+        '''
+        本当にaosが正しくつくられてるか確認して
+        '''
         gpt2_encoder_json = os.path.join(os.path.dirname(path), 'gpt2_bpe/encoder.json')
         gpt2_vocab_bpe = os.path.join(os.path.dirname(path), 'gpt2_bpe/vocab.bpe')
         bpe = GPT2BPE(gpt2_encoder_json, gpt2_vocab_bpe)

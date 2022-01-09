@@ -19,7 +19,7 @@ fairseq-train "$INPUT_PATH/data-bin" \
         --lr-scheduler polynomial_decay \
         --lr 3e-05 \
         --stop-min-lr -1 \
-        --patience 10 \
+        --patience 3 \
         --warmup-updates 10000 \
         --total-num-update 40000 \
         --dropout 0.3 \

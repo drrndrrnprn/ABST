@@ -34,6 +34,17 @@
             ]
         },
         {
+            "name": "python train bart_abst_denoising cli_main",
+            "type": "python",
+            "request": "launch",
+            "cwd": "/home/drrndrrnprn/nlp/ABST",
+            "program": "/home/drrndrrnprn/nlp/ABST/fairseq/fairseq_cli/train.py",
+            "console": "integratedTerminal",
+            "python": "/home/drrndrrnprn/anaconda3/envs/bartabsa/bin/python",
+            "args": ["/home/drrndrrnprn/nlp/ABST/datasets/semeval-pengb/analyzed/data-bin","--log-interval=10","--no-epoch-checkpoints", "--no-progress-bar","--seed=42", "--criterion=cross_entropy", "--optimizer=adam","--lr-scheduler=polynomial_decay","--task=aspect_base_denoising","--insert=0.1","--mask=0.1","--mask-length=subword","--mask-random=0.1","--permute=0.0","--permute-sentences=0.0","--poisson-lambda=3.0","--replace-length=1","--rotate=0.0","--skip-invalid-size-inputs-valid-test","--max-tokens=8192","--required-batch-size-multiple=1","--train-subset=train","--valid-subset=valid","--max-tokens-valid=12288","--validate-interval=1","--bucket-cap-mb=25","--arch=bart_abst","--max-update=500000","--clip-norm=0.1","--update-freq=1","--lr=3e-5","--stop-min-lr=-1","--patience=10","--keep-last-epochs=10","--best-checkpoint-metric=loss","--adam-betas=(0.9, 0.98)","--adam-eps=1e-06","--weight-decay=0.01","--warmup-updates=500","--save-interval-updates=5000","--validate-interval-updates=5000","--power=1","--tokens-per-sample=512","--sample-break-mode=eos","--total-num-update=20000","--dropout=0.3","--attention-dropout=0.1","--batch-size=32","--share-all-embeddings","--layernorm-embedding","--fp16","--activation-fn=gelu", "--restore-file='bartabst/checkpoints/bart.mlm/checkpoint_best.pt'", "--reset-optimizer",  "--reset-meters", "--reset-dataloader", "--reset-lr-scheduler", "--ddp-backend=no_c10d", "--skip-invalid-size-inputs-valid-test", "--save-dir", "bartabst/checkpoints/bart.mlm", "--user-dir", "/home/drrndrrnprn/nlp/ABST/bartabst/" 
+            ]
+        },
+        {
             "name": "abst inference.py ",
             "type": "python",
             "request": "launch",

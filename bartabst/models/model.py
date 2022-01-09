@@ -30,7 +30,7 @@ from fairseq.models.transformer import TransformerModel
 from fairseq.modules import LayerNorm
 from fairseq.modules.transformer_sentence_encoder import init_bert_params
 
-from models.hub_interface import BARTHubInterface
+from .hub_interface import BARTHubInterface
 
 
 logger = logging.getLogger(__name__)
