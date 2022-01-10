@@ -1,14 +1,15 @@
+#!/bin/bash
 USER_DIR='/home/drrndrrnprn/nlp/ABST/bartabst/'
 DATA_PATH='/home/drrndrrnprn/nlp/ABST/datasets'
 PREFIX='semeval-pengb'
 DOMAIN='analyzed'
 
-INPUT_PATH="$DATA_PATH/$PREFIX/$DOMAIN"
+INPUT_PATH="$DATA_PATH/$PREFIX/$DOMAIN/data-raw"
 OUTPUT_PATH="$INPUT_PATH"
 
 mkdir -p $OUTPUT_PATH
 
-fairseq-train "$INPUT_PATH/data-bin" \
+fairseq-train "$INPUT_PATH" \
         --fp16 \
         --arch bart_abst --layernorm-embedding \
         --task bart_e_mlm \
@@ -46,7 +47,3 @@ fairseq-train "$INPUT_PATH/data-bin" \
         --save-dir "bartabst/checkpoints/bart.mlm" \
         --user-dir "$USER_DIR" \
         --tensorboard-logdir "$OUTPUT_PATH/tensorboard" | tee -a "$OUTPUT_PATH train.log" 
-        
-
-
-        #--finetune-from-model \

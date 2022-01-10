@@ -121,6 +121,7 @@ class AspectBaseDenoisingDataset(FairseqDataset):
         seed,
         args,
         aos_list,
+        ob_raw_aos_list,
         eos=None,
         item_transform_func=None,
     ):
@@ -139,6 +140,8 @@ class AspectBaseDenoisingDataset(FairseqDataset):
         self.rotate_ratio = args.rotate
         self.permute_sentence_ratio = args.permute_sentences
         self.aos_list = aos_list
+        self.ob_raw_aos_list=ob_raw_aos_list
+        
         self.eos = eos if eos is not None else vocab.eos()
         self.item_transform_func = item_transform_func
 

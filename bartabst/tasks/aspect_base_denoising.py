@@ -212,6 +212,7 @@ class AspectBaseDenoisingTask(LegacyFairseqTask):
             seed=self.seed,
             args=self.args,
             aos_list=aos_list,
+            ob_raw_aos_list=None
         )
         logger.info(
             "Split: {0}, Loaded {1} samples of denoising_dataset".format(

@@ -18,7 +18,7 @@ parser.add_argument('--model_path', type=str)
 parser.add_argument('--bart_name', default='facebook/bart-base', type=str)
 parser.add_argument('--dataset_path', default='/home/drrndrrnprn/nlp/ABST/BARTABSA/data/pengb/res', type=str)
 parser.add_argument('--opinion_first', action='store_true', default=False)
-parser.add_argument('--use_output_polarity', action='store_true', default=False)
+parser.add_argument('--use_input_polarity', action='store_true', default=False)
 
 args= parser.parse_args()
 
@@ -27,7 +27,7 @@ dataset_path = args.dataset_path
 
 bart_name = args.bart_name
 opinion_first = args.opinion_first
-use_output_polarity = args.use_output_polarity
+use_input_polarity = args.use_input_polarity
 
 def get_data():
     pipe = BartBPEABSAPipe(tokenizer=bart_name, opinion_first=opinion_first)
@@ -48,10 +48,10 @@ output = pred.predict(data)
 output = output['pred']
 output = list(itertools.chain.from_iterable(output))
 
-if use_output_polarity:
-    aos = process_aos(output, mapping)
-else:
+if use_input_polarity:
     aos = process_aos(output, mapping, data)
-
+else:
+    aos = process_aos(output, mapping)
+    
 output_path = ('/home/drrndrrnprn/nlp/ABST/BARTABSA/output/' + dataset_name + '/output_' + os.path.basename(model_path) + '.json')
 output_json(data, aos, output_path)

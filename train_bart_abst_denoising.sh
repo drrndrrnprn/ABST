@@ -7,7 +7,7 @@ DOMAIN='analyzed'
 INPUT_PATH="$DATA_PATH/$PREFIX/$DOMAIN"
 OUTPUT_PATH="$INPUT_PATH"
 
-fairseq-train "$INPUT_PATH/data-bin" \
+fairseq-train "$INPUT_PATH/data-raw" \
     --log-interval=10 \
     --no-epoch-checkpoints \
     --no-progress-bar \

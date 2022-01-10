@@ -1,4 +1,6 @@
+from collections import OrderedDict
 import datetime
+import json
 import os
 
 import torch
@@ -90,18 +92,56 @@ def main():
         
         trans = [o[0][0] for o in outputs]
     aos_list = dataset.ob_raw_aos_list
-    ts_aos_list = []
-    for line_aos in aos_list:
-        l_aos = []
-        for aos in line_aos:
-            l_aos.append(','.join(aos))
-        ts_aos = '\t'.join(l_aos)
-        ts_aos_list.append(ts_aos)
-    output_f = ['\t'.join([t, ts_aos]) for t, ts_aos in zip(trans, ts_aos_list)]
-    output_path = args.output_dir + "/" + cur_t +".tsv"
+    # ts_aos_list = []
+    # for line_aos in aos_list:
+    #     l_aos = []
+    #     for aos in line_aos:
+    #         l_aos.append(','.join(aos))
+    #     ts_aos = '\t'.join(l_aos)
+    #     ts_aos_list.append(ts_aos)
+    # output_f = ['\t'.join([t, ts_aos]) for t, ts_aos in zip(trans, ts_aos_list)]
+    output_path = args.output_dir + "/" + cur_t +".json"
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    with open(output_path, 'w') as f:
-        f.write('\n'.join(output_f))
+    # output json file
+    output_json(trans, aos_list, output_path)
+
+def output_json(data, aos, output_path):
+    json_out = list()
+    for d_ins, aos_ins in zip(data, aos):
+        raw_words = d_ins.split(' ')
+        f = False
+        if aos_ins == None:
+            f = True
+        for i in range(len(aos_ins)):
+            if int(aos_ins[i][1]) > len(raw_words) or int(aos_ins[i][3]) > len(raw_words):
+                f = True #何も入ってないやつしたで消して
+        if f:
+            continue
+        aspects = list()
+        opinions = list()
+        for i in range(len(aos_ins)):
+            aspect =  OrderedDict()
+            aspect['index'] = i
+            aspect['from'] = int(aos_ins[i][0])
+            aspect['to'] = int(aos_ins[i][1])
+            aspect['polarity'] = aos_ins[i][4]
+            aspect['term'] = raw_words[int(aos_ins[i][0]):int(aos_ins[i][1])]
+            opinion = OrderedDict()
+            opinion['index'] = i
+            opinion['from'] = int(aos_ins[i][2])
+            opinion['to'] = int(aos_ins[i][3])
+            opinion['term'] = raw_words[int(aos_ins[i][2]):int(aos_ins[i][3])]
+            aspects.append(aspect)
+            opinions.append(opinion)
+        json_ins = OrderedDict()
+        json_ins['raw_words'] = ' '.join(raw_words)
+        json_ins['words'] = raw_words
+        json_ins['aspects'] = aspects
+        json_ins['opinions'] = opinions
+        json_out.append(json_ins)
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    with open(output_path, mode='w') as f:
+        json.dump(json_out, f, sort_keys=False, indent=4)
         
 if __name__ == "__main__":
     main()

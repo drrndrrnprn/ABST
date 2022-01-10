@@ -1,0 +1,454 @@
+This is some really good , inexpensive sushi .	7,8,4,5,POS	7,8,6,7,POS
+The spicy tuna roll is huge and probably the best that I &apos; ve had at this price range .	1,4,5,6,POS	1,4,9,10,POS
+The Yellowtail was particularly good as well .	1,2,4,5,POS
+I have reservations about the all you can eat deal , however -- the choices are fairly limited and you can probably order more food than you can eat for less than $ 18 by just going off the menu .	5,10,17,18,NEG
+Decor gets big Ups for a fine establishment .	0,2,3,5,POS	0,2,7,8,POS
+They have it all -- great price , food , and service .	8,9,5,6,POS	11,12,5,6,POS
+The atmosphere is noisy and the waiters are literally walking around doing things as fast as they can .	1,2,3,4,NEG	6,7,14,15,POS
+This place is always very crowded and popular .	1,2,5,6,POS	1,2,7,8,POS
+Enjoyed a very nice Caesar Salad while my wife had arugula and goat cheese ... .both very tasty .	4,6,0,1,POS	4,6,3,4,POS	10,14,17,18,POS
+We both opted for a pasta dish and they were served timely and fresh .	5,7,10,12,POS	5,7,13,14,POS
+We concluded with tiramisu chocolate cake , both were delicious .	3,6,9,10,POS
+I recently went to this restaurant with some co-workers for lunch and had an amazing time .	5,6,14,16,POS
+sometimes i get good food and ok service .	4,5,3,4,POS	7,8,6,7,NEU
+sometimes i get bad food and bad service , sometimes i get good good and bad service .	4,5,3,4,NEG	7,8,6,7,NEG	13,14,12,13,POS
+And evaluated on those terms Pastis is simply wonderful .	5,6,8,9,POS
+Mine was a little burnt but still delicious with goat cheese and panchetta ( raddichio was kind of bitter though ) .	14,15,18,19,NEG
+My friend got the mushroom pizza which tasted better .	4,6,8,9,POS
+The sangria was pretty tasty and good on a hot muggy day .	1,2,4,5,POS	1,2,6,7,POS
+Kind of a small place but I guess if they are not too busy might be able to fit a group or kids .	4,5,3,4,NEU
+I started out with a Bombay beer which was big enough for two .	5,7,9,10,POS
+Service was slow , but the people were friendly .	0,1,2,3,NEG	6,7,8,9,POS
+The food is authentic Italian - delicious !	1,2,3,5,POS	1,2,6,7,POS
+Pizza is terrific , as is homemade pasta .	0,1,2,3,POS	6,8,2,3,POS
+Ambience is delightful , service impeccable .	0,1,2,3,POS	4,5,5,6,POS
+I &apos; m still mad that i had to pay for lousy food .	11,12,10,11,NEG
+The hanger steak was like rubber and the tuna was flavorless not to mention it tasted like it had just been thawed .	1,3,5,6,NEG	8,9,10,11,NEG
+Service was also horrible and the ambience is not that great .	0,1,3,4,NEG	6,7,8,11,NEG
+It &apos; s a small cute restaurant .	5,6,3,5,POS
+I absolutely love this place ! ! !	4,5,2,3,POS
+We wo n &apos;t go to this place again for a good meal .	11,12,10,11,NEG
+However , I think this place is a good hang out spot .	5,6,8,9,POS
+THe Pizza and wine were excellent -- the service too -- but what really MADE this place was the backyard dining area .	1,2,5,6,POS	3,4,5,6,POS	8,9,5,6,POS
+It is one the best comfort food I have ever seen in NY -- I am from Italy and this place rivals the ones in my country .	5,7,4,5,POS
+First of all , this place is * not * romantic , as claimed by Citysearch &apos; s editorial review .	5,6,7,9,NEG
+The tables are crammed way too close , the menu is typical of any Italian restaurant , and the wine list is simply overpriced .	1,2,3,4,NEG	1,2,5,7,NEG	9,10,11,12,NEU	19,21,23,24,NEG
+Slightly above average wines start at $ 70 + with only one selection listed at $ 30 + .	3,4,1,3,NEG
+Service is not what one would expect from a joint in this price category .	0,1,2,7,NEG
+Somehow working the italian charm with constant mille grazie does not constitute proper service .	13,14,10,13,NEG
+Not one of our meals was edible - bland and / or made with weird rosemary or orange flavoring .	4,5,6,7,NEG	13,17,12,13,NEG
+Fish was overdone .	0,1,2,3,NEG
+Cute place , nice wait staff but would never go there again .	4,6,3,4,POS	1,2,0,1,NEG
+Someone else recommended the dessert - we also left that .	4,5,2,3,NEG
+Skip this restaurant , it &apos; s a big disappointment .	2,3,0,1,NEG	2,3,8,9,NEG
+Lao is one of my favorite restaurants in the City ; the place the negative reviews describe sound like they were somewhere else .	0,1,5,6,POS
+I &apos; ve never had bad service and the fish is fresh and delicious .	5,6,2,5,POS	8,9,10,11,POS	8,9,12,13,POS
+Their tuna tartar appetizer is to die for .	1,4,6,8,POS
+I come from a family of pizzeria owners , and I &apos; m almost ashamed to say that the pizza in Fornino &apos; s blows my families receipies away .	18,19,13,14,POS
+The place is so cool and the service is prompt and curtious .	7,8,9,10,POS	7,8,11,12,POS	1,2,4,5,POS
+I highly recommend to anyone to give this place a try .	8,9,2,3,POS
+A restaurant that does n &apos;t try to do anything except serve great food with great service in a pleasant atmosphere .	12,13,11,12,POS	15,16,14,15,POS	19,20,18,19,POS
+The dining room is quietly elegant with no music to shout over -- how refreshing !	1,3,5,6,POS	1,3,14,15,POS
+The service was impeccable and unobtrusive -- the staff knows what they are there to do -- to know their menu , present your meal , and attend to your needs .	1,2,3,4,POS	1,2,5,6,POS
+Looking around , I saw a room full of New Yorkers enjoying a real meal in a real restaurant , not a clubhouse of the fabulous trying to be seen .	14,15,13,14,POS	18,19,17,18,POS
+The view is breathtaking the service is top notch ... the ambiance is wonderful .	1,2,3,4,POS	5,6,7,9,POS	11,12,13,14,POS
+The staff offers impeccable service .	1,2,3,4,POS
+My boyfriend had the New England Chowder it was good but I think the award should go to the Lobster Bisque .	4,7,9,10,POS	19,21,14,15,POS
+My boyfriend had Prime Rib it was good .	3,5,7,8,POS
+If you like spicy food get the chicken vindaloo .	7,9,5,6,POS
+Go to Volare for 1st class service and terrific food .	6,7,4,6,POS	9,10,8,9,POS
+The portions are large and the servers always surprise us with a different starter .	1,2,3,4,POS
+The wine list is excellent .	1,3,4,5,POS
+The food is great ... especially if you get the Chef &apos; s tasting menu and your favourite bottle ( or two ! ) of wine from an extensive selection of wines .	1,2,3,4,POS	28,31,27,28,POS
+The place is small and intimate and you may feel a little crowded , but the service is excellent and it &apos; s great for friends out , a romantic date , or a special occassion .	16,17,18,19,POS	1,2,3,4,POS	1,2,5,6,POS	1,2,12,13,POS
+The food can get pricey but the prixe fixe tasting menu is the greatest food for a good price and they cater the food to any food allergies or food you do n &apos;t like .	1,2,4,5,NEG	7,11,13,14,POS
+With the exception of our lemon salad that had so much pepper on it that our eyes started watering , the food here was decent , not great .	21,22,24,25,NEU	21,22,26,28,NEU	5,7,2,3,NEG
+The menu is very limited - i think we counted 4 or 5 entrees .	1,2,4,5,NEG
+We ordered the special , grilled branzino , that was so infused with bone , it was difficult to eat .	5,7,17,20,NEG
+The decor in this place is very diner-ish and the kind of place you expect in the East Village - not romantic , just simple , small and sparse .	1,2,7,8,NEU
+This place is so much fun .	1,2,5,6,POS
+Our family never expected such incredible entertainment in a restaurant .	6,7,5,6,POS
+The staff was the friendliest that have seen in New York .	1,2,4,5,POS
+If you want something really different than try Jekyll and Hyde .	8,11,5,6,POS
+The food was pretty tradional but it was hot and good with large portions .	1,2,4,5,POS	13,14,12,13,POS
+The place is a lot of fun .	1,2,6,7,POS
+The characters really make for an enjoyable experience .	1,2,6,7,POS
+However , I think Jeckll and Hydes t is one of those places that is fun to do once .	4,7,15,16,POS
+Service was slow had to wait to order and get food although not crowded .	0,1,2,3,NEG
+Drinks way over priced .	0,1,2,4,NEG
+Food was good not great not worth the wait or another visit	0,1,2,12,NEU
+Great pizza for lunch place .	1,2,0,1,POS
+Service was quick .	0,1,2,3,POS
+The food was authentic .	1,2,3,4,POS
+Whenever you need a Sushi fix , Mizu will be there with quality fish and great service .	13,14,12,13,POS	16,17,15,16,POS
+Delivery is fast too .	0,1,2,3,POS
+Great friendly service , Fast seating , Fast Delivery , Excellent sushi .	2,3,0,2,POS	5,6,4,5,POS	8,9,7,8,POS	11,12,10,11,POS
+Ess-A-Bagel ( either by Sty-town or midtown ) is by far the best bagel in NY .	13,14,12,13,POS
+The bagels always warm , soft on the inside , crispy on the outside and enormous in size .	1,2,3,4,POS	1,2,5,6,POS	1,2,10,11,POS	1,2,15,16,POS
+They have a huge selection of different cream cheeses and all of their salads are great .	13,14,15,16,POS	7,9,3,4,POS	7,9,6,7,POS
+The lox is always fresh too .	1,2,4,5,POS
+Not impressed with the food .	4,5,0,2,NEG
+Zero ambiance to boot .	1,2,0,1,NEG
+I thought this place was totally overrated .	3,4,6,7,NEG
+The ambience was nice , but service was n &apos;t so great .	1,2,3,4,POS	6,7,7,11,NEG
+This is the BEST Shabu-Shabu Restaurant in the Try-State Area .	4,6,3,4,POS
+The atmosphere is nothing special , but it feels like a Sushi establishment in Tokyo .	1,2,3,5,POS
+The owner and staff are all Japanese as well and that adds to the entire ambiance .	15,16,11,12,POS
+Taxan delicious !	0,1,1,2,POS
+Try green curry with vegetables .	1,5,0,1,POS
+The quantity is also very good , you will come out satisfied .	1,2,5,6,POS	1,2,11,12,POS
+The service is ok , some of the people did n &apos;t get what they asked for .	1,2,3,4,NEU
+I had the best ravioli ever .	4,5,3,4,POS
+The wine the service was very good too .	1,2,6,7,POS	3,4,6,7,POS
+This quaint and romantic trattoria is at the top of my Manhattan restaurant list .	4,5,1,2,POS	4,5,3,4,POS
+The food is delicious - from the specials to the regular menu-fare , the dishes are never a disappointment .	1,2,3,4,POS	14,15,16,19,POS	7,8,3,4,POS	7,8,16,19,POS	10,12,3,4,POS	10,12,16,19,POS
+Although the tables may be closely situated , the candle-light , food quality and service overcompensate .	9,10,15,16,POS	11,12,15,16,POS	14,15,15,16,POS	2,3,5,7,NEG
+If you go , try the marinara / arrabiatta sauce , the mozzarella en Carozza is mmmmmmmm ... .. everything is just delicious .	6,8,4,5,POS	6,8,20,21,POS	10,13,20,21,POS
+Check out the secret back room .	4,6,3,4,POS
+The food was authentic .	1,2,3,4,POS
+Who has room for Cheesesticks with the best pizza in NYC !	8,9,7,8,POS
+Always great service !	2,3,1,2,POS
+The food is good , I ca n &apos;t lie .	1,2,3,4,POS
+The hostess and the waitress were incredibly rude and did everything they could to rush us out .	1,2,7,8,NEG	4,5,7,8,NEG
+Amma is nothing special .	0,1,2,4,NEU
+I ate here a week ago and found most dishes average at best and too expensive .	9,10,10,11,NEG	9,10,14,16,NEG
+This place is always packed .	1,2,4,5,NEU
+Most importantly , food is excellent .	3,4,5,6,POS
+and yes Dal Bukhara is so dam good and so are all the kababs .	13,14,7,8,POS	2,4,7,8,POS
+Haru on Park S is simply disgusting .	0,4,6,7,NEG
+The fish was not fresh and the rice tasted old and stale .	1,2,3,5,NEG	7,8,9,10,NEG	7,8,11,12,NEG
+Quite frankly , this is some of the worst sushi I have ever tried .	9,10,8,9,NEG
+honestly the worst sushi my husband and i had in our entire lives .	3,4,2,3,NEG
+not sure why this restaurant would be rated that highly .	4,5,9,10,NEG
+the all-u-can-eat sushi is definitely in very poor quality .	1,3,7,9,NEG
+the only things u could really taste are the very salty soy sauce ( even its low sodium ) , the vinegar-soaked rice , and the scallion on top of the fish .	11,13,10,11,NEG	22,23,21,22,NEG
+the waitstaffs are nice though .	1,2,3,4,POS
+I have been to Roth &apos; s twice and both times were very disappointing .	4,6,12,13,NEG
+Both times I was extremely dissappointed by the service , which was boarderline rude .	8,9,5,6,NEG	8,9,13,14,NEG
+The dinner was ok , nothing I would have again .	1,2,3,4,NEG
+I had their eggs benedict for brunch , which were the worst in my entire life , I tried removing the hollondaise sauce completely that was how failed it was .	3,5,11,12,NEG
+The food was authentic .	1,2,3,4,POS
+Planet Thai is great !	0,2,3,4,POS
+We love the food , drinks , and atmosphere !	3,4,1,2,POS	5,6,1,2,POS	8,9,1,2,POS
+The svc can be a bit rude at times , esp if you have big group , but overall the restaurant is a must !	1,2,6,7,NEG	20,21,23,24,POS
+Try the Pad Thai , it &apos; s fabulous and their prices are so cheap !	2,4,0,1,POS	2,4,7,8,POS	2,4,13,14,POS
+Just because it &apos; s cheap does NOT mean portions are small or the food is nasty , IT IS GREAT !	9,10,11,12,POS	14,15,16,17,POS
+Eating in , the atmosphere saves it , but at your desk , it &apos; s a very disappointing experience .	4,5,5,6,POS
+Chennai Garden is my favorite Indian restaurant in the city .	0,2,4,5,POS
+They have authentic Indian at amazin prices .	3,4,2,3,POS
+It &apos; s a rather cramped and busy restaurant and it closes early .	7,8,4,5,NEG	7,8,6,7,NEG
+Patroon features a nice cigar bar and has great staff .	4,6,3,4,POS	9,10,8,9,POS
+The food is tasty and portion sizes are appropriate .	1,2,3,4,POS	5,7,8,9,POS
+This is a nice restaurant if you are looking for a good place to host an intimate dinner meeting with business associates .	4,5,3,4,POS
+Not a great place for family or general dining .	3,4,0,3,NEG
+LOVE THIS PLACE .	2,3,0,1,POS
+Food is great .	0,1,2,3,POS
+Fish is so very fresh .	0,1,4,5,POS
+Love YUKA .	1,2,0,1,POS
+Mermaid Inn is an overall good restaurant with really good seafood .	10,11,9,10,POS	0,2,5,6,POS
+The menu is limited but almost all of the dishes are excellent .	1,2,3,4,NEG	9,10,11,12,POS
+The lobster sandwich is good and the spaghetti with Scallops and Shrimp is great .	1,3,4,5,POS	7,12,13,14,POS
+The service is good and ambience is good for a date or group outing .	1,2,3,4,POS	5,6,7,8,POS
+The only fallback on this restaurant is the prices .	5,6,2,3,NEG
+Even though its good seafood , the prices are too high .	4,5,3,4,POS
+Truly the mark of an attentive waiter .	6,7,5,6,POS
+I highly recommend the restaurant based on our experience last night .	4,5,2,3,POS
+We ate at this Thai place following the reviews but very unhappy with the foods .	14,15,11,12,NEG
+I recommend the jelly fish , drunken chicken and the soupy dumplings , certainly the stir fry blue crab .	3,5,1,2,POS	6,8,1,2,POS	10,12,1,2,POS	15,19,1,2,POS
+The food is so cheap and the waiters are nice .	1,2,4,5,POS	7,8,9,10,POS
+Have frequented &apos; ino for several years and the food remains excellent .	8,9,10,11,POS
+Cheese plate is a varied delight and great bargain at $ 10 .	0,2,4,6,POS	0,2,7,9,POS
+( The Dancing , White River and Millenium rolls with shrimp and chicken and coconut juice is a must ! )	2,9,11,12,POS
+Wine list is extensive without being over-priced .	0,2,3,7,POS
+Be sure to try the seasonal , and always delicious , specials .	11,12,3,4,POS	11,12,5,6,POS	11,12,9,10,POS
+I loved this place ! !	3,4,1,2,POS
+The food was very good , a great deal , and the place its self was great .	1,2,4,5,POS	12,13,16,17,POS
+The wait staff is very freindly , they make it feel like you &apos; re eating in a freindly little european town .	1,3,5,6,POS
+I like Cafe Noir dont get me wrong , it is jsut that the people who work there are evil and incompetent ! !	14,15,19,20,NEG	14,15,21,22,NEG	2,4,1,2,POS
+The service was terrible , we had to wait for everything and ask several of different people for the same thing before we were allowed to be served .	1,2,3,4,NEG
+The whole set up is truly unprofessional and I wish Cafe Noir would get some good staff , because despite the current one this is a great place .	16,17,15,16,NEG	10,12,26,27,POS
+Pizza here is consistently good .	0,1,4,5,POS
+Salads are a delicious way to begin the meal .	0,1,3,4,POS
+You should pass on the calamari .	5,6,2,3,NEG
+Decor is charming .	0,1,2,3,POS
+What a great place .	3,4,2,3,POS
+I would definitely recommend SEA if you like thai cuisine !	8,10,7,8,POS
+I was here a few weeks back and we had the worst customer service experience at a restaurant ever .	12,14,11,12,NEG
+I absolutely Loved this place .	4,5,2,3,POS
+Great atmosphere , delicious dishes good and friendly service .	1,2,0,1,POS	4,5,3,4,POS	8,9,5,6,POS	8,9,7,8,POS
+The wine list is also really nice .	1,3,6,7,POS
+Everything was great ; food , drinks , staff , mileau .	4,5,2,3,POS	6,7,2,3,POS	8,9,2,3,POS	10,11,2,3,POS
+I have been to Casimir over 5 times and I have always had a great time there .	4,5,14,16,POS
+The food is great and reasonably priced .	1,2,3,4,POS	1,2,5,7,POS
+The staff has been nice , but they seemed really stressed and the unisex bathroom needs to be cleaned more often .	1,2,4,5,POS	1,2,10,11,POS	13,15,10,11,NEG
+From the spectacular caviar to the hospitable waitstaff , I felt like royalty and enjoyed every second of it .	3,4,2,3,POS	3,4,14,15,POS	7,8,6,7,POS	7,8,14,15,POS
+Considering we were the last patrons there and it was after the closing time , the waitstaff did not rush us at all and made us feel comfortable and relaxed .	16,17,27,28,POS	16,17,29,30,POS
+I highly recommend Caviar Russe to anyone who wants delicious top grade caviar and fantastic service .	12,13,9,12,POS	15,16,14,15,POS
+Friendly staff that actually lets you enjoy your meal and the company you &apos; re with .	1,2,0,1,POS
+I found the food to be outstanding , particulary the salmon dish I had .	3,4,6,7,POS	10,12,6,7,POS
+I also ordered the Change Mojito , which was out of this world .	4,6,9,13,POS
+We ate out in the back patio , which is worth it as it &apos; s cool and the music is hear well there .	5,7,10,11,POS	5,7,15,16,POS	18,19,21,22,POS
+Overall , excellent restaurant !	3,4,2,3,POS
+The food was authentic .	1,2,3,4,POS
+The place was nice and calm .	1,2,3,4,POS	1,2,5,6,POS
+but the service was a bit slow .	2,3,6,7,NEG
+The buffet had a nice selection .	1,2,4,5,POS
+The food was average or above including some surprising tasty dishes .	1,2,3,6,POS	10,11,9,10,POS
+Service was also very good .	0,1,4,5,POS
+I got an excellent piece of cheesecake and we had several other nice pastries .	6,7,3,4,POS	13,14,12,13,POS
+My son and his girlfriend both wanted cheeseburgers and they were huge !	7,8,11,12,NEU
+Consequently , their burgers fell apart in their hands and made such a mess that they did &apos;nt feel like finishing them .	3,4,4,6,NEG
+This place is really trendi but they have forgotten about the most important part of a restaurant , the food .	19,20,8,9,NEG	1,2,4,5,POS
+The last two times I ordered from here my food was soo spicy that I could barely eat it , and the spice took away from the flavor of the dish .	9,10,12,13,NEG
+And the Tom Kha soup was pathetic .	2,5,6,7,NEG
+If you want good authentic Thai this place is not the place to go .	5,6,3,5,NEG
+The pesto pizza was excellent , thin-crust pizza with a nice amount of spicy Italian cheese that I &apos; d never heard of before .	1,3,4,5,POS	13,16,10,11,POS
+THe back garden sitting area is very pleasant , where you can see their personal herb garden .	1,5,7,8,POS
+We had the lobster sandwich and it was FANTASTIC .	3,5,8,9,POS
+My husband said he could &apos; ve eaten several more , portion was fine for me he even exclaimed that the french fries were the best he has had .	11,12,13,14,POS	21,23,25,26,POS
+We waited at the bar and had martinis that were just right .	7,8,11,12,POS
+love the food .	2,3,0,1,POS
+it &apos; s the only place you can get yummy authentic japanese comfort food .	10,13,8,10,POS
+Great food , good size menu , great service and an unpretensious setting .	1,2,0,1,POS	5,6,3,5,POS	8,9,7,8,POS	12,13,11,12,POS
+The freshest , best variety , and the fastest delivery .	9,10,8,9,POS
+We are very particular about sushi and were both please with every choice which included : ceviche mix ( special ) , crab dumplings , assorted sashimi , sushi and rolls , two types of sake , and the banana tempura .	5,6,3,4,POS	16,21,9,10,POS	22,24,9,10,POS	25,27,9,10,POS	30,31,9,10,POS	32,36,9,10,POS	39,41,9,10,POS
+Definitely a great spot for a nice occasion or date .	3,4,2,3,POS
+Average to good Thai food , but terrible delivery .	3,5,0,3,POS	8,9,7,8,NEG
+This is a wonderful place on all stand points especially value ofr money .	4,5,3,4,POS
+An excellent service	2,3,1,2,POS
+We were greeted promptly by the waiter who was very nice and cordial .	6,7,10,11,POS	6,7,12,13,POS
+She was very helpful in suggesting us drinks and helped us in ordering a lot of good dishes since we knew nothing about Indian food .	17,18,16,17,POS
+We ended our great experience by having Gulab Jamun ( dessert ) recommended by the waiter .	7,12,3,4,POS
+I thanked my friend who recommended me this restaurant and will certainly recommend it to others .	8,9,12,13,POS
+Service here was great , food was fantastic .	0,1,3,4,POS	5,6,7,8,POS
+Guacamole + shrimp appetizer was really great , we both had the filet , very good , did n &apos;t much like the frites that came with , but the filet was so good , neither of us cared .	0,2,4,5,POS	10,11,13,14,POS
+You can not go wrong with this place .	7,8,4,5,POS
+The food is delicious and the service is quick , friendly and very professional .	1,2,3,4,POS	6,7,8,9,POS	6,7,10,11,POS	6,7,13,14,POS
+Always a nice crowd , but never loud .	3,4,2,3,POS	3,4,6,8,POS
+I am reluctant to write because I would not want my jem of a pizza place to become overcrowded .	14,16,18,19,POS
+The sauce is delicious , the ingredients are fresh and the staff is friendly .	1,2,3,4,POS	11,12,13,14,POS	6,7,8,9,POS
+The fish was really , really fresh .	1,2,6,7,POS
+We all agreed that mare is one of the best seafood restaurants in New York .	4,5,9,10,POS
+I stumbled upon this great pizzeria as I explored my new neighborhood .	5,6,4,5,POS
+All of the pizzas are terrific and the price is even better !	3,4,5,6,POS
+I highly recommend the Sophia pizza .	4,6,2,3,POS
+For the people who want great food plus great service , Roxy is a place to AVOID !	6,7,5,6,NEG	9,10,8,9,NEG
+The first time the sushi was outstanding , the second time it was a little bland .	4,5,6,7,NEG	4,5,15,16,NEG
+The blond wood decor is very soothing , the premium sake is excellent and the service is great .	1,4,6,7,POS	9,11,6,7,POS	15,16,17,18,POS
+Warning : You may find it difficult to dine at other Japanese restaurants after a visit to Mizu !	17,18,6,7,POS
+Thalia is a beautiful restaurant with beautiful people serving you , but the food does n &apos;t quite match up .	7,8,6,7,POS	13,14,14,19,NEG	0,1,3,4,POS
+I ordered the smoked salmon and roe appetizer and it was off flavor .	3,8,11,13,NEG
+I expected quite a bit more from such an expensive menu .	10,11,9,10,NEG
+The view is spectacular , and the food is great .	1,2,3,4,POS	7,8,9,10,POS
+delicious simple food in nice outdoor atmosphere .	2,3,0,2,POS	5,7,4,5,POS
+Kind , attentive wait staff .	3,5,0,1,POS	3,5,2,3,POS
+I really recommend both the somosas and the mahi mahi ( on saffron risotto yum ! ) .	5,6,2,3,POS	8,14,2,3,POS
+Delicious crab cakes too .	1,3,0,1,POS
+Even if the food was n &apos;t this good , the garden is a great place to sit outside and relax .	10,11,13,14,POS	3,4,4,8,POS
+Their calzones are horrific , bad , vomit-inducing , YUCK .	1,2,3,4,NEG	1,2,5,6,NEG	1,2,7,8,NEG	1,2,9,10,NEG
+The counter service is bad .	1,3,4,5,NEG
+The sandwiches are dry , tasteless and way overpriced .	1,2,3,4,NEG	1,2,5,6,NEG	1,2,8,9,NEG
+Calling the place Chutney Co. does warn you that these folks offer more style than substance , but in this unattractive room with unhelpful clerks there was a dearth of the former too .	2,3,21,22,NEG	22,23,21,22,NEG	25,26,24,25,NEG
+Seriously , this place kicks ass .	3,4,4,6,POS
+The atmosphere is unheralded , the service impecible , and the food magnificant .	1,2,3,4,POS	6,7,7,8,POS	11,12,12,13,POS
+This is such a lovely , peaceful place to eat outside .	7,8,4,5,POS	7,8,6,7,POS
+This is a great place to take out-of-towners , and perfect for watching the sunset .	4,5,3,4,POS
+Great sushi experience .	1,2,0,1,POS
+Love YUKA .	1,2,0,1,POS
+Try green curry with vegetables .	1,4,0,1,POS
+The service is awful .	1,2,3,4,NEG
+This place is not worth the prices .	1,2,3,7,NEG
+Love Pizza 33 ...	1,3,0,1,POS
+I will be out with friends and all of a sudden I am hungry and I only crave one thing ... their Pizza .	22,23,17,18,POS
+This tiny Williamsburg spot is always pleasantly surprising .	2,4,7,8,POS
+The pizza is delicious and the proprietor is one of the nicest in NYC .	1,2,3,4,POS	6,7,11,12,POS
+Bagels are ok , but be sure not to make any special requests !	0,1,2,3,NEU
+the turkey burgers are scary !	1,3,4,5,NEG
+The sushi was awful !	1,2,3,4,NEG
+The rice was poor quality and was cooked so badly it was hard .	1,2,3,5,NEG	1,2,7,10,NEG	1,2,12,13,NEG
+Furthermore , the rice had no seasoning , so the sushi was bland and disgusting .	10,11,12,13,NEG	10,11,14,15,NEG
+Good , fast service .	3,4,0,1,POS	3,4,2,3,POS
+Food is great and inexpensive .	0,1,2,3,POS	0,1,4,5,POS
+The location is perfect .	1,2,3,4,POS
+If you like your music blasted and the system isnt that great and if you want to pay at least 100 dollar sum minimun then you &apos; ll love it here .	22,23,27,28,NEG	4,5,2,3,NEG
+Great atmoshere and worth every bit .	1,2,0,1,POS
+Winnie and her crew are the best crew you can find serving you .	3,4,6,7,POS	0,1,6,7,POS
+The food is good and the price is moderate .	1,2,3,4,POS
+For authentic Thai food , look no further than Toons .	2,4,1,2,POS
+Try the calamari , or sample anything on the appetizer menu ... they &apos; re all delicious .	2,4,0,1,POS	2,4,16,17,POS	10,12,16,17,POS
+The service was attentive , yet discreet .	1,2,3,4,POS	1,2,6,7,POS
+The brioche and lollies as party favors is a cute and sweet touch to a most memorable meal .	1,4,9,10,POS	1,4,11,12,POS
+The place was quiet and delightful .	1,2,3,4,POS	1,2,5,6,POS
+Service was excellent and food is wonderful .	0,1,2,3,POS	4,5,6,7,POS
+I did not try the caviar but I tried their tuna and crab salad ( they are all delicious )	10,11,18,19,POS	12,14,18,19,POS
+It is definitely a great spot for snacks and chat .	5,6,4,5,POS
+As a retired hipster , I can say with some degree of certainty that for the last year ambience has been the most laid-back late night in the city .	18,20,23,24,POS
+The wait staff is pleasant , fun , and for the most part gorgeous ( in the wonderful aesthetic beautification way , not in that she &apos;s-way-cuter-than-me-that-b @ # $ * way ) .	1,3,4,5,POS	1,3,6,7,POS	1,3,13,14,POS
+The food is yummy , especially their cooked-to-perfection mussels in spicy tomato sauce and their shoestring crispy fries .	1,2,3,4,POS	8,13,3,4,POS	8,13,7,8,POS	17,18,3,4,POS	17,18,16,17,POS
+But the best part about LS is the late night atmosphere , delightfully free of the BTs .	8,11,2,3,POS
+You can get a completely delicious martini in a glass ( that &apos; s about 2 1 / 2 drinks ) for $ 8.50 ( I recommend the Vanilla Shanty , mmmm ! ) in a great homey setting with great music .	6,7,5,6,POS	25,27,23,24,POS	35,36,34,35,POS	38,39,37,38,POS
+The atmoshere on Saturday nights has outrageously good taste in music , and moreover , takes requests .	1,4,9,11,POS
+Suan is a great place that I often take my friends ( classmates ) too .	0,1,3,4,POS
+Its location is good and the fact that Hutner College is near and their prices are very reasonable , makes students go back to Suan again and again .	1,2,3,4,POS	24,25,17,18,POS
+I love their food	3,4,1,2,POS
+noodles with shrimp and chicken and coconut juice is the MUST !	0,8,10,11,POS
+In summer-eat outside on a terrace ( another great feature of Suan ) ! ! !	5,6,8,9,POS
+I can not imagine a friendlier staff working in a restaurant .	6,7,5,6,POS
+I can not imagine better Indian food in all of the city .	5,7,4,5,POS
+During the course of the past 3 months , the management and staff changed and it was not for the better .	10,11,13,14,NEG	12,13,13,14,NEG
+The food now is inconsistent .	1,2,4,5,NEG
+This is the kind of place you &apos; ll like to take all your friends to and still keep a secret .	5,6,8,9,POS
+The setting is casual and romantic .	1,2,3,4,POS	1,2,5,6,POS
+if you &apos; re daring , try the balsamic vinegar over icecream , it &apos; s wonderful !	7,11,5,6,POS	7,11,14,15,POS
+The rest of the dim sum , though pricey by Chinatown standards , is worth it .	4,6,8,9,POS	4,6,14,15,POS
+The wait here is long for dim sum , but if you do n &apos;t like sharing tables or if the typical raucous dim sum atmosphere is not your gig , this is a sleek ( for Chinatown ) alternative .	1,2,4,5,NEG	24,25,33,34,NEG
+A few tips : skip the turnip cake , roast pork buns and egg custards .	6,8,4,5,NEG	9,12,4,5,NEG	13,15,4,5,NEG
+The food was authentic .	1,2,3,4,POS
+I choose to go with one of the special , the braised lamb shank in red wine , which was incredible .	11,17,20,21,POS
+The service was excellent and the atmosphere was casual .	1,2,3,4,POS	6,7,8,9,NEU
+the hong kong was good , however the pad thai was far too oily .	1,5,6,7,POS	10,12,15,16,NEG
+Have eaten at Casimir several times , and it &apos; s always good .	3,5,12,13,POS
+The fried dumplings are GREAT !	1,3,4,5,POS
+Finally a great sushi place !	3,5,2,3,POS
+Horrible , terrible management - deserves to be shut-down .	3,4,0,1,NEG	3,4,2,3,NEG
+Spreads and toppings are tasty - though a bit pricey .	0,1,4,5,NEG	0,1,9,10,NEG	2,3,4,5,NEG	2,3,9,10,NEG
+The food is mediocre at best , and the ambience , well , it &apos; s a matter of opinion , some may consider it to be a sweet thing , I thought it was just annoying .	1,2,3,4,NEG	9,10,35,36,NEG
+You must try the shrimp appetizers .	4,6,2,3,POS
+This place has the the correct ambience and an excellent staff to make you feel like a guest and a friend at the same time .	6,7,5,6,POS	10,11,9,10,POS
+Great food , great prices , great service .	1,2,0,1,POS	7,8,6,7,POS
+If you are looking for a casual , cheap lunch - this is the place .	10,11,6,8,POS	10,11,9,10,POS
+it &apos; s a perfect place to have a amazing indian food .	9,11,8,9,POS
+also it &apos; s great to have dinner in a really romantic and romantic place , the service it &apos; s just perfect ... they &apos; re so frendly that we never want to live the place !	13,14,10,11,POS	13,14,12,13,POS	16,17,20,21,POS
+Their appetizers are ok , but they are a little overcooked , and not really a &apos; special &apos; bagel experience .	1,2,3,4,NEG	1,2,10,11,NEG
+Great bagels made the old-fashioned way .	1,2,0,1,POS
+The food was absolutely amazing ! !	1,2,4,5,POS
+The scallion pancakes we shared as appetizers were the best we &apos; ve ever had ! !	1,4,10,11,POS
+The fish was so full of flavor , the dessert was divine ! !	1,2,3,4,POS	10,11,12,13,POS
+The food was authentic .	1,2,3,4,POS
+The place itself is beautiful the bar scene seems to be happening .	1,2,4,5,POS
+Downtown Dinner 2002 - Prixe fix : Appetizers were ok , waiter gave me poor suggestion ... try the potato stuff kanish best one .	7,8,9,10,NEU	11,12,14,15,NEG	19,22,17,18,POS	19,22,22,23,POS
+Small servings for main entree , i had tuna ( wasnt impressed ) girlfriend had chicken , it was good .	8,9,10,12,NEG	15,16,19,20,POS	1,5,0,1,NEG
+Decor is a bore ... dont bother	0,1,3,4,NEG
+The food has a lot to offer , not least with regard to the portions which are enormous ; the veal alone could have single-handedly solved third world famine .	1,2,4,6,POS	13,14,16,17,POS
+The anti-pasta was excellent , especially the calamari , as were the filling pasta mains .	1,2,3,4,POS	7,8,3,4,POS	13,15,3,4,POS
+The wine list is extensive and can easily hike up an otherwise reasonably priced meal .	1,3,4,5,POS	14,15,12,14,POS
+Still , any quibbles about the bill were off-set by the pre-sliced mimosas which were courtesey of the house ...	12,15,11,12,POS	12,15,17,18,POS
+Gorgeous place .	1,2,0,1,POS
+Great food , great decor , great service .	1,2,0,1,POS	4,5,3,4,POS	7,8,6,7,POS
+This is the perfect spot for meeting friends , having lunch , dinner , pre-theatre or after-theatre drinks !	4,5,3,4,POS
+Great place for holiday get togethers with co-workers or friends that you have n &apos;t seen in a while .	1,2,0,1,POS
+I have been doing all of the above at the Jekyll and Hyde for over 5 years now and I HAVE NEVER had a disapointing meal !	10,12,20,23,POS
+Not the typical NYC gimmick theme restaurant .	6,7,0,3,POS
+A cool bar with great food , and tons of excellent beer .	2,3,1,2,POS	5,6,4,5,POS	11,12,10,11,POS
+The anti-pasta was excellent and the antipasti were plentiful .	1,3,4,5,POS	7,8,9,10,POS
+The only thing more wonderful than the food ( which is exceptional ) is the service .	7,8,11,12,POS	15,16,4,5,POS
+Cozy romantic atomosphere with only around 15 tables at most .	2,3,0,2,POS
+Service was very prompt but slightly rushed .	0,1,3,4,POS	0,1,6,7,POS
+Food was very good , but not what I would consider out of this world .	0,1,3,4,NEU
+Too bad the food was n &apos;t of the same heritage .	3,4,1,2,NEG
+The porcini mushroom pasta special was tasteless , so was the seafood tagliatelle .	1,5,6,7,NEG	11,13,6,7,NEG
+But that was n &apos;t the icing on the cake : tiramisu that was nothing I have ever had .	11,12,14,15,NEG
+I really liked this place .	4,5,2,3,POS
+I also recommend the rice dishes or the different varieties of congee ( rice porridge ) .	4,6,2,3,POS	11,16,2,3,POS
+It &apos; s definately not a place to go if you want to impress someone .	5,6,12,13,NEG
+However , if you want great food at a great price and do n &apos;t mind the decor , you ca n &apos;t beat this place .	6,7,5,6,POS
+When you &apos; re sitting in the main dining room ( which has a spectacular , hand-painted high ceiling ) you &apos; d never know there was a world outside .	6,9,13,14,POS	17,18,13,14,POS	17,18,15,17,POS
+The food is great , tasty and filling , and the service is professional and friendly .	1,2,3,4,POS	1,2,5,6,POS	1,2,7,8,POS	11,12,13,14,POS	11,12,15,16,POS
+I ca n &apos;t wait for summer , when they serve outside on their gigantic patio .	14,15,13,14,POS
+I recently tried Pacifico and I thought that it was great .	3,4,10,11,POS
+The service was fast and friendly and the food was very tasty and they had the best hot sauce to add to your meals .	1,2,3,4,POS	1,2,5,6,POS	8,9,11,12,POS	17,19,16,17,POS
+Great staff .	1,2,0,1,POS
+Great staff .	1,2,0,1,POS
+Great spot , whether looking for a couple of drinks or quiet dinner .	1,2,0,1,POS
+Warm and friendly in the winter and terrific outdoor seating in the warmer months .	8,10,7,8,POS
+The food is great and they have a good selection of wines at reasonable prices .	1,2,3,4,POS	11,12,8,10,POS
+While the ambience and atmosphere were nice , the food and service could have been a lot better .	2,3,6,7,POS	4,5,6,7,POS	9,10,12,18,NEG	11,12,12,18,NEG
+i &apos; ve been to sapphire twice and both times the food was fine , if not good .	10,11,12,13,POS
+stick with the chicken , beef , and lamb dishes .	3,4,0,1,POS	5,6,0,1,POS	8,10,0,1,POS
+service is friendly , and never had a problem walking in and getting a table .	0,1,2,3,POS
+skip dessert .	1,2,0,1,NEG
+Best Reuben sandwich ever !	1,3,0,1,POS
+Do n &apos;t forget this place &apos; s on your next trip to Manhatten .	3,5,2,3,POS
+Try Jekyll and Hyde s for a lovely trip .	1,3,0,1,POS	1,3,5,6,POS
+The fish was not fresh , the sauces were bland and very oily .	1,2,3,5,NEG	7,8,9,10,NEG	7,8,12,13,NEG
+Pizza was a little soggy .	0,1,4,5,NEG
+Indo Chinese food was good ... but I have to say that I found everything a bit overpriced .	0,1,2,3,POS	0,1,15,16,POS
+Not enough wines by the glass either .	2,6,0,2,NEG
+Service was just ok ... if they lowered the prices just a bit , it would be a bigger draw .	0,1,3,4,NEU
+This place is a great bargain .	1,2,4,6,POS
+Authentic Pakistani food .	1,3,0,1,POS
+Just straight up cheap , good food .	6,7,3,4,POS	6,7,5,6,POS
+Pizza is sooo good .	0,1,3,4,POS
+The best pad thai i &apos; ve ever had .	2,4,1,2,POS
+The design and atmosphere is just as good .	1,2,7,8,POS	3,4,7,8,POS
+The scallion pancakes were the worst things I &apos; ve ever tasted , the seabass was bland , the goat cheese salad was missing the goat cheese , the penne w / chicken had bones in it ... It was disgusting .	1,2,4,5,NEG	12,13,14,15,NEG	17,20,21,22,NEG	27,30,37,38,NEG
+Great vibe , the service was very pleasant and the desert was good .	1,2,0,1,POS	4,5,7,8,POS	10,11,12,13,POS
+The food is delicious , rich pastas and fresh doughy pizza .	1,2,3,4,POS	6,7,5,6,POS	10,11,8,10,POS
+Best of all is the warm vibe , the owner is super friendly and service is fast .	6,7,5,6,POS	9,10,12,13,POS	14,15,16,17,POS
+Ask for Davey , the nicest bartender in manhattan .	2,3,5,6,POS
+My favorite was the chicken vindaloo ...	4,6,1,2,POS
+Saul has recently been redone , so it &apos; s now a very attractive space .	0,1,12,13,POS
+The food &apos; s as good as ever .	1,2,4,5,POS
+In an area sadly lacking in decent Thai food , this is one of the best spots .	7,9,6,7,POS
+Went here last night - great vibe , good service , but the food was surprisingly excellent .	6,7,5,6,POS	9,10,8,9,POS	13,14,16,17,POS
+The portions are large , so it might be good to order three things to split ( rather than one appetizer and entree per person ) for two people .	1,2,3,4,NEU
+The service is good and the resturant is clean .	1,2,3,4,POS	6,7,8,9,POS
+Rao &apos; s has the best service and atmosphere in NYC .	5,6,4,5,POS	7,8,4,5,POS
+My roommate and I love this place .	6,7,4,5,POS
+We recently decided to try this location , and to our delight , they have outdoor seating , perfect since I had my yorkie with me .	15,17,18,19,POS
+Ambience was very relaxed and cute .	0,1,3,4,POS	0,1,5,6,POS
+The appetizers here are great , and the sushi is good .	1,3,5,6,POS	9,10,11,12,POS
+fine dumplings served amid clean , chic decor .	1,2,0,1,POS	7,8,4,5,POS	7,8,6,7,POS
+The food was good but do not come here on a empty stomach .	1,2,3,4,NEG
+The portions are small but being that the food was so good makes up for that .	1,2,3,4,NEG	8,9,11,12,POS
+The staff there is very attentive and down to earth .	1,2,5,6,POS	1,2,7,10,POS
+Great Indian food and the service is incredible .	1,3,0,1,POS	5,6,7,8,POS
+Great food and the prices are very reasonable .	1,2,0,1,POS
+The food here does a great service to the name ( Cantonese that is ... ) .	1,2,5,6,POS
+I fell in love with the egg noodles in the beef broth with shrimp and chicken and coconut juice .	6,21,3,4,POS
+This dish is my favorite and I always get it when I go there and never get tired of it .	1,2,4,5,POS
+Try the congee and the donut like deep fried dough they call corned beef , a delicious and sweet tasting bread .	12,15,17,18,POS	12,15,19,20,POS
+Simply some yummy Indian food at incredible prices ...	4,6,2,4,POS
+Pacifico is a great place to eat and fill your stomach .	0,2,4,5,POS
+Great music , great food , speedy service affordable prices .	1,2,0,1,POS	4,5,3,4,POS	7,8,6,7,POS
+Consistently good Japanese Tapas .	2,4,1,2,POS
+Always great food and service is pretty good ;	2,3,1,2,POS	4,5,7,8,POS
+Downstairs lounge is nice and relaxed too ...	0,1,2,3,POS	0,1,4,5,POS
+A nice place to meet up for some food and drinks ...	2,3,1,2,POS
+Beef noodle soup with shrimp and chicken and coconut juice is good too .	0,5,6,7,POS
+If you do n &apos;t mind pre-sliced low quality fish , unfriendly staff and a sushi chef that looks like he is miserable then this is your place .	8,9,6,8,NEG	11,12,10,11,NEG	14,16,21,22,NEG
+Fabulous atmosphere - makes you feel like you &apos; re in a trendy Manhattan restaurant , very very good food , cheaply-priced , generally friendly staff , and if you &apos; re a Manhattanite , or spend most of your time in Manhattan , Rice Avenue will make you feel at home ... .. very Soho / Village / Upper West Side minus the expensive prices and pretentious clientele ... .. all on Roosevelt Avenue !	1,2,0,1,POS	18,19,17,18,POS	18,19,20,21,POS	24,25,23,24,POS
+One would think we &apos; d get an apology or complimentary drinks - instead , we got a snobby waiter would n &apos;t even take our order for 15 minutes and gave us lip when we asked him to do so .	18,19,17,18,NEG
+With so many good restaurants on the UWS , I do n &apos;t need overpriced food , absurdly arrogant wait-staff who do n &apos;t recognize they work at a glorified diner , clumsy service , and management that does n &apos;t care .	14,15,13,14,NEG	18,19,17,18,NEG	31,32,30,31,NEG
+I am relatively new to the area and tried Pick a bgel on 2nd and was disappointed with the service and I thought the food was overated and on the pricey side .	19,20,16,17,NEG	24,25,26,27,NEG	24,25,30,31,NEG
+The only problem is that the manager is a complete incompetent .	6,7,10,11,NEG
+He offers subpar service and has no personality .	3,4,2,3,NEG
+There is no excuse for such lousy service !	7,8,6,7,NEG
+I have never before eaten 40 pieces of relatively good nigiri .	10,11,9,10,NEU
+I went to Casimir on a Sunday afternoon with four of my girlfriends , and spent three wonderful hours there .	3,4,17,18,POS
+Most of the servers are very attentive , friendly and quite attractive .	3,4,6,7,POS	3,4,8,9,POS	3,4,11,12,POS
+Food was good and the view of the new york city skiline was terrific even on a foggy rainy day like that of when I went .	0,1,2,3,POS	5,12,13,14,POS
+I would highly recommend requesting a table by the window .	6,10,3,4,POS
+Although they do the typical what kind of water would you like questions the service was good and overall very relaxing to place to eat .	14,15,16,17,POS	22,23,20,21,POS
+The location is perfect .	1,2,3,4,POS
+Salads are the perfect size for those hungry nights .	0,2,4,5,POS
+There is a downside if you &apos; re ordering in -- the wait guys have MAJOR attitude .	11,13,3,4,NEG
+love the vibe first off- the place has a character and nice light to it .. very fortunate , location wise .	2,3,0,1,POS	6,7,11,12,POS	17,18,15,16,POS
+The pizza was pretty good and huge .	1,2,4,5,POS	1,2,6,7,POS
+We were 4 and got the family size four course prix fixe which was tremendously large portion ... a bucket of food literally .	8,12,15,16,POS
+The pesto pizza was pretty soggy , creamy which means a big task to dig .. tasty at first but i would say that i was full with a slice of pizza and 7 to count , penne ... got a little moody afterwards cause was stuffed ... lol	1,3,6,7,NEG
+La Rosa waltzes in , and I think they are doing it the best .	0,2,13,14,POS
+Interesting selection , good wines , service fine , fun decor .	4,5,3,4,POS	6,7,7,8,POS	10,11,9,10,POS	1,2,0,1,POS
+I found it on a cold night , the perfect spot to warm up .	10,11,9,10,POS
+I recieved prompt service with a smile .	3,4,2,3,POS
+This place blew me away ... by far my favorite restaurant on the uppereast side .	1,2,10,11,POS
+The wine list is extensive and impressive .	1,3,4,5,POS	1,3,6,7,POS
+LOVE the atmosphere - felt like I was in Paris .	2,3,0,1,POS
+The mussels were incredible and so was the dessert ... definitely going to be back very soon .	1,2,3,4,POS	8,9,3,4,POS
+I have been coming here for years and have nothing but good things to say about the service and the great staff at La Lanterna .	17,18,11,12,POS	21,22,20,21,POS
+Over the years the chef , Vittorio , and his crew , have always treated me as family -- although with all the business this not-so-little gem does , it amazing he &apos; s even able to remember a consistent but not-so-frequent visitor .	4,5,30,31,POS
+I &apos; ve also been amazed at all the new additions in the past few years : A new Jazz Bar , the best oysters in Garden , the Best Thin Crust Pizzas , and now a Lasagna Menu which is to die for ( these are not your average lasagnas ) !	24,26,23,24,POS	18,20,17,18,POS	29,32,28,29,POS	36,38,41,43,POS
+I LOOOVE THIS PLACE !	3,4,1,2,POS
+I have to say I have never had a disapointing meal here .	10,11,6,10,POS
+We could have made a meal of the yummy dumplings from the dumpling menu .	9,10,8,9,POS
+But we saved room for the calamari , Sea Bass and Crispy Duck .	6,8,0,1,POS	9,11,0,1,POS	12,14,0,1,POS

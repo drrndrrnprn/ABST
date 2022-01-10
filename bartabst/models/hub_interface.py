@@ -49,8 +49,9 @@ class BARTHubInterface(GeneratorHubInterface):
         eos_mask = tokens == self.task.source_dictionary.eos()
         doc_mask = eos_mask[1:] & eos_mask[:-1]
         sentences = np.split(tokens, doc_mask.nonzero()[0] + 1)
+        list_decoded = [self.task.source_dictionary.string(s) for s in sentences]
         sentences = [
-            self.bpe.decode(self.task.source_dictionary.string(s)) for s in sentences
+            self.bpe.decode(list_decoded[0])
         ]
         if len(sentences) == 1:
             return sentences[0]
