@@ -14,9 +14,8 @@ pip install --editable ./
 
 ### 2. Download required pre-trained models
 
-download pre-trained BART
-
 ```shell
+# download pre-trained BART
 wget https://dl.fbaipublicfiles.com/fairseq/models/bart.base.tar.gz
 tar -xvzf bart.base.tar.gz
 ```
@@ -40,4 +39,12 @@ bash train_bart_e_mlm.sh
 
 ```shell
 bash train_bart_abst_denoising.sh
+```
+
+## Evaluation
+
+### BARTABSA
+
+```shell
+bash eval.sh
 ```

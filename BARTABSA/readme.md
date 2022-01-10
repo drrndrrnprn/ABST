@@ -25,7 +25,7 @@ Please do remember to cite these dataset paper if you use them.
 
 After enter the folder, you can run the code by directly using
 ```shell
-python train.py --dataset pengb/14lap
+python train.py --dataset pengb/res --save_model
 ```
 The following output should be achieved
 ```text

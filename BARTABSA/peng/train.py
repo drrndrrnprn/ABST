@@ -140,7 +140,6 @@ sampler = None
 sampler = BucketSampler(seq_len_field_name='src_seq_len')
 metric = Seq2SeqSpanMetric(eos_token_id, num_labels=len(label_ids), opinion_first=opinion_first)
 
-
 model_path = None
 if save_model:
     model_path = 'save_models/'

@@ -20,7 +20,7 @@
             "program": "/home/drrndrrnprn/nlp/ABST/BARTABSA/peng/inference.py",
             "console": "integratedTerminal",
             "python": "/home/drrndrrnprn/anaconda3/envs/bartabsa/bin/python",
-            "args": ["--model_path", "/home/drrndrrnprn/nlp/ABST/BARTABSA/peng/save_models/16resbest_SequenceGeneratorModel_triple_f_2021-08-22-21-38-18-679060"]
+            "args": ["--model_path=/home/drrndrrnprn/nlp/ABST/BARTABSA/peng/save_models/resbest_SequenceGeneratorModel_triple_f_2022-01-10-14-42-47-760814", "--dataset_path=/home/drrndrrnprn/nlp/ABST/BARTABSA/data/pengb/res/test.json"]
         },
         {
             "name": "python train bart_e_lml cli_main",
