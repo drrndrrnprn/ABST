@@ -124,6 +124,7 @@ class AspectBaseDenoisingDataset(FairseqDataset):
         ob_raw_aos_list,
         eos=None,
         item_transform_func=None,
+        inference=False,
     ):
         self.dataset = dataset
 
@@ -140,8 +141,8 @@ class AspectBaseDenoisingDataset(FairseqDataset):
         self.rotate_ratio = args.rotate
         self.permute_sentence_ratio = args.permute_sentences
         self.aos_list = aos_list
-        self.ob_raw_aos_list=ob_raw_aos_list
-        
+        self.ob_raw_aos_list = ob_raw_aos_list
+        self.inference = inference
         self.eos = eos if eos is not None else vocab.eos()
         self.item_transform_func = item_transform_func
 
@@ -200,7 +201,7 @@ class AspectBaseDenoisingDataset(FairseqDataset):
                 
             if self.aos_list:
                 aos = self.aos_list[index]
-                source = self.add_aspect_base_mask(source, aos)
+                source = self.add_aspect_base_mask(source, aos, self.inference)
 
             if self.insert_ratio > 0:
                 source = self.add_insertion_noise(source, self.insert_ratio)
@@ -225,14 +226,15 @@ class AspectBaseDenoisingDataset(FairseqDataset):
     def __len__(self):
         return len(self.dataset)
 
-    def add_aspect_base_mask(self, source, aos):
+    def add_aspect_base_mask(self, source, aos, inference):
         a_s, a_e, o_s, o_e, p = aos
         a_s, a_e, o_s, o_e = a_s + 1, a_e + 1, o_s + 1, o_e +1
         asp_mask = np.full(len(source), False)
         opn_mask = np.full(len(source), False)
         asp_mask_idc = np.asarray([a_s+i for i in range(a_e-a_s)])
         opn_mask_idc = np.asarray([o_s+i for i in range(o_e-o_s)])
-        asp_mask[asp_mask_idc] = True
+        if inference:
+            asp_mask[asp_mask_idc] = True
         opn_mask[opn_mask_idc] = True
         
         source[asp_mask] = self.mask_idx['asp_mask']

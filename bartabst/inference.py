@@ -5,7 +5,6 @@ import os
 
 import torch
 from fairseq import tasks, options, utils
-from fairseq.dataclass.utils import convert_namespace_to_omegaconf
 from sacremoses import MosesTokenizer, MosesDetokenizer
 
 def main():

@@ -290,38 +290,9 @@ class AspectBaseDenoisingTask(LegacyFairseqTask):
         seed=self.seed,
         args=args,
         aos_list=aos_list,
-        ob_raw_aos_list=ob_raw_aos_list
+        ob_raw_aos_list=ob_raw_aos_list,
+        inference=True
         )
-        
-        # pad = self.source_dictionary.pad()
-        # eos = self.source_dictionary.eos()
-        # # src_dataset = TokenBlockDataset(
-        # #     src_dataset,
-        # #     src_dataset.sizes,
-        # #     block_size=self.args.tokens_per_sample - 2,  # for <s> and </s>
-        # #     pad=pad,
-        # #     eos=eos,
-        # #     break_mode=self.args.sample_break_mode,
-        # #     document_sep_len=0,
-        # # )
-        # # #prev_output_tokens = PrependTokenDataset(
-        # #     StripTokenDataset(src_dataset, eos), eos
-        # # )
-        # src_dataset = PadDataset(src_dataset, pad_idx=pad, left_pad=False)
-        # return NestedDictionaryDataset(
-        #     {
-        #         "id": IdDataset(),
-        #         "net_input": {
-        #             "src_tokens": src_dataset,
-        #             "src_lengths": NumelDataset(src_dataset, reduce=False),
-        #             "prev_output_tokens": PadDataset(
-        #                 src_dataset, pad_idx=pad, left_pad=False
-        #             ),
-        #         },
-        #         "target": src_dataset,
-        #     },
-        #     sizes=[np.array(src_lengths)],
-        # )
 
     def max_positions(self):
         """Return the max sentence length allowed by the task."""
