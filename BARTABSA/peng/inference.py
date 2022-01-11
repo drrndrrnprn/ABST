@@ -68,7 +68,7 @@ if op_mode == 'eval':
     # metric.evaluate(target_span, pred, tgt_tokens)
     # res = metric.get_metric()
     output_json(data['eval'], aos['eval'], output_path +  '/output_' + os.path.basename(model_path) + '.json')
-    with open(output_path + '/f_rec_pre.txt', 'w') as f:
+    with open(output_path + '/f_rec_pre.json', 'w') as f:
         json.dump(score['Seq2SeqSpanMetric'], f, indent=2)
 
 else:
