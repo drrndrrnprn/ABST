@@ -4,6 +4,7 @@
 # LICENSE file in the root directory of this source tree.
 
 import math
+import random
 
 import numpy as np
 import torch
@@ -122,6 +123,7 @@ class AspectBaseDenoisingDataset(FairseqDataset):
         args,
         aos_list,
         ob_raw_aos_list,
+        warmup_epoch,
         eos=None,
         item_transform_func=None,
         inference=False,
@@ -145,6 +147,7 @@ class AspectBaseDenoisingDataset(FairseqDataset):
         self.inference = inference
         self.eos = eos if eos is not None else vocab.eos()
         self.item_transform_func = item_transform_func
+        self.warmup_epoch = warmup_epoch
 
         if args.bpe != "gpt2":
             self.full_stop_index = self.vocab.eos()
@@ -200,8 +203,8 @@ class AspectBaseDenoisingDataset(FairseqDataset):
                 source = self.add_whole_word_mask(source, self.mask_ratio)
                 
             if self.aos_list:
-                aos = self.aos_list[index]
-                source = self.add_aspect_base_mask(source, aos, self.inference)
+                aos_line = self.aos_list[index]
+                source = self.add_aspect_base_mask(source, aos_line, self.inference, self.epoch)
 
             if self.insert_ratio > 0:
                 source = self.add_insertion_noise(source, self.insert_ratio)
@@ -226,22 +229,65 @@ class AspectBaseDenoisingDataset(FairseqDataset):
     def __len__(self):
         return len(self.dataset)
 
-    def add_aspect_base_mask(self, source, aos, inference):
-        a_s, a_e, o_s, o_e, p = aos
-        a_s, a_e, o_s, o_e = a_s + 1, a_e + 1, o_s + 1, o_e +1
-        asp_mask = np.full(len(source), False)
-        opn_mask = np.full(len(source), False)
-        asp_mask_idc = np.asarray([a_s+i for i in range(a_e-a_s)])
-        opn_mask_idc = np.asarray([o_s+i for i in range(o_e-o_s)])
-        if inference:
-            asp_mask[asp_mask_idc] = True
-        opn_mask[opn_mask_idc] = True
-        
-        source[asp_mask] = self.mask_idx['asp_mask']
-        dic_mask = {'POS':'pos_mask', 'NEU':'neu_mask','NEG':'neg_mask'}
-        source[opn_mask] = self.mask_idx[dic_mask[p]]
+    def add_aspect_base_mask(self, source, aos_line, inference, epoch):
+            # aos = aos[0]
+            
+            # a_s, a_e, o_s, o_e, p = aos
+            # a_s, a_e, o_s, o_e = a_s + 1, a_e + 1, o_s + 1, o_e +1
+            # asp_mask = np.full(len(source), False)
+            # opn_mask = np.full(len(source), False)
+            # asp_mask_idc = np.asarray([a_s+i for i in range(a_e-a_s)])
+            # opn_mask_idc = np.asarray([o_s+i for i in range(o_e-o_s)])
+            # if inference:
+            #     asp_mask[asp_mask_idc] = True
+            # opn_mask[opn_mask_idc] = True
+            
+            # source[asp_mask] = self.mask_idx['asp_mask']
+            # dic_mask = {'POS':'pos_mask', 'NEU':'neu_mask','NEG':'neg_mask'}
+            # source[opn_mask] = self.mask_idx[dic_mask[p]]
+            
+            # decide elements to special mask
+        sz = len(source)
+        asp_mask = np.full(sz, False)
+        # opn_mask = np.full(sz, False)
+        pos_mask = np.full(sz, False)
+        neu_mask = np.full(sz, False)
+        neg_mask = np.full(sz, False)
+        if aos_line:
+            aos_list_mask = np.full(len(aos_line), False)
+            if epoch < self.warmup_epoch:
+                chosen_idx = random.choice(range(len(aos_list_mask)))
+            else:
+                chosen_idx = random.choices(range(len(aos_list_mask)), k=len(aos_list_mask))
+            aos_list_mask[chosen_idx] = True 
+            for aos, bool_aos in zip(aos_line, aos_list_mask):
+                a_s, a_e, o_s, o_e, p = aos
+                if not bool_aos:
+                    continue
+                a_s, a_e, o_s, o_e = a_s + 1, a_e + 1, o_s + 1, o_e +1
+                
+                asp_mask_idc = np.asarray([a_s+i for i in range(a_e-a_s)])
+                opn_mask_idc = np.asarray([o_s+i for i in range(o_e-o_s)])
+                if not inference:
+                    asp_mask[asp_mask_idc] = True
+                # opn_mask[opn_mask_idc] = True
+                if p == 'POS':
+                    pos_mask[opn_mask_idc] = True
+                if p == 'NEU':
+                    neu_mask[opn_mask_idc] = True
+                if p == 'NEG':
+                    neg_mask[opn_mask_idc] = True
+                        
+            for b, aos in zip(aos_list_mask, aos_line):
+                if b:
+                    source[asp_mask] = self.mask_idx['asp_mask']
+                    dic_mask = {'POS':'pos_mask', 'NEU':'neu_mask','NEG':'neg_mask'}
+                    source[pos_mask] = self.mask_idx[dic_mask['POS']]
+                    source[neu_mask] = self.mask_idx[dic_mask['NEU']]
+                    source[neg_mask] = self.mask_idx[dic_mask['NEG']]
+
         return source
-    
+
     def permute_sentences(self, source, p=1.0):
         full_stops = source == self.full_stop_index
         # Pretend it ends with a full stop so last span is a sentence

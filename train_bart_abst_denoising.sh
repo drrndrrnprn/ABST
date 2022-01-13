@@ -1,9 +1,10 @@
 #!/bin/bash
 USER_DIR='/home/drrndrrnprn/nlp/ABST/bartabst/'
 DATA_PATH='/home/drrndrrnprn/nlp/ABST/datasets'
+RESTORE_DIR='bartabst/checkpoints/bart.mlm/dev'
+SAVE_DIR='bartabst/checkpoints/bart.abst/dev'
 PREFIX='semeval-pengb'
 DOMAIN='analyzed'
-
 INPUT_PATH="$DATA_PATH/$PREFIX/$DOMAIN"
 OUTPUT_PATH="$INPUT_PATH"
 
@@ -59,7 +60,7 @@ fairseq-train "$INPUT_PATH/data-raw" \
     --layernorm-embedding \
     --fp16 \
     --activation-fn=gelu \
-    --restore-file "bartabst/checkpoints/bart.mlm/checkpoint_best.pt" \
+    --restore-file "$RESTORE_DIR/checkpoint_best.pt" \
     --reset-optimizer \
     --reset-meters \
     --reset-dataloader \
@@ -67,7 +68,7 @@ fairseq-train "$INPUT_PATH/data-raw" \
     --pooler-activation-fn=tanh \
     --tensorboard-logdir="$OUTPUT_PATH/tensorboard" \
     --user-dir "$USER_DIR" \
-    --save-dir="bartabst/checkpoints/bart.abst" | tee "$OUTPUT_PATH/train.log"
+    --save-dir="$SAVE_DIR" | tee "$OUTPUT_PATH/train.log"
 
 
     #--finetune-from-model \

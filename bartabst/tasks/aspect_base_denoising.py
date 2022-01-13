@@ -114,6 +114,12 @@ class AspectBaseDenoisingTask(LegacyFairseqTask):
             help="if not none, shorten sequences that exceed --tokens-per-sample",
         )
         parser.add_argument(
+            "--warmup_epoch",
+            default=15,
+            type=int,
+            help="use only one aos for each line initially",
+        )
+        parser.add_argument(
             "--shorten-data-split-list",
             default="",
             help="comma-separated list of dataset splits to apply shortening to, "
@@ -212,7 +218,8 @@ class AspectBaseDenoisingTask(LegacyFairseqTask):
             seed=self.seed,
             args=self.args,
             aos_list=aos_list,
-            ob_raw_aos_list=None
+            ob_raw_aos_list=None,
+            warmup_epoch=self.args.warmup_epoch
         )
         logger.info(
             "Split: {0}, Loaded {1} samples of denoising_dataset".format(
@@ -291,7 +298,8 @@ class AspectBaseDenoisingTask(LegacyFairseqTask):
         args=args,
         aos_list=aos_list,
         ob_raw_aos_list=ob_raw_aos_list,
-        inference=True
+        inference=True,
+        warmup_epoch=self.args.warmup_epoch,
         )
 
     def max_positions(self):

@@ -20,6 +20,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--model_path', type=str)
 parser.add_argument('--bart_name', default='facebook/bart-base', type=str)
 parser.add_argument('--dataset_path', default='/home/drrndrrnprn/nlp/ABST/BARTABSA/data/pengb/res', type=str)
+parser.add_argument('--output_path', default='/home/drrndrrnprn/nlp/ABST/BARTABSA/data/output/dev', type=str)
 parser.add_argument('--opinion_first', action='store_true', default=False)
 parser.add_argument('--mode_select', choices=["preprocess", "eval"], default="eval")
 
@@ -31,7 +32,8 @@ dataset_path = args.dataset_path
 bart_name = args.bart_name
 opinion_first = args.opinion_first
 op_mode = args.mode_select
-output_path = ('/home/drrndrrnprn/nlp/ABST/BARTABSA/output/' + str(dataset_path.split('/')[-2]))
+# output_path = ('/home/drrndrrnprn/nlp/ABST/BARTABSA/output/' + str(dataset_path.split('/')[-2]))
+output_dir = os.path.dirname(dataset_path) + '/eval_' + os.path.splitext(os.path.basename(dataset_path))[0]
 
 def get_data():
     pipe = BartBPEABSAPipe(tokenizer=bart_name, opinion_first=opinion_first)
@@ -65,10 +67,9 @@ if op_mode == 'eval':
     metric = Seq2SeqSpanMetric(eos_token_id, num_labels=len(label_ids), opinion_first=opinion_first)
     tester = Tester(model=model,data=data['eval'],metrics=metric,batch_size=16,use_cuda=True,verbose=0)
     score = tester.test()
-    # metric.evaluate(target_span, pred, tgt_tokens)
-    # res = metric.get_metric()
-    output_json(data['eval'], aos['eval'], output_path +  '/output_' + os.path.basename(model_path) + '.json')
-    with open(output_path + '/f_rec_pre.json', 'w') as f:
+
+    output_json(data['eval'], aos['eval'], output_dir +  '/output_' + os.path.basename(model_path) + '.json')
+    with open(output_dir + '/f_rec_pre.json', 'w') as f:
         json.dump(score['Seq2SeqSpanMetric'], f, indent=2)
 
 else:

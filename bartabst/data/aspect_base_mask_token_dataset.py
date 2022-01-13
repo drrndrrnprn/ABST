@@ -4,6 +4,7 @@
 # LICENSE file in the root directory of this source tree.
 
 from functools import lru_cache
+import random
 
 import numpy as np
 import torch
@@ -70,6 +71,7 @@ class AspectBaseMaskTokensDataset(BaseWrapperDataset):
         mask_multiple_length: int = 1,
         mask_stdev: float = 0.1,
         aos_list: list = [[]],
+        warmup_epoch: int = 598,
     ):
         assert 0.0 <= mask_prob < 1.0
         assert 0.0 <= random_token_prob <= 1.0
@@ -91,6 +93,7 @@ class AspectBaseMaskTokensDataset(BaseWrapperDataset):
         self.mask_multiple_length = mask_multiple_length
         self.mask_stdev = mask_stdev
         self.aos_list = aos_list
+        self.warmup_epoch = warmup_epoch
 
         if random_token_prob > 0.0:
             if freq_weighted_replacement:
@@ -117,6 +120,7 @@ class AspectBaseMaskTokensDataset(BaseWrapperDataset):
     def __getitem_cached__(self, seed: int, epoch: int, index: int):
         with data_utils.numpy_seed(self.seed, self.epoch, index):
             item = self.dataset[index]
+            aos_line = self.aos_list[index]
             sz = len(item)
 
             assert (
@@ -140,18 +144,37 @@ class AspectBaseMaskTokensDataset(BaseWrapperDataset):
                 self.mask_prob * sz / float(self.mask_multiple_length)
                 + np.random.rand()
             )
-
-            a_s, a_e, o_s, o_e, p = self.aos_list[index]
-            if 0 in item:
-                a_s, a_e, o_s, o_e = a_s + 1, a_e + 1, o_s + 1, o_e +1
+            
+            # decide elements to special mask
             asp_mask = np.full(sz, False)
             opn_mask = np.full(sz, False)
-            asp_mask_idc = np.asarray([a_s+i for i in range(a_e-a_s)])
-            opn_mask_idc = np.asarray([o_s+i for i in range(o_e-o_s)])
-            asp_mask[asp_mask_idc] = True
-            opn_mask[opn_mask_idc] = True
-            
-            
+            pos_mask = np.full(sz, False)
+            neu_mask = np.full(sz, False)
+            neg_mask = np.full(sz, False)
+            if aos_line:
+                aos_list_mask = np.full(len(aos_line), False)
+                if epoch < self.warmup_epoch:
+                    chosen_idx = random.choice(range(len(aos_list_mask)))
+                else:
+                    chosen_idx = random.choices(range(len(aos_list_mask)), k=len(aos_list_mask))
+                aos_list_mask[chosen_idx] = True 
+                for aos, bool_aos in zip(aos_line, aos_list_mask):
+                    a_s, a_e, o_s, o_e, p = aos
+                    if not bool_aos:
+                        continue
+                    if 0 in item:
+                        a_s, a_e, o_s, o_e = a_s + 1, a_e + 1, o_s + 1, o_e +1
+                    asp_mask_idc = np.asarray([a_s+i for i in range(a_e-a_s)])
+                    opn_mask_idc = np.asarray([o_s+i for i in range(o_e-o_s)])
+                    asp_mask[asp_mask_idc] = True
+                    opn_mask[opn_mask_idc] = True
+                    if p == 'POS':
+                        pos_mask[opn_mask_idc] = True
+                    if p == 'NEU':
+                        neu_mask[opn_mask_idc] = True
+                    if p == 'NEG':
+                        neg_mask[opn_mask_idc] = True
+                
             # multiple masking as described in the vq-wav2vec paper (https://arxiv.org/abs/1910.05453)
             mask_idc = np.random.choice(sz, num_mask, replace=False)
             if self.mask_stdev > 0.0:
@@ -218,10 +241,15 @@ class AspectBaseMaskTokensDataset(BaseWrapperDataset):
                 mask = np.repeat(mask, word_lens)
 
             new_item = np.copy(item)
-            new_item[mask] = self.mask_idx['mask']  
-            new_item[asp_mask] = self.mask_idx['asp_mask']
-            dic_mask = {'POS':'pos_mask', 'NEU':'neu_mask','NEG':'neg_mask'}
-            new_item[opn_mask] = self.mask_idx[dic_mask[p]]
+            new_item[mask] = self.mask_idx['mask']
+            if aos_line:
+                for b, aos in zip(aos_list_mask, aos_line):
+                    if b:
+                        new_item[asp_mask] = self.mask_idx['asp_mask']
+                        dic_mask = {'POS':'pos_mask', 'NEU':'neu_mask','NEG':'neg_mask'}
+                        new_item[pos_mask] = self.mask_idx[dic_mask['POS']]
+                        new_item[neu_mask] = self.mask_idx[dic_mask['NEU']]
+                        new_item[neg_mask] = self.mask_idx[dic_mask['NEG']]
 
             
             if rand_mask is not None:

@@ -88,6 +88,10 @@ class MaskedLMConfig(FairseqDataclass):
         default=0.0,
         metadata={"help": "stdev of the mask length"},
     )
+    warmup_epoch: int = field(
+        default=50,
+        metadata={"help": "use only one aos for each line initially"},
+    )
     shorten_method: SHORTEN_METHOD_CHOICES = field(
         default="none",
         metadata={
@@ -212,6 +216,7 @@ class BARTEncoderMLMTask(FairseqTask):
             mask_multiple_length=self.cfg.mask_multiple_length,
             mask_stdev=self.cfg.mask_stdev,
             aos_list=aos_list,
+            warmup_epoch=self.cfg.warmup_epoch
         )
 
         with data_utils.numpy_seed(self.cfg.seed):

@@ -1,9 +1,9 @@
 #!/bin/bash
 USER_DIR='/home/drrndrrnprn/nlp/ABST/bartabst/'
 DATA_PATH='/home/drrndrrnprn/nlp/ABST/datasets'
+SAVE_DIR='bartabst/checkpoints/bart.mlm/dev'
 PREFIX='semeval-pengb'
 DOMAIN='analyzed'
-
 INPUT_PATH="$DATA_PATH/$PREFIX/$DOMAIN/data-raw"
 OUTPUT_PATH="$INPUT_PATH"
 
@@ -44,6 +44,6 @@ fairseq-train "$INPUT_PATH" \
         --reset-lr-scheduler \
         --ddp-backend=no_c10d \
         --skip-invalid-size-inputs-valid-test \
-        --save-dir "bartabst/checkpoints/bart.mlm" \
+        --save-dir "$SAVE_DIR" \
         --user-dir "$USER_DIR" \
         --tensorboard-logdir "$OUTPUT_PATH/tensorboard" | tee -a "$OUTPUT_PATH train.log" 

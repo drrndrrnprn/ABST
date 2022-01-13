@@ -356,73 +356,81 @@ class IndexedRawTextDataset(FairseqDataset):
         
         # edit aos_list for translation
         self.ob_raw_aos_list = raw_aos_list
-        
-        for line, raw_aos in zip(self.lines, self.ob_raw_aos_list):
-            raw_aos = raw_aos[0]
-            a_s, a_e, o_s, o_e = int(raw_aos[0]), int(raw_aos[1]), int(raw_aos[2]), int(raw_aos[3])
-            # assert a_s < a_e, 'a_s >= a_e'
-            # assert o_s < o_e, 'o_s >= o_e'
-            # assert a_e-1 < o_s or o_e-1 < a_s, 'aos overlapping '
-            if not ((a_s < a_e) and (o_s < o_e) and (a_e-1 < o_s or o_e-1 < a_s)):
-                continue
 
+        for idx, (line, raw_aos_line) in enumerate(zip(self.lines, self.ob_raw_aos_list)):
             raw_line = bpe.decode(line).split(' ') if line.isdecimal() else moses.tokenize(line)
-            if a_s < o_s:
-                sep_raw_line = [raw_line[:a_s],
-                                raw_line[a_s:a_e],
-                                raw_line[a_e:o_s],
-                                raw_line[o_s:o_e],
-                                raw_line[o_e:]]
-            else:
-                sep_raw_line = [raw_line[:o_s],
-                                raw_line[o_s:o_e],
-                                raw_line[o_e:a_s],
-                                raw_line[a_s:a_e],
-                                raw_line[a_e:]]
-            for i in range(1,len(sep_raw_line)):
-                if sep_raw_line[i] != [] and not (i==1 and sep_raw_line[0] == []):
-                    sep_raw_line[i] = (' ' + '#$%'.join(sep_raw_line[i])).split('#$%')
-                if sep_raw_line[0] == []:
-                    sep_raw_line[1][0].strip(' ')
-            #sep_raw_line = '#$%'.join(sep_raw_line).strip().split('#$%')
-            cumsum_length = 0
-            aos = []
-            encoded_line = torch.empty(1)
-            for sep in sep_raw_line:
-                encoded = dictionary.encode_line(bpe.encode(' '.join(sep))).long()
-                encoded = encoded[:-1]
-                cumsum_length += len(encoded)
-                aos.append(cumsum_length)
-                encoded_line = torch.cat([encoded_line, encoded], dim=0)
             
-            encoded_line = encoded_line[1:] # remove init value
-            #encoded_line = torch.cat([encoded_line, torch.full((1,),fill_value=2)])
-            tokens = encoded_line.long()
-            self.tokens_list.append(tokens)
-            self.sizes.append(len(tokens))
-            encoded_line = list(map(int,encoded_line.tolist()))
-            sentence = bpe.decode(dictionary.string(encoded_line))
+            aos_line = []
+            for raw_aos in raw_aos_line:
+                if idx==len(self.tokens_list):
+                    flag = True
+                # if aos_idx == 0:
+                #     cout += 1 
+                a_s, a_e, o_s, o_e = int(raw_aos[0]), int(raw_aos[1]), int(raw_aos[2]), int(raw_aos[3])
+                # assert a_s < a_e, 'a_s >= a_e'
+                # assert o_s < o_e, 'o_s >= o_e'
+                # assert a_e-1 < o_s or o_e-1 < a_s, 'aos overlapping '
+                if not ((a_s < a_e) and (o_s < o_e) and (a_e-1 < o_s or o_e-1 < a_s)):
+                    continue
 
-            if a_s > o_s:
-                buf_s, buf_e = aos[0], aos[1]
-                aos[0], aos[1] = aos[2], aos[3]
-                aos[2], aos[3] = buf_s, buf_e
-            aos = aos[:-1]
-            aos.append(raw_aos[4])
-            self.aos_list.append(aos)
-            
-            
-            raw_sentence = ' '.join(raw_line)
-            assert sentence == raw_sentence, 'bpe encodeing error'
-            
-            a_t = bpe.decode(dictionary.string(encoded_line[aos[0]:aos[1]]))
-            o_p = bpe.decode(dictionary.string(encoded_line[aos[2]:aos[3]]))
-            r_a_t = ' '.join(raw_line[a_s:a_e])
-            r_o_p = ' '.join(raw_line[o_s:o_e])
-            assert a_t.strip() == r_a_t, 'bpe encoding error'
-            assert o_p.strip() == r_o_p, 'bpe encoding error'
+                if a_s < o_s:
+                    sep_raw_line = [raw_line[:a_s],
+                                    raw_line[a_s:a_e],
+                                    raw_line[a_e:o_s],
+                                    raw_line[o_s:o_e],
+                                    raw_line[o_e:]]
+                else:
+                    sep_raw_line = [raw_line[:o_s],
+                                    raw_line[o_s:o_e],
+                                    raw_line[o_e:a_s],
+                                    raw_line[a_s:a_e],
+                                    raw_line[a_e:]]
+                for i in range(1,len(sep_raw_line)):
+                    if sep_raw_line[i] != [] and not (i==1 and sep_raw_line[0] == []):
+                        sep_raw_line[i] = (' ' + '#$%'.join(sep_raw_line[i])).split('#$%')
+                    if sep_raw_line[0] == []:
+                        sep_raw_line[1][0].strip(' ')
+                cumsum_length = 0
+                aos = []
+                encoded_line = torch.empty(1)
+                for sep in sep_raw_line:
+                    encoded = dictionary.encode_line(bpe.encode(' '.join(sep))).long()
+                    encoded = encoded[:-1]
+                    cumsum_length += len(encoded)
+                    aos.append(cumsum_length)
+                    encoded_line = torch.cat([encoded_line, encoded], dim=0)
+                
+                encoded_line = encoded_line[1:] # remove init value
+                tokens = encoded_line.long()
+                if flag:
+                    flag = False
+                    self.tokens_list.append(tokens)
+                    self.sizes.append(len(tokens))
+                encoded_line = list(map(int,encoded_line.tolist()))
+                sentence = bpe.decode(dictionary.string(encoded_line))
+                raw_sentence = ' '.join(raw_line)
+                assert sentence == raw_sentence, 'bpe encodeing error'
+                assert self.tokens_list[-1].tolist()==tokens.tolist(), 'append error'
+                
+                if a_s > o_s:
+                    buf_s, buf_e = aos[0], aos[1]
+                    aos[0], aos[1] = aos[2], aos[3]
+                    aos[2], aos[3] = buf_s, buf_e
+                aos = aos[:-1]
+                aos.append(raw_aos[4])
+                
+                a_t = bpe.decode(dictionary.string(encoded_line[aos[0]:aos[1]]))
+                o_p = bpe.decode(dictionary.string(encoded_line[aos[2]:aos[3]]))
+                r_a_t = ' '.join(raw_line[a_s:a_e])
+                r_o_p = ' '.join(raw_line[o_s:o_e])
+                assert a_t.strip() == r_a_t, 'bpe encoding error'
+                assert o_p.strip() == r_o_p, 'bpe encoding error'
+                
+                aos_line.append(aos)
+            self.aos_list.append(aos_line)
             
         assert len(self.aos_list) == len(self.tokens_list), 'read_data error'
+        assert len(self.aos_list) == len(self.sizes), 'read_data error'
         self.sizes = np.array(self.sizes)
 
 class IndexedDatasetBuilder:

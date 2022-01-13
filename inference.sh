@@ -1,20 +1,19 @@
 #!/bin/bash
-
 USER_DIR='/home/drrndrrnprn/nlp/ABST/bartabst'
 DATA_PATH='/home/drrndrrnprn/nlp/ABST/datasets'
+MODEL_DIR="$USER_DIR/checkpoints/bart.abst/dev"
 PREFIX='semeval-pengb'
 DOMAIN='analyzed'
-
 INPUT_PATH="$DATA_PATH/$PREFIX/$DOMAIN"
 OUTPUT_PATH="/home/drrndrrnprn/nlp/ABST/outputs/$PREFIX"
 
 mkdir -p $OUTPUT_PATH
 
-cp $INPUT_PATH/data-bin/dict.txt  $USER_DIR/checkpoints/bart.abst
+cp $USER_DIR/checkpoints/bart.base/dict.txt  $MODEL_DIR
 python $USER_DIR/inference.py "$INPUT_PATH/data-raw" \
-    --model-dir $USER_DIR/checkpoints/bart.abst \
+    --model-dir $MODEL_DIR \
     --model-file checkpoint_best.pt \
     --task=aspect_base_denoising \
     --arch=bart_abst \
     --output-dir $OUTPUT_PATH \
-    --user-dir "$USER_DIR" 
+    --user-dir $USER_DIR
