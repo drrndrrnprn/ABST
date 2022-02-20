@@ -90,7 +90,7 @@ def make_builder(out_file, impl, vocab_size=None):
 def make_dataset(path, impl, aos_path=None, fix_lua_indexing=False, dictionary=None):
     if impl == "raw" and IndexedRawTextDataset.exists(path):
         assert dictionary is not None
-        return IndexedRawTextDataset(path, dictionary, aos_path)
+        return IndexedRawTextDataset(path, dictionary, aos_path=aos_path)
     elif impl == "lazy" and IndexedDataset.exists(path):
         return IndexedDataset(path, fix_lua_indexing=fix_lua_indexing)
     elif impl == "cached" and IndexedDataset.exists(path):

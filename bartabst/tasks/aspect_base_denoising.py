@@ -281,7 +281,7 @@ class AspectBaseDenoisingTask(LegacyFairseqTask):
             split_path,
             self.dictionary,
             'raw',
-            aos_path,
+            aos_path=aos_path,
             combine=combine,
         )
         if src_dataset is None:
