@@ -1210,3 +1210,1215 @@
 2022-01-13 00:03:26 | INFO | fairseq_cli.train | end of epoch 71 (average epoch stats below)
 2022-01-13 00:03:26 | INFO | train | epoch 071 | loss 6.637 | ppl 99.51 | wps 5003.6 | ups 4.06 | wpb 1232.9 | bsz 63.5 | num_updates 3548 | lr 1.0644e-05 | gnorm 7.79 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 701
 2022-01-13 00:03:26 | INFO | fairseq_cli.train | done training in 696.7 seconds
+2022-01-13 16:04:14 | INFO | fairseq_cli.train | {'_name': None, 'common': {'_name': None, 'no_progress_bar': False, 'log_interval': 20, 'log_format': 'simple', 'log_file': None, 'tensorboard_logdir': '/home/drrndrrnprn/nlp/ABST/datasets/semeval-pengb/analyzed/data-raw/tensorboard', 'wandb_project': None, 'azureml_logging': False, 'seed': 222, 'cpu': False, 'tpu': False, 'bf16': False, 'memory_efficient_bf16': False, 'fp16': True, 'memory_efficient_fp16': False, 'fp16_no_flatten_grads': False, 'fp16_init_scale': 128, 'fp16_scale_window': None, 'fp16_scale_tolerance': 0.0, 'on_cpu_convert_precision': False, 'min_loss_scale': 0.0001, 'threshold_loss_scale': None, 'amp': False, 'amp_batch_retries': 2, 'amp_init_scale': 128, 'amp_scale_window': None, 'user_dir': '/home/drrndrrnprn/nlp/ABST/bartabst/', 'empty_cache_freq': 0, 'all_gather_list_size': 16384, 'model_parallel_size': 1, 'quantization_config_path': None, 'profile': False, 'reset_logging': False, 'suppress_crashes': False, 'use_plasma_view': False, 'plasma_path': '/tmp/plasma'}, 'common_eval': {'_name': None, 'path': None, 'post_process': None, 'quiet': False, 'model_overrides': '{}', 'results_path': None}, 'distributed_training': {'_name': None, 'distributed_world_size': 1, 'distributed_num_procs': 1, 'distributed_rank': 0, 'distributed_backend': 'nccl', 'distributed_init_method': None, 'distributed_port': -1, 'device_id': 0, 'distributed_no_spawn': False, 'ddp_backend': 'no_c10d', 'ddp_comm_hook': 'none', 'bucket_cap_mb': 25, 'fix_batches_to_gpus': False, 'find_unused_parameters': False, 'gradient_as_bucket_view': False, 'fast_stat_sync': False, 'heartbeat_timeout': -1, 'broadcast_buffers': False, 'slowmo_momentum': None, 'slowmo_algorithm': 'LocalSGD', 'localsgd_frequency': 3, 'nprocs_per_node': 1, 'pipeline_model_parallel': False, 'pipeline_balance': None, 'pipeline_devices': None, 'pipeline_chunks': 0, 'pipeline_encoder_balance': None, 'pipeline_encoder_devices': None, 'pipeline_decoder_balance': None, 'pipeline_decoder_devices': None, 'pipeline_checkpoint': 'never', 'zero_sharding': 'none', 'fp16': True, 'memory_efficient_fp16': False, 'tpu': False, 'no_reshard_after_forward': False, 'fp32_reduce_scatter': False, 'cpu_offload': False, 'use_sharded_state': False}, 'dataset': {'_name': None, 'num_workers': 1, 'skip_invalid_size_inputs_valid_test': True, 'max_tokens': 4096, 'batch_size': 32, 'required_batch_size_multiple': 8, 'required_seq_len_multiple': 1, 'dataset_impl': None, 'data_buffer_size': 10, 'train_subset': 'train', 'valid_subset': 'valid', 'combine_valid_subsets': None, 'ignore_unused_valid_subsets': False, 'validate_interval': 1, 'validate_interval_updates': 0, 'validate_after_updates': 0, 'fixed_validation_seed': None, 'disable_validation': False, 'max_tokens_valid': 4096, 'batch_size_valid': 32, 'max_valid_steps': None, 'curriculum': 0, 'gen_subset': 'test', 'num_shards': 1, 'shard_id': 0}, 'optimization': {'_name': None, 'max_epoch': 0, 'max_update': 0, 'stop_time_hours': 0.0, 'clip_norm': 0.1, 'sentence_avg': False, 'update_freq': [2], 'lr': [3e-05], 'stop_min_lr': -1.0, 'use_bmuf': False}, 'checkpoint': {'_name': None, 'save_dir': 'bartabst/checkpoints/bart.mlm/dev', 'restore_file': 'bartabst/checkpoints/bart.base/model.pt', 'finetune_from_model': None, 'reset_dataloader': True, 'reset_lr_scheduler': True, 'reset_meters': True, 'reset_optimizer': True, 'optimizer_overrides': '{}', 'save_interval': 1, 'save_interval_updates': 500, 'keep_interval_updates': 10, 'keep_interval_updates_pattern': -1, 'keep_last_epochs': -1, 'keep_best_checkpoints': -1, 'no_save': False, 'no_epoch_checkpoints': True, 'no_last_checkpoints': False, 'no_save_optimizer_state': False, 'best_checkpoint_metric': 'loss', 'maximize_best_checkpoint_metric': False, 'patience': 3, 'checkpoint_suffix': '', 'checkpoint_shard_count': 1, 'load_checkpoint_on_all_dp_ranks': False, 'write_checkpoints_asynchronously': False, 'model_parallel_size': 1}, 'bmuf': {'_name': None, 'block_lr': 1.0, 'block_momentum': 0.875, 'global_sync_iter': 50, 'warmup_iterations': 500, 'use_nbm': False, 'average_sync': False, 'distributed_world_size': 1}, 'generation': {'_name': None, 'beam': 5, 'nbest': 1, 'max_len_a': 0.0, 'max_len_b': 200, 'min_len': 1, 'match_source_len': False, 'unnormalized': False, 'no_early_stop': False, 'no_beamable_mm': False, 'lenpen': 1.0, 'unkpen': 0.0, 'replace_unk': None, 'sacrebleu': False, 'score_reference': False, 'prefix_size': 0, 'no_repeat_ngram_size': 0, 'sampling': False, 'sampling_topk': -1, 'sampling_topp': -1.0, 'constraints': None, 'temperature': 1.0, 'diverse_beam_groups': -1, 'diverse_beam_strength': 0.5, 'diversity_rate': -1.0, 'print_alignment': None, 'print_step': False, 'lm_path': None, 'lm_weight': 0.0, 'iter_decode_eos_penalty': 0.0, 'iter_decode_max_iter': 10, 'iter_decode_force_max_iter': False, 'iter_decode_with_beam': 1, 'iter_decode_with_external_reranker': False, 'retain_iter_history': False, 'retain_dropout': False, 'retain_dropout_modules': None, 'decoding_format': None, 'no_seed_provided': False}, 'eval_lm': {'_name': None, 'output_word_probs': False, 'output_word_stats': False, 'context_window': 0, 'softmax_batch': 9223372036854775807}, 'interactive': {'_name': None, 'buffer_size': 0, 'input': '-'}, 'model': Namespace(_name='bart_abst', activation_fn='gelu', adam_betas='(0.9, 0.98)', adam_eps=1e-06, adaptive_input=False, adaptive_softmax_cutoff=None, adaptive_softmax_dropout=0, all_gather_list_size=16384, amp=False, amp_batch_retries=2, amp_init_scale=128, amp_scale_window=None, arch='bart_abst', attention_dropout=0.1, azureml_logging=False, batch_size=32, batch_size_valid=32, best_checkpoint_metric='loss', bf16=False, bpe=None, broadcast_buffers=False, bucket_cap_mb=25, checkpoint_shard_count=1, checkpoint_suffix='', clip_norm=0.1, combine_valid_subsets=None, cpu=False, cpu_offload=False, criterion='masked_lm', curriculum=0, data='/home/drrndrrnprn/nlp/ABST/datasets/semeval-pengb/analyzed/data-raw', data_buffer_size=10, dataset_impl=None, dataset_implem='raw', ddp_backend='no_c10d', ddp_comm_hook='none', decoder_attention_heads=12, decoder_embed_dim=768, decoder_embed_path=None, decoder_ffn_embed_dim=3072, decoder_input_dim=768, decoder_layers=6, decoder_learned_pos=True, decoder_normalize_before=False, decoder_output_dim=768, device_id=0, disable_validation=False, distributed_backend='nccl', distributed_init_method=None, distributed_no_spawn=False, distributed_num_procs=1, distributed_port=-1, distributed_rank=0, distributed_world_size=1, dropout=0.3, ema_decay=0.9999, ema_fp32=False, ema_seed_model=None, ema_start_update=0, ema_update_freq=1, empty_cache_freq=0, encoder_attention_heads=12, encoder_embed_dim=768, encoder_embed_path=None, encoder_ffn_embed_dim=3072, encoder_layerdrop=0.0, encoder_layers=6, encoder_layers_to_keep=None, encoder_learned_pos=True, encoder_normalize_before=False, end_learning_rate=0.0, eos=2, fast_stat_sync=False, find_unused_parameters=False, finetune_from_model=None, fix_batches_to_gpus=False, fixed_validation_seed=None, force_anneal=None, fp16=True, fp16_adam_stats=False, fp16_init_scale=128, fp16_no_flatten_grads=False, fp16_scale_tolerance=0.0, fp16_scale_window=None, fp32_reduce_scatter=False, freq_weighted_replacement=False, gen_subset='test', gpt2_encoder_json='dummy', gpt2_vocab_bpe='dummy', gradient_as_bucket_view=False, heartbeat_timeout=-1, ignore_unused_valid_subsets=False, keep_best_checkpoints=-1, keep_interval_updates=10, keep_interval_updates_pattern=-1, keep_last_epochs=-1, layernorm_embedding=True, leave_unmasked_prob=0.0, load_checkpoint_on_all_dp_ranks=False, localsgd_frequency=3, log_file=None, log_format='simple', log_interval=20, lr=[3e-05], lr_scheduler='polynomial_decay', mask_multiple_length=1, mask_prob=0.0, mask_stdev=0.0, mask_whole_words=False, max_epoch=0, max_source_positions=1024, max_target_positions=1024, max_tokens=4096, max_tokens_valid=4096, max_update=0, max_valid_steps=None, maximize_best_checkpoint_metric=False, memory_efficient_bf16=False, memory_efficient_fp16=False, min_loss_scale=0.0001, model_parallel_size=1, no_epoch_checkpoints=True, no_last_checkpoints=False, no_progress_bar=False, no_reshard_after_forward=False, no_save=False, no_save_optimizer_state=False, no_scale_embedding=True, no_seed_provided=False, nprocs_per_node=1, num_shards=1, num_workers=1, on_cpu_convert_precision=False, optimizer='adam', optimizer_overrides='{}', pad=1, patience=3, pipeline_balance=None, pipeline_checkpoint='never', pipeline_chunks=0, pipeline_decoder_balance=None, pipeline_decoder_devices=None, pipeline_devices=None, pipeline_encoder_balance=None, pipeline_encoder_devices=None, pipeline_model_parallel=False, plasma_path='/tmp/plasma', pooler_activation_fn='tanh', pooler_dropout=0.0, power=1.0, profile=False, quant_noise_pq=0, quant_noise_pq_block_size=8, quant_noise_scalar=0, quantization_config_path=None, random_token_prob=0.0, relu_dropout=0.0, required_batch_size_multiple=8, required_seq_len_multiple=1, reset_dataloader=True, reset_logging=False, reset_lr_scheduler=True, reset_meters=True, reset_optimizer=True, restore_file='bartabst/checkpoints/bart.base/model.pt', sample_break_mode='none', save_dir='bartabst/checkpoints/bart.mlm/dev', save_interval=1, save_interval_updates=500, scoring='bleu', seed=222, sentence_avg=False, shard_id=0, share_all_embeddings=True, share_decoder_input_output_embed=True, shorten_data_split_list='', shorten_method='none', simul_type=None, skip_invalid_size_inputs_valid_test=True, slowmo_algorithm='LocalSGD', slowmo_momentum=None, spectral_norm_classification_head=False, stop_min_lr=-1.0, stop_time_hours=0, store_ema=False, suppress_crashes=False, task='bart_e_mlm', tensorboard_logdir='/home/drrndrrnprn/nlp/ABST/datasets/semeval-pengb/analyzed/data-raw/tensorboard', threshold_loss_scale=None, tokenizer=None, tokens_per_sample=1024, total_num_update='40000', tpu=False, train_subset='train', unk=3, untie_weights_roberta=False, update_freq=[2], use_bmuf=False, use_old_adam=False, use_plasma_view=False, use_sharded_state=False, user_dir='/home/drrndrrnprn/nlp/ABST/bartabst/', valid_subset='valid', validate_after_updates=0, validate_interval=1, validate_interval_updates=0, wandb_project=None, warmup_epoch=10, warmup_updates=10000, weight_decay=0.01, write_checkpoints_asynchronously=False, zero_sharding='none'), 'task': {'_name': 'bart_e_mlm', 'data': '/home/drrndrrnprn/nlp/ABST/datasets/semeval-pengb/analyzed/data-raw', 'sample_break_mode': 'none', 'tokens_per_sample': 1024, 'mask_prob': 0.0, 'leave_unmasked_prob': 0.0, 'random_token_prob': 0.0, 'freq_weighted_replacement': False, 'mask_whole_words': False, 'mask_multiple_length': 1, 'mask_stdev': 0.0, 'warmup_epoch': 10, 'shorten_method': 'none', 'shorten_data_split_list': '', 'dataset_implem': 'raw', 'gpt2_encoder_json': 'dummy', 'gpt2_vocab_bpe': 'dummy', 'seed': 222}, 'criterion': {'_name': 'masked_lm', 'tpu': False}, 'optimizer': {'_name': 'adam', 'adam_betas': '(0.9, 0.98)', 'adam_eps': 1e-06, 'weight_decay': 0.01, 'use_old_adam': False, 'fp16_adam_stats': False, 'tpu': False, 'lr': [3e-05]}, 'lr_scheduler': {'_name': 'polynomial_decay', 'warmup_updates': 10000, 'force_anneal': None, 'end_learning_rate': 0.0, 'power': 1.0, 'total_num_update': 40000.0, 'lr': [3e-05]}, 'scoring': {'_name': 'bleu', 'pad': 1, 'eos': 2, 'unk': 3}, 'bpe': None, 'tokenizer': None, 'ema': {'_name': None, 'store_ema': False, 'ema_decay': 0.9999, 'ema_start_update': 0, 'ema_seed_model': None, 'ema_update_freq': 1, 'ema_fp32': False}, 'simul_type': None}
+2022-01-13 16:04:14 | INFO | bartabst.tasks.bart_e_mlm | dictionary: 51200 types
+2022-01-13 16:04:16 | INFO | fairseq_cli.train | BARTMLModel(
+  (encoder): TransformerEncoderBase(
+    (dropout_module): FairseqDropout()
+    (embed_tokens): Embedding(51205, 768, padding_idx=1)
+    (embed_positions): LearnedPositionalEmbedding(1026, 768, padding_idx=1)
+    (layernorm_embedding): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+    (layers): ModuleList(
+      (0): TransformerEncoderLayerBase(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      )
+      (1): TransformerEncoderLayerBase(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      )
+      (2): TransformerEncoderLayerBase(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      )
+      (3): TransformerEncoderLayerBase(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      )
+      (4): TransformerEncoderLayerBase(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      )
+      (5): TransformerEncoderLayerBase(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+  )
+  (decoder): TransformerDecoderBase(
+    (dropout_module): FairseqDropout()
+    (embed_tokens): Embedding(51205, 768, padding_idx=1)
+    (embed_positions): LearnedPositionalEmbedding(1026, 768, padding_idx=1)
+    (layernorm_embedding): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+    (layers): ModuleList(
+      (0): TransformerDecoderLayerBase(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      )
+      (1): TransformerDecoderLayerBase(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      )
+      (2): TransformerDecoderLayerBase(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      )
+      (3): TransformerDecoderLayerBase(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      )
+      (4): TransformerDecoderLayerBase(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      )
+      (5): TransformerDecoderLayerBase(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (output_projection): Linear(in_features=768, out_features=51205, bias=False)
+  )
+  (classification_heads): ModuleDict()
+  (lm_head): BARTEncoderLMHead(
+    (dense): Linear(in_features=768, out_features=768, bias=True)
+    (layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+  )
+)
+2022-01-13 16:04:16 | INFO | fairseq_cli.train | task: BARTEncoderMLMTask
+2022-01-13 16:04:16 | INFO | fairseq_cli.train | model: BARTMLModel
+2022-01-13 16:04:16 | INFO | fairseq_cli.train | criterion: MaskedLmLoss
+2022-01-13 16:04:16 | INFO | fairseq_cli.train | num. shared model params: 140,785,669 (num. trained: 140,785,669)
+2022-01-13 16:04:16 | INFO | fairseq_cli.train | num. expert model params: 0 (num. trained: 0)
+2022-01-13 16:04:17 | INFO | bartabst.data.data_utils | loaded 908 examples from: /home/drrndrrnprn/nlp/ABST/datasets/semeval-pengb/analyzed/data-raw/valid
+2022-01-13 16:04:20 | INFO | fairseq.trainer | detected shared parameter: encoder.embed_tokens.weight <- decoder.embed_tokens.weight
+2022-01-13 16:04:20 | INFO | fairseq.trainer | detected shared parameter: encoder.embed_tokens.weight <- decoder.output_projection.weight
+2022-01-13 16:04:20 | INFO | fairseq.trainer | detected shared parameter: encoder.embed_tokens.weight <- lm_head.weight
+2022-01-13 16:04:20 | INFO | fairseq.utils | ***********************CUDA enviroments for all 1 workers***********************
+2022-01-13 16:04:20 | INFO | fairseq.utils | rank   0: capabilities =  8.6  ; total memory = 24.000 GB ; name = NVIDIA GeForce RTX 3090                 
+2022-01-13 16:04:20 | INFO | fairseq.utils | ***********************CUDA enviroments for all 1 workers***********************
+2022-01-13 16:04:20 | INFO | fairseq_cli.train | training on 1 devices (GPUs/TPUs)
+2022-01-13 16:04:20 | INFO | fairseq_cli.train | max tokens per device = 4096 and max sentences per device = 32
+2022-01-13 16:04:20 | INFO | fairseq.trainer | Preparing to load checkpoint bartabst/checkpoints/bart.base/model.pt
+2022-01-13 16:04:22 | INFO | bartabst.models.model | Adding extra mask tokens embeddings not found in pretrained model for continued pretraining of BARTMLModel with extra mask tokens.
+2022-01-13 16:04:22 | INFO | bartabst.models.model | Overwriting lm_head.weight
+2022-01-13 16:04:22 | INFO | bartabst.models.model | Overwriting lm_head.bias
+2022-01-13 16:04:22 | INFO | bartabst.models.model | Overwriting lm_head.dense.weight
+2022-01-13 16:04:22 | INFO | bartabst.models.model | Overwriting lm_head.dense.bias
+2022-01-13 16:04:22 | INFO | bartabst.models.model | Overwriting lm_head.layer_norm.weight
+2022-01-13 16:04:22 | INFO | bartabst.models.model | Overwriting lm_head.layer_norm.bias
+2022-01-13 16:04:22 | INFO | fairseq.trainer | Loaded checkpoint bartabst/checkpoints/bart.base/model.pt (epoch 14 @ 0 updates)
+2022-01-13 16:04:22 | INFO | fairseq.trainer | loading train data for epoch 1
+2022-01-13 16:04:25 | INFO | bartabst.data.data_utils | loaded 3,174 examples from: /home/drrndrrnprn/nlp/ABST/datasets/semeval-pengb/analyzed/data-raw/train
+2022-01-13 16:04:25 | INFO | fairseq.trainer | begin training epoch 1
+2022-01-13 16:04:25 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:04:25 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 64.0
+2022-01-13 16:04:26 | INFO | train_inner | epoch 001:     21 / 50 loss=17.159, ppl=146394, wps=15982, ups=13.74, wpb=1196, bsz=62.7, num_updates=20, lr=6e-08, gnorm=23.615, clip=100, loss_scale=64, train_wall=2, gb_free=20.9, wall=6
+2022-01-13 16:04:28 | INFO | train_inner | epoch 001:     41 / 50 loss=17.296, ppl=160960, wps=16788.3, ups=13.29, wpb=1263.2, bsz=64, num_updates=40, lr=1.2e-07, gnorm=23.468, clip=100, loss_scale=64, train_wall=1, gb_free=20.9, wall=8
+2022-01-13 16:04:29 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:04:29 | INFO | valid | epoch 001 | valid on 'valid' subset | loss 17.132 | ppl 143673 | wps 25542.1 | wpb 556.6 | bsz 30.3 | num_updates 49
+2022-01-13 16:04:29 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 1 @ 49 updates
+2022-01-13 16:04:29 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:04:33 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:04:35 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 1 @ 49 updates, score 17.132) (writing took 5.906699588987976 seconds)
+2022-01-13 16:04:35 | INFO | fairseq_cli.train | end of epoch 1 (average epoch stats below)
+2022-01-13 16:04:35 | INFO | train | epoch 001 | loss 17.245 | ppl 155295 | wps 5639.8 | ups 4.67 | wpb 1219.7 | bsz 63.5 | num_updates 49 | lr 1.47e-07 | gnorm 23.417 | clip 100 | loss_scale 64 | train_wall 4 | gb_free 20.9 | wall 15
+2022-01-13 16:04:35 | INFO | fairseq.trainer | begin training epoch 2
+2022-01-13 16:04:35 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:04:36 | INFO | train_inner | epoch 002:     11 / 50 loss=17.221, ppl=152767, wps=2724.9, ups=2.41, wpb=1130.5, bsz=62.7, num_updates=60, lr=1.8e-07, gnorm=23.114, clip=100, loss_scale=64, train_wall=1, gb_free=20.9, wall=16
+2022-01-13 16:04:38 | INFO | train_inner | epoch 002:     31 / 50 loss=17.199, ppl=150443, wps=18228.5, ups=13.95, wpb=1306.8, bsz=64, num_updates=80, lr=2.4e-07, gnorm=22.864, clip=100, loss_scale=64, train_wall=1, gb_free=20.9, wall=18
+2022-01-13 16:04:39 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:04:40 | INFO | valid | epoch 002 | valid on 'valid' subset | loss 16.922 | ppl 124169 | wps 26985.5 | wpb 556.6 | bsz 30.3 | num_updates 99 | best_loss 16.922
+2022-01-13 16:04:40 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 2 @ 99 updates
+2022-01-13 16:04:40 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:04:42 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:04:44 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 2 @ 99 updates, score 16.922) (writing took 4.311357039026916 seconds)
+2022-01-13 16:04:44 | INFO | fairseq_cli.train | end of epoch 2 (average epoch stats below)
+2022-01-13 16:04:44 | INFO | train | epoch 002 | loss 17.126 | ppl 143014 | wps 7050.7 | ups 5.72 | wpb 1232.9 | bsz 63.5 | num_updates 99 | lr 2.97e-07 | gnorm 22.899 | clip 100 | loss_scale 64 | train_wall 4 | gb_free 20.9 | wall 24
+2022-01-13 16:04:44 | INFO | fairseq.trainer | begin training epoch 3
+2022-01-13 16:04:44 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:04:44 | INFO | train_inner | epoch 003:      1 / 50 loss=17.043, ppl=135068, wps=3761.6, ups=3.05, wpb=1233.1, bsz=64, num_updates=100, lr=3e-07, gnorm=22.704, clip=100, loss_scale=64, train_wall=1, gb_free=20.9, wall=24
+2022-01-13 16:04:46 | INFO | train_inner | epoch 003:     21 / 50 loss=16.922, ppl=124168, wps=16640.3, ups=13.61, wpb=1222.8, bsz=62.7, num_updates=120, lr=3.6e-07, gnorm=22.369, clip=100, loss_scale=64, train_wall=1, gb_free=20.9, wall=26
+2022-01-13 16:04:47 | INFO | train_inner | epoch 003:     41 / 50 loss=16.713, ppl=107421, wps=19230.2, ups=14.28, wpb=1347.1, bsz=64, num_updates=140, lr=4.2e-07, gnorm=21.783, clip=100, loss_scale=64, train_wall=1, gb_free=20.9, wall=27
+2022-01-13 16:04:48 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:04:49 | INFO | valid | epoch 003 | valid on 'valid' subset | loss 16.449 | ppl 89457.4 | wps 27430.9 | wpb 556.6 | bsz 30.3 | num_updates 149 | best_loss 16.449
+2022-01-13 16:04:49 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 3 @ 149 updates
+2022-01-13 16:04:49 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:04:51 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:04:53 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 3 @ 149 updates, score 16.449) (writing took 4.084286751924083 seconds)
+2022-01-13 16:04:53 | INFO | fairseq_cli.train | end of epoch 3 (average epoch stats below)
+2022-01-13 16:04:53 | INFO | train | epoch 003 | loss 16.775 | ppl 112183 | wps 7112.2 | ups 5.77 | wpb 1232.9 | bsz 63.5 | num_updates 149 | lr 4.47e-07 | gnorm 22.104 | clip 100 | loss_scale 64 | train_wall 4 | gb_free 20.9 | wall 33
+2022-01-13 16:04:53 | INFO | fairseq.trainer | begin training epoch 4
+2022-01-13 16:04:53 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:04:54 | INFO | train_inner | epoch 004:     11 / 50 loss=16.552, ppl=96075.3, wps=3424.6, ups=3.09, wpb=1109.7, bsz=62.7, num_updates=160, lr=4.8e-07, gnorm=22.008, clip=100, loss_scale=64, train_wall=2, gb_free=20.9, wall=33
+2022-01-13 16:04:55 | INFO | train_inner | epoch 004:     31 / 50 loss=16.283, ppl=79750.9, wps=16219, ups=12.86, wpb=1261, bsz=64, num_updates=180, lr=5.4e-07, gnorm=21.031, clip=100, loss_scale=64, train_wall=2, gb_free=20.9, wall=35
+2022-01-13 16:04:57 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:04:58 | INFO | valid | epoch 004 | valid on 'valid' subset | loss 15.807 | ppl 57342.1 | wps 27509.2 | wpb 556.6 | bsz 30.3 | num_updates 199 | best_loss 15.807
+2022-01-13 16:04:58 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 4 @ 199 updates
+2022-01-13 16:04:58 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:05:00 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:05:02 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 4 @ 199 updates, score 15.807) (writing took 4.109877816168591 seconds)
+2022-01-13 16:05:02 | INFO | fairseq_cli.train | end of epoch 4 (average epoch stats below)
+2022-01-13 16:05:02 | INFO | train | epoch 004 | loss 16.271 | ppl 79071.1 | wps 6888.1 | ups 5.59 | wpb 1232.9 | bsz 63.5 | num_updates 199 | lr 5.97e-07 | gnorm 21.383 | clip 100 | loss_scale 64 | train_wall 4 | gb_free 20.9 | wall 42
+2022-01-13 16:05:02 | INFO | fairseq.trainer | begin training epoch 5
+2022-01-13 16:05:02 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:05:02 | INFO | train_inner | epoch 005:      1 / 50 loss=16.097, ppl=70117.1, wps=3609.4, ups=2.98, wpb=1210.8, bsz=64, num_updates=200, lr=6e-07, gnorm=21.412, clip=100, loss_scale=64, train_wall=2, gb_free=20.9, wall=42
+2022-01-13 16:05:03 | INFO | train_inner | epoch 005:     21 / 50 loss=15.771, ppl=55917.4, wps=17116.2, ups=13.85, wpb=1235.9, bsz=64, num_updates=220, lr=6.6e-07, gnorm=20.211, clip=100, loss_scale=64, train_wall=1, gb_free=20.9, wall=43
+2022-01-13 16:05:04 | INFO | fairseq.trainer | NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+2022-01-13 16:05:05 | INFO | train_inner | epoch 005:     42 / 50 loss=15.559, ppl=48277.4, wps=18462.5, ups=14.03, wpb=1316.2, bsz=64, num_updates=240, lr=7.2e-07, gnorm=19.435, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=45
+2022-01-13 16:05:05 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:05:06 | INFO | valid | epoch 005 | valid on 'valid' subset | loss 15.243 | ppl 38786.9 | wps 29118.5 | wpb 556.6 | bsz 30.3 | num_updates 248 | best_loss 15.243
+2022-01-13 16:05:06 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 5 @ 248 updates
+2022-01-13 16:05:06 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:05:09 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:05:10 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 5 @ 248 updates, score 15.243) (writing took 3.950551080983132 seconds)
+2022-01-13 16:05:10 | INFO | fairseq_cli.train | end of epoch 5 (average epoch stats below)
+2022-01-13 16:05:10 | INFO | train | epoch 005 | loss 15.636 | ppl 50916.4 | wps 7237.5 | ups 5.82 | wpb 1243 | bsz 63.5 | num_updates 248 | lr 7.44e-07 | gnorm 20.049 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 50
+2022-01-13 16:05:10 | INFO | fairseq.trainer | begin training epoch 6
+2022-01-13 16:05:10 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:05:11 | INFO | train_inner | epoch 006:     12 / 50 loss=15.337, ppl=41381, wps=3835.3, ups=3.15, wpb=1217.2, bsz=62.7, num_updates=260, lr=7.8e-07, gnorm=19.805, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=51
+2022-01-13 16:05:12 | INFO | train_inner | epoch 006:     32 / 50 loss=14.997, ppl=32702.2, wps=18977.4, ups=14.47, wpb=1311.7, bsz=62.7, num_updates=280, lr=8.4e-07, gnorm=19.077, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=52
+2022-01-13 16:05:14 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:05:14 | INFO | valid | epoch 006 | valid on 'valid' subset | loss 14.581 | ppl 24503.1 | wps 28916.4 | wpb 556.6 | bsz 30.3 | num_updates 298 | best_loss 14.581
+2022-01-13 16:05:14 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 6 @ 298 updates
+2022-01-13 16:05:14 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:05:17 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:05:19 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 6 @ 298 updates, score 14.581) (writing took 4.286012321943417 seconds)
+2022-01-13 16:05:19 | INFO | fairseq_cli.train | end of epoch 6 (average epoch stats below)
+2022-01-13 16:05:19 | INFO | train | epoch 006 | loss 15.033 | ppl 33520 | wps 7152.8 | ups 5.8 | wpb 1232.9 | bsz 63.5 | num_updates 298 | lr 8.94e-07 | gnorm 18.987 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 59
+2022-01-13 16:05:19 | INFO | fairseq.trainer | begin training epoch 7
+2022-01-13 16:05:19 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:05:19 | INFO | train_inner | epoch 007:      2 / 50 loss=14.896, ppl=30486.8, wps=3494.6, ups=3.07, wpb=1136.9, bsz=64, num_updates=300, lr=9e-07, gnorm=18.768, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=59
+2022-01-13 16:05:20 | INFO | train_inner | epoch 007:     22 / 50 loss=14.558, ppl=24115.6, wps=18699.9, ups=14.22, wpb=1315.3, bsz=64, num_updates=320, lr=9.6e-07, gnorm=17.902, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=60
+2022-01-13 16:05:22 | INFO | train_inner | epoch 007:     42 / 50 loss=14.268, ppl=19731.4, wps=15578.2, ups=14.8, wpb=1052.3, bsz=62.7, num_updates=340, lr=1.02e-06, gnorm=19.044, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=62
+2022-01-13 16:05:22 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:05:23 | INFO | valid | epoch 007 | valid on 'valid' subset | loss 13.939 | ppl 15700.3 | wps 29150.7 | wpb 556.6 | bsz 30.3 | num_updates 348 | best_loss 13.939
+2022-01-13 16:05:23 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 7 @ 348 updates
+2022-01-13 16:05:23 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:05:25 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:05:27 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 7 @ 348 updates, score 13.939) (writing took 3.853371197823435 seconds)
+2022-01-13 16:05:27 | INFO | fairseq_cli.train | end of epoch 7 (average epoch stats below)
+2022-01-13 16:05:27 | INFO | train | epoch 007 | loss 14.362 | ppl 21061.2 | wps 7559 | ups 6.13 | wpb 1232.9 | bsz 63.5 | num_updates 348 | lr 1.044e-06 | gnorm 18.136 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 67
+2022-01-13 16:05:27 | INFO | fairseq.trainer | begin training epoch 8
+2022-01-13 16:05:27 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:05:28 | INFO | train_inner | epoch 008:     12 / 50 loss=13.982, ppl=16177, wps=4613.2, ups=3.3, wpb=1399.5, bsz=64, num_updates=360, lr=1.08e-06, gnorm=18.713, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=68
+2022-01-13 16:05:29 | INFO | train_inner | epoch 008:     32 / 50 loss=13.673, ppl=13065.5, wps=18309.4, ups=14.69, wpb=1246.2, bsz=64, num_updates=380, lr=1.14e-06, gnorm=16.927, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=69
+2022-01-13 16:05:31 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:05:31 | INFO | valid | epoch 008 | valid on 'valid' subset | loss 13.325 | ppl 10265.3 | wps 30046.1 | wpb 556.6 | bsz 30.3 | num_updates 398 | best_loss 13.325
+2022-01-13 16:05:31 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 8 @ 398 updates
+2022-01-13 16:05:31 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:05:34 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:05:36 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 8 @ 398 updates, score 13.325) (writing took 4.423732958966866 seconds)
+2022-01-13 16:05:36 | INFO | fairseq_cli.train | end of epoch 8 (average epoch stats below)
+2022-01-13 16:05:36 | INFO | train | epoch 008 | loss 13.671 | ppl 13041.4 | wps 7070.2 | ups 5.73 | wpb 1232.9 | bsz 63.5 | num_updates 398 | lr 1.194e-06 | gnorm 17.703 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 76
+2022-01-13 16:05:36 | INFO | fairseq.trainer | begin training epoch 9
+2022-01-13 16:05:36 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:05:36 | INFO | train_inner | epoch 009:      2 / 50 loss=13.445, ppl=11152.4, wps=3388.7, ups=2.86, wpb=1185.2, bsz=62.7, num_updates=400, lr=1.2e-06, gnorm=16.722, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=76
+2022-01-13 16:05:38 | INFO | train_inner | epoch 009:     22 / 50 loss=13.342, ppl=10380.7, wps=17530, ups=14.16, wpb=1238, bsz=62.7, num_updates=420, lr=1.26e-06, gnorm=17.348, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=77
+2022-01-13 16:05:39 | INFO | train_inner | epoch 009:     42 / 50 loss=13.019, ppl=8299.91, wps=17288.2, ups=14.17, wpb=1220, bsz=64, num_updates=440, lr=1.32e-06, gnorm=14.824, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=79
+2022-01-13 16:05:40 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:05:40 | INFO | valid | epoch 009 | valid on 'valid' subset | loss 12.838 | ppl 7324.38 | wps 27468.9 | wpb 556.6 | bsz 30.3 | num_updates 448 | best_loss 12.838
+2022-01-13 16:05:40 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 9 @ 448 updates
+2022-01-13 16:05:40 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:05:43 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:05:44 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 9 @ 448 updates, score 12.838) (writing took 3.9607309179846197 seconds)
+2022-01-13 16:05:44 | INFO | fairseq_cli.train | end of epoch 9 (average epoch stats below)
+2022-01-13 16:05:44 | INFO | train | epoch 009 | loss 13.134 | ppl 8992.19 | wps 7398.4 | ups 6 | wpb 1232.9 | bsz 63.5 | num_updates 448 | lr 1.344e-06 | gnorm 15.786 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 84
+2022-01-13 16:05:44 | INFO | fairseq.trainer | begin training epoch 10
+2022-01-13 16:05:44 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:05:45 | INFO | train_inner | epoch 010:     12 / 50 loss=12.802, ppl=7139, wps=3932.3, ups=3.23, wpb=1217.8, bsz=62.7, num_updates=460, lr=1.38e-06, gnorm=13.664, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=85
+2022-01-13 16:05:47 | INFO | train_inner | epoch 010:     32 / 50 loss=12.768, ppl=6972.94, wps=17250.1, ups=13.99, wpb=1232.8, bsz=64, num_updates=480, lr=1.44e-06, gnorm=12.989, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=87
+2022-01-13 16:05:48 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:05:49 | INFO | valid | epoch 010 | valid on 'valid' subset | loss 12.445 | ppl 5577.56 | wps 28296.4 | wpb 556.6 | bsz 30.3 | num_updates 498 | best_loss 12.445
+2022-01-13 16:05:49 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 10 @ 498 updates
+2022-01-13 16:05:49 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:05:51 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:05:54 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 10 @ 498 updates, score 12.445) (writing took 5.133760615019128 seconds)
+2022-01-13 16:05:54 | INFO | fairseq_cli.train | end of epoch 10 (average epoch stats below)
+2022-01-13 16:05:55 | INFO | train | epoch 010 | loss 12.653 | ppl 6442.06 | wps 6492.7 | ups 5.27 | wpb 1232.9 | bsz 63.5 | num_updates 498 | lr 1.494e-06 | gnorm 12.537 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 94
+2022-01-13 16:05:55 | INFO | fairseq.trainer | begin training epoch 11
+2022-01-13 16:05:55 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:05:55 | INFO | train_inner | epoch 011:      2 / 50 loss=12.5, ppl=5793.55, wps=2798.6, ups=2.34, wpb=1197, bsz=64, num_updates=500, lr=1.5e-06, gnorm=11.699, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=95
+2022-01-13 16:05:55 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:05:56 | INFO | valid | epoch 011 | valid on 'valid' subset | loss 12.396 | ppl 5389.64 | wps 27319.1 | wpb 556.6 | bsz 30.3 | num_updates 500 | best_loss 12.396
+2022-01-13 16:05:56 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 11 @ 500 updates
+2022-01-13 16:05:56 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_11_500.pt
+2022-01-13 16:05:58 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_11_500.pt
+2022-01-13 16:06:03 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_11_500.pt (epoch 11 @ 500 updates, score 12.396) (writing took 6.879543789895251 seconds)
+2022-01-13 16:06:05 | INFO | train_inner | epoch 011:     22 / 50 loss=12.339, ppl=5181.57, wps=2810.1, ups=2.15, wpb=1310, bsz=64, num_updates=520, lr=1.56e-06, gnorm=10.909, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=104
+2022-01-13 16:06:06 | INFO | train_inner | epoch 011:     42 / 50 loss=12.22, ppl=4771.57, wps=15190.4, ups=12.77, wpb=1189.1, bsz=64, num_updates=540, lr=1.62e-06, gnorm=11.548, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=106
+2022-01-13 16:06:07 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:06:07 | INFO | valid | epoch 011 | valid on 'valid' subset | loss 12.046 | ppl 4227.29 | wps 26647.7 | wpb 556.6 | bsz 30.3 | num_updates 548 | best_loss 12.046
+2022-01-13 16:06:07 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 11 @ 548 updates
+2022-01-13 16:06:07 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:06:10 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:06:12 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 11 @ 548 updates, score 12.046) (writing took 4.2199249600525945 seconds)
+2022-01-13 16:06:12 | INFO | fairseq_cli.train | end of epoch 11 (average epoch stats below)
+2022-01-13 16:06:12 | INFO | train | epoch 011 | loss 12.283 | ppl 4984.74 | wps 3663.8 | ups 2.97 | wpb 1232.9 | bsz 63.5 | num_updates 548 | lr 1.644e-06 | gnorm 11.357 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 112
+2022-01-13 16:06:12 | INFO | fairseq.trainer | begin training epoch 12
+2022-01-13 16:06:12 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:06:13 | INFO | train_inner | epoch 012:     12 / 50 loss=12.14, ppl=4512.23, wps=3669.4, ups=3.02, wpb=1214.3, bsz=61.4, num_updates=560, lr=1.68e-06, gnorm=11.904, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=113
+2022-01-13 16:06:14 | INFO | train_inner | epoch 012:     32 / 50 loss=11.944, ppl=3939.08, wps=16126.2, ups=13.21, wpb=1221.2, bsz=64, num_updates=580, lr=1.74e-06, gnorm=11.565, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=114
+2022-01-13 16:06:16 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:06:16 | INFO | valid | epoch 012 | valid on 'valid' subset | loss 11.751 | ppl 3447.89 | wps 28540 | wpb 556.6 | bsz 30.3 | num_updates 598 | best_loss 11.751
+2022-01-13 16:06:16 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 12 @ 598 updates
+2022-01-13 16:06:16 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:06:19 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:06:20 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 12 @ 598 updates, score 11.751) (writing took 4.101295632077381 seconds)
+2022-01-13 16:06:20 | INFO | fairseq_cli.train | end of epoch 12 (average epoch stats below)
+2022-01-13 16:06:20 | INFO | train | epoch 012 | loss 11.971 | ppl 4014.07 | wps 7091.9 | ups 5.75 | wpb 1232.9 | bsz 63.5 | num_updates 598 | lr 1.794e-06 | gnorm 12.637 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 120
+2022-01-13 16:06:20 | INFO | fairseq.trainer | begin training epoch 13
+2022-01-13 16:06:20 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:06:21 | INFO | train_inner | epoch 013:      2 / 50 loss=11.855, ppl=3705.11, wps=3836, ups=3.11, wpb=1232.8, bsz=64, num_updates=600, lr=1.8e-06, gnorm=13.871, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=121
+2022-01-13 16:06:22 | INFO | train_inner | epoch 013:     22 / 50 loss=11.757, ppl=3459.88, wps=16800.1, ups=13.84, wpb=1213.5, bsz=62.7, num_updates=620, lr=1.86e-06, gnorm=10.483, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=122
+2022-01-13 16:06:24 | INFO | train_inner | epoch 013:     42 / 50 loss=11.588, ppl=3078.23, wps=14068.7, ups=11.4, wpb=1234.5, bsz=64, num_updates=640, lr=1.92e-06, gnorm=9.733, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=124
+2022-01-13 16:06:25 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:06:25 | INFO | valid | epoch 013 | valid on 'valid' subset | loss 11.506 | ppl 2908.49 | wps 28868.6 | wpb 556.6 | bsz 30.3 | num_updates 648 | best_loss 11.506
+2022-01-13 16:06:25 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 13 @ 648 updates
+2022-01-13 16:06:25 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:06:29 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:06:30 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 13 @ 648 updates, score 11.506) (writing took 5.000021601095796 seconds)
+2022-01-13 16:06:30 | INFO | fairseq_cli.train | end of epoch 13 (average epoch stats below)
+2022-01-13 16:06:30 | INFO | train | epoch 013 | loss 11.719 | ppl 3371.76 | wps 6296 | ups 5.11 | wpb 1232.9 | bsz 63.5 | num_updates 648 | lr 1.944e-06 | gnorm 10.011 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 130
+2022-01-13 16:06:30 | INFO | fairseq.trainer | begin training epoch 14
+2022-01-13 16:06:30 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:06:31 | INFO | train_inner | epoch 014:     12 / 50 loss=11.784, ppl=3526.14, wps=3444.5, ups=2.74, wpb=1259.2, bsz=64, num_updates=660, lr=1.98e-06, gnorm=11.754, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=131
+2022-01-13 16:06:33 | INFO | train_inner | epoch 014:     32 / 50 loss=11.538, ppl=2972.65, wps=18085.2, ups=13.61, wpb=1329, bsz=62.7, num_updates=680, lr=2.04e-06, gnorm=9.592, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=133
+2022-01-13 16:06:34 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:06:35 | INFO | valid | epoch 014 | valid on 'valid' subset | loss 11.335 | ppl 2583.71 | wps 26225.2 | wpb 556.6 | bsz 30.3 | num_updates 698 | best_loss 11.335
+2022-01-13 16:06:35 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 14 @ 698 updates
+2022-01-13 16:06:35 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:06:37 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:06:39 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 14 @ 698 updates, score 11.335) (writing took 4.299873220035806 seconds)
+2022-01-13 16:06:39 | INFO | fairseq_cli.train | end of epoch 14 (average epoch stats below)
+2022-01-13 16:06:39 | INFO | train | epoch 014 | loss 11.504 | ppl 2903.88 | wps 6949.9 | ups 5.64 | wpb 1232.9 | bsz 63.5 | num_updates 698 | lr 2.094e-06 | gnorm 10.531 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 139
+2022-01-13 16:06:39 | INFO | fairseq.trainer | begin training epoch 15
+2022-01-13 16:06:39 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:06:39 | INFO | train_inner | epoch 015:      2 / 50 loss=11.364, ppl=2635.67, wps=3404.2, ups=3, wpb=1136.4, bsz=64, num_updates=700, lr=2.1e-06, gnorm=9.71, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=139
+2022-01-13 16:06:41 | INFO | train_inner | epoch 015:     22 / 50 loss=11.366, ppl=2639.55, wps=17012.7, ups=14.31, wpb=1188.8, bsz=64, num_updates=720, lr=2.16e-06, gnorm=9.584, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=141
+2022-01-13 16:06:42 | INFO | train_inner | epoch 015:     42 / 50 loss=11.254, ppl=2442.64, wps=18913, ups=13.82, wpb=1368.7, bsz=64, num_updates=740, lr=2.22e-06, gnorm=8.667, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=142
+2022-01-13 16:06:43 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:06:44 | INFO | valid | epoch 015 | valid on 'valid' subset | loss 11.099 | ppl 2193.77 | wps 26439.4 | wpb 556.6 | bsz 30.3 | num_updates 748 | best_loss 11.099
+2022-01-13 16:06:44 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 15 @ 748 updates
+2022-01-13 16:06:44 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:06:46 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:06:48 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 15 @ 748 updates, score 11.099) (writing took 4.298957463121042 seconds)
+2022-01-13 16:06:48 | INFO | fairseq_cli.train | end of epoch 15 (average epoch stats below)
+2022-01-13 16:06:48 | INFO | train | epoch 015 | loss 11.293 | ppl 2508.52 | wps 7034.6 | ups 5.71 | wpb 1232.9 | bsz 63.5 | num_updates 748 | lr 2.244e-06 | gnorm 9.173 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 148
+2022-01-13 16:06:48 | INFO | fairseq.trainer | begin training epoch 16
+2022-01-13 16:06:48 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:06:49 | INFO | train_inner | epoch 016:     12 / 50 loss=11.251, ppl=2436.61, wps=3436.8, ups=3.02, wpb=1138.8, bsz=62.7, num_updates=760, lr=2.28e-06, gnorm=8.97, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=149
+2022-01-13 16:06:50 | INFO | train_inner | epoch 016:     32 / 50 loss=11.045, ppl=2112.64, wps=16052.3, ups=14.21, wpb=1129.2, bsz=64, num_updates=780, lr=2.34e-06, gnorm=9.986, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=150
+2022-01-13 16:06:51 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:06:52 | INFO | valid | epoch 016 | valid on 'valid' subset | loss 10.946 | ppl 1973.05 | wps 26753.4 | wpb 556.6 | bsz 30.3 | num_updates 798 | best_loss 10.946
+2022-01-13 16:06:52 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 16 @ 798 updates
+2022-01-13 16:06:52 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:06:55 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:06:56 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 16 @ 798 updates, score 10.946) (writing took 4.205898888874799 seconds)
+2022-01-13 16:06:56 | INFO | fairseq_cli.train | end of epoch 16 (average epoch stats below)
+2022-01-13 16:06:56 | INFO | train | epoch 016 | loss 11.149 | ppl 2271.5 | wps 7206.1 | ups 5.84 | wpb 1232.9 | bsz 63.5 | num_updates 798 | lr 2.394e-06 | gnorm 9.108 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 156
+2022-01-13 16:06:56 | INFO | fairseq.trainer | begin training epoch 17
+2022-01-13 16:06:56 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:06:57 | INFO | train_inner | epoch 017:      2 / 50 loss=11.146, ppl=2265.88, wps=4084.1, ups=3.11, wpb=1312.2, bsz=62.7, num_updates=800, lr=2.4e-06, gnorm=8.511, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=157
+2022-01-13 16:06:58 | INFO | train_inner | epoch 017:     22 / 50 loss=10.91, ppl=1923.48, wps=16704.3, ups=14.39, wpb=1160.7, bsz=62.7, num_updates=820, lr=2.46e-06, gnorm=8.976, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=158
+2022-01-13 16:06:59 | INFO | train_inner | epoch 017:     42 / 50 loss=11.13, ppl=2240.58, wps=20189.9, ups=13.74, wpb=1469.3, bsz=64, num_updates=840, lr=2.52e-06, gnorm=8.087, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=159
+2022-01-13 16:07:00 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:07:01 | INFO | valid | epoch 017 | valid on 'valid' subset | loss 10.77 | ppl 1745.71 | wps 26281.8 | wpb 556.6 | bsz 30.3 | num_updates 848 | best_loss 10.77
+2022-01-13 16:07:01 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 17 @ 848 updates
+2022-01-13 16:07:01 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:07:03 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:07:05 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 17 @ 848 updates, score 10.77) (writing took 4.110174420988187 seconds)
+2022-01-13 16:07:05 | INFO | fairseq_cli.train | end of epoch 17 (average epoch stats below)
+2022-01-13 16:07:05 | INFO | train | epoch 017 | loss 10.988 | ppl 2031.55 | wps 7250.3 | ups 5.88 | wpb 1232.9 | bsz 63.5 | num_updates 848 | lr 2.544e-06 | gnorm 8.635 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 165
+2022-01-13 16:07:05 | INFO | fairseq.trainer | begin training epoch 18
+2022-01-13 16:07:05 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:07:06 | INFO | train_inner | epoch 018:     12 / 50 loss=10.811, ppl=1796.58, wps=3415.6, ups=3.14, wpb=1087.5, bsz=64, num_updates=860, lr=2.58e-06, gnorm=8.306, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=166
+2022-01-13 16:07:07 | INFO | train_inner | epoch 018:     32 / 50 loss=10.884, ppl=1889.38, wps=18001.4, ups=14.2, wpb=1268, bsz=62.7, num_updates=880, lr=2.64e-06, gnorm=9.078, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=167
+2022-01-13 16:07:09 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:07:09 | INFO | valid | epoch 018 | valid on 'valid' subset | loss 10.576 | ppl 1526.65 | wps 26991.8 | wpb 556.6 | bsz 30.3 | num_updates 898 | best_loss 10.576
+2022-01-13 16:07:09 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 18 @ 898 updates
+2022-01-13 16:07:09 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:07:12 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:07:14 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 18 @ 898 updates, score 10.576) (writing took 4.190769501030445 seconds)
+2022-01-13 16:07:14 | INFO | fairseq_cli.train | end of epoch 18 (average epoch stats below)
+2022-01-13 16:07:14 | INFO | train | epoch 018 | loss 10.831 | ppl 1821.56 | wps 7172.2 | ups 5.82 | wpb 1232.9 | bsz 63.5 | num_updates 898 | lr 2.694e-06 | gnorm 8.465 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 173
+2022-01-13 16:07:14 | INFO | fairseq.trainer | begin training epoch 19
+2022-01-13 16:07:14 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:07:14 | INFO | train_inner | epoch 019:      2 / 50 loss=10.767, ppl=1742.59, wps=3609.8, ups=3.1, wpb=1164.9, bsz=64, num_updates=900, lr=2.7e-06, gnorm=8.402, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=174
+2022-01-13 16:07:15 | INFO | train_inner | epoch 019:     22 / 50 loss=10.706, ppl=1670.31, wps=17261.7, ups=14.24, wpb=1212.3, bsz=62.7, num_updates=920, lr=2.76e-06, gnorm=8.029, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=175
+2022-01-13 16:07:17 | INFO | train_inner | epoch 019:     42 / 50 loss=10.779, ppl=1757.66, wps=18074.1, ups=13.89, wpb=1300.9, bsz=64, num_updates=940, lr=2.82e-06, gnorm=8.294, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=176
+2022-01-13 16:07:17 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:07:18 | INFO | valid | epoch 019 | valid on 'valid' subset | loss 10.468 | ppl 1416.62 | wps 26580.8 | wpb 556.6 | bsz 30.3 | num_updates 948 | best_loss 10.468
+2022-01-13 16:07:18 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 19 @ 948 updates
+2022-01-13 16:07:18 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:07:20 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:07:22 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 19 @ 948 updates, score 10.468) (writing took 4.056778114056215 seconds)
+2022-01-13 16:07:22 | INFO | fairseq_cli.train | end of epoch 19 (average epoch stats below)
+2022-01-13 16:07:22 | INFO | train | epoch 019 | loss 10.697 | ppl 1659.98 | wps 7313.8 | ups 5.93 | wpb 1232.9 | bsz 63.5 | num_updates 948 | lr 2.844e-06 | gnorm 8.25 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 182
+2022-01-13 16:07:22 | INFO | fairseq.trainer | begin training epoch 20
+2022-01-13 16:07:22 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:07:23 | INFO | train_inner | epoch 020:     12 / 50 loss=10.408, ppl=1358.86, wps=3650.6, ups=3.19, wpb=1145.7, bsz=64, num_updates=960, lr=2.88e-06, gnorm=8.498, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=183
+2022-01-13 16:07:24 | INFO | train_inner | epoch 020:     32 / 50 loss=10.645, ppl=1601.75, wps=17553.3, ups=14.16, wpb=1240, bsz=62.7, num_updates=980, lr=2.94e-06, gnorm=7.943, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=184
+2022-01-13 16:07:26 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:07:26 | INFO | valid | epoch 020 | valid on 'valid' subset | loss 10.37 | ppl 1323 | wps 25591.8 | wpb 556.6 | bsz 30.3 | num_updates 998 | best_loss 10.37
+2022-01-13 16:07:26 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 20 @ 998 updates
+2022-01-13 16:07:26 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:07:29 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:07:30 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 20 @ 998 updates, score 10.37) (writing took 3.997481770813465 seconds)
+2022-01-13 16:07:30 | INFO | fairseq_cli.train | end of epoch 20 (average epoch stats below)
+2022-01-13 16:07:30 | INFO | train | epoch 020 | loss 10.568 | ppl 1517.83 | wps 7364.6 | ups 5.97 | wpb 1232.9 | bsz 63.5 | num_updates 998 | lr 2.994e-06 | gnorm 7.986 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 190
+2022-01-13 16:07:30 | INFO | fairseq.trainer | begin training epoch 21
+2022-01-13 16:07:30 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:07:31 | INFO | train_inner | epoch 021:      2 / 50 loss=10.55, ppl=1499.7, wps=4030.3, ups=3.16, wpb=1273.9, bsz=64, num_updates=1000, lr=3e-06, gnorm=7.78, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=191
+2022-01-13 16:07:31 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:07:31 | INFO | valid | epoch 021 | valid on 'valid' subset | loss 10.298 | ppl 1259.29 | wps 27011.2 | wpb 556.6 | bsz 30.3 | num_updates 1000 | best_loss 10.298
+2022-01-13 16:07:31 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 21 @ 1000 updates
+2022-01-13 16:07:31 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_21_1000.pt
+2022-01-13 16:07:34 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_21_1000.pt
+2022-01-13 16:07:40 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_21_1000.pt (epoch 21 @ 1000 updates, score 10.298) (writing took 9.162504152860492 seconds)
+2022-01-13 16:07:42 | INFO | train_inner | epoch 021:     22 / 50 loss=10.495, ppl=1443.49, wps=2214.3, ups=1.7, wpb=1300.8, bsz=64, num_updates=1020, lr=3.06e-06, gnorm=7.772, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=202
+2022-01-13 16:07:44 | INFO | train_inner | epoch 021:     42 / 50 loss=10.42, ppl=1370.16, wps=15273.6, ups=12.53, wpb=1219.5, bsz=64, num_updates=1040, lr=3.12e-06, gnorm=7.891, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=204
+2022-01-13 16:07:45 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:07:45 | INFO | valid | epoch 021 | valid on 'valid' subset | loss 10.162 | ppl 1145.6 | wps 27897.3 | wpb 556.6 | bsz 30.3 | num_updates 1048 | best_loss 10.162
+2022-01-13 16:07:45 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 21 @ 1048 updates
+2022-01-13 16:07:45 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:07:48 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:07:50 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 21 @ 1048 updates, score 10.162) (writing took 4.235683298902586 seconds)
+2022-01-13 16:07:50 | INFO | fairseq_cli.train | end of epoch 21 (average epoch stats below)
+2022-01-13 16:07:50 | INFO | train | epoch 021 | loss 10.453 | ppl 1401.98 | wps 3207.5 | ups 2.6 | wpb 1232.9 | bsz 63.5 | num_updates 1048 | lr 3.144e-06 | gnorm 7.943 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 210
+2022-01-13 16:07:50 | INFO | fairseq.trainer | begin training epoch 22
+2022-01-13 16:07:50 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:07:51 | INFO | train_inner | epoch 022:     12 / 50 loss=10.37, ppl=1322.98, wps=3596.5, ups=3.01, wpb=1195.2, bsz=62.7, num_updates=1060, lr=3.18e-06, gnorm=8.135, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=211
+2022-01-13 16:07:52 | INFO | train_inner | epoch 022:     32 / 50 loss=10.341, ppl=1297.05, wps=18189.6, ups=14.37, wpb=1265.5, bsz=64, num_updates=1080, lr=3.24e-06, gnorm=7.394, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=212
+2022-01-13 16:07:53 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:07:54 | INFO | valid | epoch 022 | valid on 'valid' subset | loss 10.077 | ppl 1080.39 | wps 27714.2 | wpb 556.6 | bsz 30.3 | num_updates 1098 | best_loss 10.077
+2022-01-13 16:07:54 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 22 @ 1098 updates
+2022-01-13 16:07:54 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:07:57 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:07:59 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 22 @ 1098 updates, score 10.077) (writing took 5.392136902781203 seconds)
+2022-01-13 16:07:59 | INFO | fairseq_cli.train | end of epoch 22 (average epoch stats below)
+2022-01-13 16:07:59 | INFO | train | epoch 022 | loss 10.317 | ppl 1275.64 | wps 6308.4 | ups 5.12 | wpb 1232.9 | bsz 63.5 | num_updates 1098 | lr 3.294e-06 | gnorm 7.911 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 219
+2022-01-13 16:07:59 | INFO | fairseq.trainer | begin training epoch 23
+2022-01-13 16:07:59 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:08:00 | INFO | train_inner | epoch 023:      2 / 50 loss=10.312, ppl=1270.95, wps=3065.8, ups=2.63, wpb=1164.5, bsz=62.7, num_updates=1100, lr=3.3e-06, gnorm=8.39, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=220
+2022-01-13 16:08:01 | INFO | train_inner | epoch 023:     22 / 50 loss=10.177, ppl=1157.55, wps=16238.3, ups=13.28, wpb=1222.5, bsz=64, num_updates=1120, lr=3.36e-06, gnorm=7.806, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=221
+2022-01-13 16:08:03 | INFO | train_inner | epoch 023:     42 / 50 loss=10.255, ppl=1221.88, wps=19375.1, ups=14.14, wpb=1370.7, bsz=64, num_updates=1140, lr=3.42e-06, gnorm=7.533, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=222
+2022-01-13 16:08:03 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:08:04 | INFO | valid | epoch 023 | valid on 'valid' subset | loss 10.007 | ppl 1028.67 | wps 27370.5 | wpb 556.6 | bsz 30.3 | num_updates 1148 | best_loss 10.007
+2022-01-13 16:08:04 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 23 @ 1148 updates
+2022-01-13 16:08:04 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:08:07 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:08:08 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 23 @ 1148 updates, score 10.007) (writing took 4.165350906085223 seconds)
+2022-01-13 16:08:08 | INFO | fairseq_cli.train | end of epoch 23 (average epoch stats below)
+2022-01-13 16:08:08 | INFO | train | epoch 023 | loss 10.205 | ppl 1180.3 | wps 7068.2 | ups 5.73 | wpb 1232.9 | bsz 63.5 | num_updates 1148 | lr 3.444e-06 | gnorm 7.872 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 228
+2022-01-13 16:08:08 | INFO | fairseq.trainer | begin training epoch 24
+2022-01-13 16:08:08 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:08:09 | INFO | train_inner | epoch 024:     12 / 50 loss=10.067, ppl=1072.99, wps=3057.7, ups=3.08, wpb=994, bsz=62.7, num_updates=1160, lr=3.48e-06, gnorm=8.31, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=229
+2022-01-13 16:08:11 | INFO | train_inner | epoch 024:     32 / 50 loss=10.122, ppl=1114.56, wps=19354.5, ups=13.58, wpb=1425.5, bsz=62.7, num_updates=1180, lr=3.54e-06, gnorm=7.221, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=230
+2022-01-13 16:08:12 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:08:13 | INFO | valid | epoch 024 | valid on 'valid' subset | loss 9.844 | ppl 918.93 | wps 27018 | wpb 556.6 | bsz 30.3 | num_updates 1198 | best_loss 9.844
+2022-01-13 16:08:13 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 24 @ 1198 updates
+2022-01-13 16:08:13 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:08:15 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:08:17 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 24 @ 1198 updates, score 9.844) (writing took 4.539449128089473 seconds)
+2022-01-13 16:08:17 | INFO | fairseq_cli.train | end of epoch 24 (average epoch stats below)
+2022-01-13 16:08:18 | INFO | train | epoch 024 | loss 10.053 | ppl 1062.49 | wps 6883 | ups 5.58 | wpb 1232.9 | bsz 63.5 | num_updates 1198 | lr 3.594e-06 | gnorm 7.597 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 237
+2022-01-13 16:08:18 | INFO | fairseq.trainer | begin training epoch 25
+2022-01-13 16:08:18 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:08:18 | INFO | train_inner | epoch 025:      2 / 50 loss=9.972, ppl=1004.14, wps=3160.9, ups=2.71, wpb=1164.8, bsz=64, num_updates=1200, lr=3.6e-06, gnorm=7.785, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=238
+2022-01-13 16:08:19 | INFO | train_inner | epoch 025:     22 / 50 loss=10.077, ppl=1079.87, wps=18231.5, ups=13.69, wpb=1331.4, bsz=62.7, num_updates=1220, lr=3.66e-06, gnorm=7.686, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=239
+2022-01-13 16:08:21 | INFO | train_inner | epoch 025:     42 / 50 loss=9.954, ppl=991.78, wps=15680.6, ups=13.23, wpb=1185.5, bsz=64, num_updates=1240, lr=3.72e-06, gnorm=7.555, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=241
+2022-01-13 16:08:21 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:08:22 | INFO | valid | epoch 025 | valid on 'valid' subset | loss 9.688 | ppl 824.62 | wps 27998.8 | wpb 556.6 | bsz 30.3 | num_updates 1248 | best_loss 9.688
+2022-01-13 16:08:22 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 25 @ 1248 updates
+2022-01-13 16:08:22 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:08:25 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:08:26 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 25 @ 1248 updates, score 9.688) (writing took 4.02902780007571 seconds)
+2022-01-13 16:08:26 | INFO | fairseq_cli.train | end of epoch 25 (average epoch stats below)
+2022-01-13 16:08:26 | INFO | train | epoch 025 | loss 9.965 | ppl 999.15 | wps 7214.8 | ups 5.85 | wpb 1232.9 | bsz 63.5 | num_updates 1248 | lr 3.744e-06 | gnorm 7.66 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 246
+2022-01-13 16:08:26 | INFO | fairseq.trainer | begin training epoch 26
+2022-01-13 16:08:26 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:08:27 | INFO | train_inner | epoch 026:     12 / 50 loss=9.851, ppl=923.41, wps=3918.3, ups=3.18, wpb=1231.8, bsz=62.7, num_updates=1260, lr=3.78e-06, gnorm=7.752, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=247
+2022-01-13 16:08:29 | INFO | train_inner | epoch 026:     32 / 50 loss=9.812, ppl=899.17, wps=17144.9, ups=14.6, wpb=1174.3, bsz=64, num_updates=1280, lr=3.84e-06, gnorm=7.481, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=248
+2022-01-13 16:08:30 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:08:31 | INFO | valid | epoch 026 | valid on 'valid' subset | loss 9.575 | ppl 762.84 | wps 26759.6 | wpb 556.6 | bsz 30.3 | num_updates 1298 | best_loss 9.575
+2022-01-13 16:08:31 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 26 @ 1298 updates
+2022-01-13 16:08:31 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:08:33 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:08:35 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 26 @ 1298 updates, score 9.575) (writing took 4.224266140954569 seconds)
+2022-01-13 16:08:35 | INFO | fairseq_cli.train | end of epoch 26 (average epoch stats below)
+2022-01-13 16:08:35 | INFO | train | epoch 026 | loss 9.85 | ppl 922.87 | wps 7164 | ups 5.81 | wpb 1232.9 | bsz 63.5 | num_updates 1298 | lr 3.894e-06 | gnorm 7.53 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 255
+2022-01-13 16:08:35 | INFO | fairseq.trainer | begin training epoch 27
+2022-01-13 16:08:35 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:08:35 | INFO | train_inner | epoch 027:      2 / 50 loss=9.789, ppl=884.85, wps=3855.1, ups=3.08, wpb=1252.9, bsz=64, num_updates=1300, lr=3.9e-06, gnorm=7.594, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=255
+2022-01-13 16:08:37 | INFO | train_inner | epoch 027:     22 / 50 loss=9.88, ppl=942.3, wps=16714.2, ups=13.43, wpb=1244.4, bsz=64, num_updates=1320, lr=3.96e-06, gnorm=7.444, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=256
+2022-01-13 16:08:38 | INFO | train_inner | epoch 027:     42 / 50 loss=9.866, ppl=933.26, wps=18015.5, ups=14.17, wpb=1271.2, bsz=62.7, num_updates=1340, lr=4.02e-06, gnorm=8.862, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=258
+2022-01-13 16:08:39 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:08:39 | INFO | valid | epoch 027 | valid on 'valid' subset | loss 9.503 | ppl 725.35 | wps 27187.1 | wpb 556.6 | bsz 30.3 | num_updates 1348 | best_loss 9.503
+2022-01-13 16:08:39 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 27 @ 1348 updates
+2022-01-13 16:08:39 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:08:42 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:08:44 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 27 @ 1348 updates, score 9.503) (writing took 4.56431334791705 seconds)
+2022-01-13 16:08:44 | INFO | fairseq_cli.train | end of epoch 27 (average epoch stats below)
+2022-01-13 16:08:44 | INFO | train | epoch 027 | loss 9.78 | ppl 878.96 | wps 6836.1 | ups 5.54 | wpb 1232.9 | bsz 63.5 | num_updates 1348 | lr 4.044e-06 | gnorm 8.138 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 264
+2022-01-13 16:08:44 | INFO | fairseq.trainer | begin training epoch 28
+2022-01-13 16:08:44 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:08:45 | INFO | train_inner | epoch 028:     12 / 50 loss=9.496, ppl=722.02, wps=3279.4, ups=2.94, wpb=1113.7, bsz=62.7, num_updates=1360, lr=4.08e-06, gnorm=8.056, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=265
+2022-01-13 16:08:46 | INFO | train_inner | epoch 028:     32 / 50 loss=9.724, ppl=845.63, wps=16865.1, ups=13.8, wpb=1222.3, bsz=64, num_updates=1380, lr=4.14e-06, gnorm=7.729, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=266
+2022-01-13 16:08:48 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:08:48 | INFO | valid | epoch 028 | valid on 'valid' subset | loss 9.378 | ppl 665.44 | wps 26741.6 | wpb 556.6 | bsz 30.3 | num_updates 1398 | best_loss 9.378
+2022-01-13 16:08:48 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 28 @ 1398 updates
+2022-01-13 16:08:48 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:08:51 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:08:52 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 28 @ 1398 updates, score 9.378) (writing took 4.184823209187016 seconds)
+2022-01-13 16:08:52 | INFO | fairseq_cli.train | end of epoch 28 (average epoch stats below)
+2022-01-13 16:08:52 | INFO | train | epoch 028 | loss 9.662 | ppl 810.1 | wps 7169.3 | ups 5.82 | wpb 1232.9 | bsz 63.5 | num_updates 1398 | lr 4.194e-06 | gnorm 7.946 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 272
+2022-01-13 16:08:52 | INFO | fairseq.trainer | begin training epoch 29
+2022-01-13 16:08:52 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:08:53 | INFO | train_inner | epoch 029:      2 / 50 loss=9.669, ppl=813.92, wps=4210.8, ups=3.08, wpb=1367.7, bsz=64, num_updates=1400, lr=4.2e-06, gnorm=7.827, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=273
+2022-01-13 16:08:54 | INFO | train_inner | epoch 029:     22 / 50 loss=9.513, ppl=730.82, wps=16695.9, ups=14.32, wpb=1166, bsz=64, num_updates=1420, lr=4.26e-06, gnorm=7.468, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=274
+2022-01-13 16:08:56 | INFO | train_inner | epoch 029:     42 / 50 loss=9.602, ppl=777.39, wps=17190.2, ups=13.14, wpb=1308.7, bsz=62.7, num_updates=1440, lr=4.32e-06, gnorm=7.71, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=276
+2022-01-13 16:08:56 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:08:57 | INFO | valid | epoch 029 | valid on 'valid' subset | loss 9.324 | ppl 640.96 | wps 25006 | wpb 556.6 | bsz 30.3 | num_updates 1448 | best_loss 9.324
+2022-01-13 16:08:57 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 29 @ 1448 updates
+2022-01-13 16:08:57 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:08:59 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:09:01 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 29 @ 1448 updates, score 9.324) (writing took 4.171758497133851 seconds)
+2022-01-13 16:09:01 | INFO | fairseq_cli.train | end of epoch 29 (average epoch stats below)
+2022-01-13 16:09:01 | INFO | train | epoch 029 | loss 9.536 | ppl 742.55 | wps 7074.6 | ups 5.74 | wpb 1232.9 | bsz 63.5 | num_updates 1448 | lr 4.344e-06 | gnorm 7.551 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 281
+2022-01-13 16:09:01 | INFO | fairseq.trainer | begin training epoch 30
+2022-01-13 16:09:01 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:09:02 | INFO | train_inner | epoch 030:     12 / 50 loss=9.507, ppl=727.58, wps=3910.9, ups=3.08, wpb=1269.3, bsz=64, num_updates=1460, lr=4.38e-06, gnorm=7.389, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=282
+2022-01-13 16:09:04 | INFO | train_inner | epoch 030:     32 / 50 loss=9.384, ppl=668.08, wps=15949.3, ups=13.61, wpb=1171.5, bsz=64, num_updates=1480, lr=4.44e-06, gnorm=7.701, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=284
+2022-01-13 16:09:05 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:09:06 | INFO | valid | epoch 030 | valid on 'valid' subset | loss 9.248 | ppl 608.12 | wps 28662.7 | wpb 556.6 | bsz 30.3 | num_updates 1498 | best_loss 9.248
+2022-01-13 16:09:06 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 30 @ 1498 updates
+2022-01-13 16:09:06 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:09:08 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:09:10 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 30 @ 1498 updates, score 9.248) (writing took 4.14149253978394 seconds)
+2022-01-13 16:09:10 | INFO | fairseq_cli.train | end of epoch 30 (average epoch stats below)
+2022-01-13 16:09:10 | INFO | train | epoch 030 | loss 9.409 | ppl 679.85 | wps 7225.8 | ups 5.86 | wpb 1232.9 | bsz 63.5 | num_updates 1498 | lr 4.494e-06 | gnorm 7.598 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 290
+2022-01-13 16:09:10 | INFO | fairseq.trainer | begin training epoch 31
+2022-01-13 16:09:10 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:09:10 | INFO | train_inner | epoch 031:      2 / 50 loss=9.278, ppl=620.82, wps=3751.6, ups=3.15, wpb=1189.5, bsz=62.7, num_updates=1500, lr=4.5e-06, gnorm=7.758, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=290
+2022-01-13 16:09:10 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:09:11 | INFO | valid | epoch 031 | valid on 'valid' subset | loss 9.218 | ppl 595.34 | wps 27220.4 | wpb 556.6 | bsz 30.3 | num_updates 1500 | best_loss 9.218
+2022-01-13 16:09:11 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 31 @ 1500 updates
+2022-01-13 16:09:11 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_31_1500.pt
+2022-01-13 16:09:13 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_31_1500.pt
+2022-01-13 16:09:21 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_31_1500.pt (epoch 31 @ 1500 updates, score 9.218) (writing took 10.45356583292596 seconds)
+2022-01-13 16:09:23 | INFO | train_inner | epoch 031:     22 / 50 loss=9.421, ppl=685.44, wps=2025, ups=1.53, wpb=1321.7, bsz=62.7, num_updates=1520, lr=4.56e-06, gnorm=7.377, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=303
+2022-01-13 16:09:25 | INFO | train_inner | epoch 031:     42 / 50 loss=9.218, ppl=595.48, wps=14570.1, ups=12.26, wpb=1188.6, bsz=64, num_updates=1540, lr=4.62e-06, gnorm=7.754, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=305
+2022-01-13 16:09:25 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:09:26 | INFO | valid | epoch 031 | valid on 'valid' subset | loss 9.111 | ppl 552.86 | wps 27716.4 | wpb 556.6 | bsz 30.3 | num_updates 1548 | best_loss 9.111
+2022-01-13 16:09:26 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 31 @ 1548 updates
+2022-01-13 16:09:26 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:09:29 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:09:30 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 31 @ 1548 updates, score 9.111) (writing took 4.13538451702334 seconds)
+2022-01-13 16:09:30 | INFO | fairseq_cli.train | end of epoch 31 (average epoch stats below)
+2022-01-13 16:09:30 | INFO | train | epoch 031 | loss 9.286 | ppl 624.08 | wps 3013.4 | ups 2.44 | wpb 1232.9 | bsz 63.5 | num_updates 1548 | lr 4.644e-06 | gnorm 7.536 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 310
+2022-01-13 16:09:30 | INFO | fairseq.trainer | begin training epoch 32
+2022-01-13 16:09:30 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:09:31 | INFO | train_inner | epoch 032:     12 / 50 loss=9.229, ppl=599.99, wps=3606.9, ups=3.07, wpb=1174, bsz=64, num_updates=1560, lr=4.68e-06, gnorm=7.511, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=311
+2022-01-13 16:09:33 | INFO | train_inner | epoch 032:     32 / 50 loss=9.248, ppl=608.19, wps=18191.9, ups=14.26, wpb=1275.7, bsz=64, num_updates=1580, lr=4.74e-06, gnorm=7.446, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=312
+2022-01-13 16:09:34 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:09:35 | INFO | valid | epoch 032 | valid on 'valid' subset | loss 9.037 | ppl 525.23 | wps 26910.1 | wpb 556.6 | bsz 30.3 | num_updates 1598 | best_loss 9.037
+2022-01-13 16:09:35 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 32 @ 1598 updates
+2022-01-13 16:09:35 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:09:37 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:09:39 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 32 @ 1598 updates, score 9.037) (writing took 4.456599232042208 seconds)
+2022-01-13 16:09:39 | INFO | fairseq_cli.train | end of epoch 32 (average epoch stats below)
+2022-01-13 16:09:39 | INFO | train | epoch 032 | loss 9.223 | ppl 597.56 | wps 7006.5 | ups 5.68 | wpb 1232.9 | bsz 63.5 | num_updates 1598 | lr 4.794e-06 | gnorm 7.531 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 319
+2022-01-13 16:09:39 | INFO | fairseq.trainer | begin training epoch 33
+2022-01-13 16:09:39 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:09:39 | INFO | train_inner | epoch 033:      2 / 50 loss=9.115, ppl=554.63, wps=3508.5, ups=3, wpb=1168.8, bsz=62.7, num_updates=1600, lr=4.8e-06, gnorm=7.641, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=319
+2022-01-13 16:09:41 | INFO | train_inner | epoch 033:     22 / 50 loss=9.143, ppl=565.48, wps=17039.7, ups=13.93, wpb=1223.3, bsz=62.7, num_updates=1620, lr=4.86e-06, gnorm=7.254, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=321
+2022-01-13 16:09:42 | INFO | train_inner | epoch 033:     42 / 50 loss=9.159, ppl=571.73, wps=17201.7, ups=13.29, wpb=1294.6, bsz=64, num_updates=1640, lr=4.92e-06, gnorm=7.575, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=322
+2022-01-13 16:09:43 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:09:44 | INFO | valid | epoch 033 | valid on 'valid' subset | loss 8.956 | ppl 496.46 | wps 25895.8 | wpb 556.6 | bsz 30.3 | num_updates 1648 | best_loss 8.956
+2022-01-13 16:09:44 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 33 @ 1648 updates
+2022-01-13 16:09:44 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:09:46 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:09:48 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 33 @ 1648 updates, score 8.956) (writing took 4.015369780128822 seconds)
+2022-01-13 16:09:48 | INFO | fairseq_cli.train | end of epoch 33 (average epoch stats below)
+2022-01-13 16:09:48 | INFO | train | epoch 033 | loss 9.118 | ppl 555.59 | wps 7152.4 | ups 5.8 | wpb 1232.9 | bsz 63.5 | num_updates 1648 | lr 4.944e-06 | gnorm 7.498 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 327
+2022-01-13 16:09:48 | INFO | fairseq.trainer | begin training epoch 34
+2022-01-13 16:09:48 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:09:49 | INFO | train_inner | epoch 034:     12 / 50 loss=8.979, ppl=504.59, wps=3454.6, ups=3.14, wpb=1098.5, bsz=64, num_updates=1660, lr=4.98e-06, gnorm=7.779, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=328
+2022-01-13 16:09:50 | INFO | train_inner | epoch 034:     32 / 50 loss=8.947, ppl=493.64, wps=16548.8, ups=13.86, wpb=1194.3, bsz=64, num_updates=1680, lr=5.04e-06, gnorm=7.478, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=330
+2022-01-13 16:09:51 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:09:52 | INFO | valid | epoch 034 | valid on 'valid' subset | loss 8.854 | ppl 462.74 | wps 26760.1 | wpb 556.6 | bsz 30.3 | num_updates 1698 | best_loss 8.854
+2022-01-13 16:09:52 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 34 @ 1698 updates
+2022-01-13 16:09:52 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:09:55 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:09:56 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 34 @ 1698 updates, score 8.854) (writing took 4.170731611782685 seconds)
+2022-01-13 16:09:56 | INFO | fairseq_cli.train | end of epoch 34 (average epoch stats below)
+2022-01-13 16:09:56 | INFO | train | epoch 034 | loss 9.039 | ppl 526.11 | wps 7200.2 | ups 5.84 | wpb 1232.9 | bsz 63.5 | num_updates 1698 | lr 5.094e-06 | gnorm 7.489 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 336
+2022-01-13 16:09:56 | INFO | fairseq.trainer | begin training epoch 35
+2022-01-13 16:09:56 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:09:56 | INFO | train_inner | epoch 035:      2 / 50 loss=9.221, ppl=596.9, wps=4602.8, ups=3.11, wpb=1478.3, bsz=62.7, num_updates=1700, lr=5.1e-06, gnorm=7.15, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=336
+2022-01-13 16:09:58 | INFO | train_inner | epoch 035:     22 / 50 loss=8.91, ppl=481.01, wps=15877.5, ups=13.89, wpb=1143.2, bsz=64, num_updates=1720, lr=5.16e-06, gnorm=7.452, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=338
+2022-01-13 16:09:59 | INFO | train_inner | epoch 035:     42 / 50 loss=8.951, ppl=494.93, wps=19175, ups=14.37, wpb=1334.7, bsz=62.7, num_updates=1740, lr=5.22e-06, gnorm=7.48, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=339
+2022-01-13 16:10:00 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:10:01 | INFO | valid | epoch 035 | valid on 'valid' subset | loss 8.746 | ppl 429.3 | wps 26160.1 | wpb 556.6 | bsz 30.3 | num_updates 1748 | best_loss 8.746
+2022-01-13 16:10:01 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 35 @ 1748 updates
+2022-01-13 16:10:01 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:10:03 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:10:05 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 35 @ 1748 updates, score 8.746) (writing took 4.151188254123554 seconds)
+2022-01-13 16:10:05 | INFO | fairseq_cli.train | end of epoch 35 (average epoch stats below)
+2022-01-13 16:10:05 | INFO | train | epoch 035 | loss 8.912 | ppl 481.56 | wps 7217.2 | ups 5.85 | wpb 1232.9 | bsz 63.5 | num_updates 1748 | lr 5.244e-06 | gnorm 7.451 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 345
+2022-01-13 16:10:05 | INFO | fairseq.trainer | begin training epoch 36
+2022-01-13 16:10:05 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:10:06 | INFO | train_inner | epoch 036:     12 / 50 loss=8.877, ppl=470.26, wps=3778.6, ups=3.04, wpb=1242.2, bsz=64, num_updates=1760, lr=5.28e-06, gnorm=7.571, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=346
+2022-01-13 16:10:07 | INFO | train_inner | epoch 036:     32 / 50 loss=8.837, ppl=457.17, wps=18349.9, ups=14.18, wpb=1293.7, bsz=62.7, num_updates=1780, lr=5.34e-06, gnorm=7.468, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=347
+2022-01-13 16:10:09 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:10:09 | INFO | valid | epoch 036 | valid on 'valid' subset | loss 8.661 | ppl 404.91 | wps 25730 | wpb 556.6 | bsz 30.3 | num_updates 1798 | best_loss 8.661
+2022-01-13 16:10:09 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 36 @ 1798 updates
+2022-01-13 16:10:09 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:10:12 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:10:14 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 36 @ 1798 updates, score 8.661) (writing took 4.309992542024702 seconds)
+2022-01-13 16:10:14 | INFO | fairseq_cli.train | end of epoch 36 (average epoch stats below)
+2022-01-13 16:10:14 | INFO | train | epoch 036 | loss 8.866 | ppl 466.5 | wps 6961.3 | ups 5.65 | wpb 1232.9 | bsz 63.5 | num_updates 1798 | lr 5.394e-06 | gnorm 7.548 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 354
+2022-01-13 16:10:14 | INFO | fairseq.trainer | begin training epoch 37
+2022-01-13 16:10:14 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:10:14 | INFO | train_inner | epoch 037:      2 / 50 loss=8.84, ppl=458.23, wps=3427.3, ups=3.02, wpb=1136.7, bsz=64, num_updates=1800, lr=5.4e-06, gnorm=7.544, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=354
+2022-01-13 16:10:15 | INFO | train_inner | epoch 037:     22 / 50 loss=8.691, ppl=413.28, wps=16389.6, ups=13.76, wpb=1191, bsz=62.7, num_updates=1820, lr=5.46e-06, gnorm=7.491, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=355
+2022-01-13 16:10:17 | INFO | train_inner | epoch 037:     42 / 50 loss=8.782, ppl=440.22, wps=14674.6, ups=11.87, wpb=1236.2, bsz=64, num_updates=1840, lr=5.52e-06, gnorm=7.484, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=357
+2022-01-13 16:10:18 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:10:18 | INFO | valid | epoch 037 | valid on 'valid' subset | loss 8.541 | ppl 372.56 | wps 31255.1 | wpb 556.6 | bsz 30.3 | num_updates 1848 | best_loss 8.541
+2022-01-13 16:10:18 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 37 @ 1848 updates
+2022-01-13 16:10:18 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:10:21 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:10:22 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 37 @ 1848 updates, score 8.541) (writing took 4.009414136176929 seconds)
+2022-01-13 16:10:22 | INFO | fairseq_cli.train | end of epoch 37 (average epoch stats below)
+2022-01-13 16:10:22 | INFO | train | epoch 037 | loss 8.762 | ppl 434.03 | wps 7128.4 | ups 5.78 | wpb 1232.9 | bsz 63.5 | num_updates 1848 | lr 5.544e-06 | gnorm 7.596 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 362
+2022-01-13 16:10:22 | INFO | fairseq.trainer | begin training epoch 38
+2022-01-13 16:10:22 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:10:23 | INFO | train_inner | epoch 038:     12 / 50 loss=8.765, ppl=434.97, wps=3952.6, ups=3.21, wpb=1231.5, bsz=64, num_updates=1860, lr=5.58e-06, gnorm=7.787, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=363
+2022-01-13 16:10:25 | INFO | train_inner | epoch 038:     32 / 50 loss=8.652, ppl=402.27, wps=15816.4, ups=14.27, wpb=1108.1, bsz=64, num_updates=1880, lr=5.64e-06, gnorm=7.524, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=365
+2022-01-13 16:10:26 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:10:27 | INFO | valid | epoch 038 | valid on 'valid' subset | loss 8.489 | ppl 359.29 | wps 26429.1 | wpb 556.6 | bsz 30.3 | num_updates 1898 | best_loss 8.489
+2022-01-13 16:10:27 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 38 @ 1898 updates
+2022-01-13 16:10:27 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:10:29 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:10:31 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 38 @ 1898 updates, score 8.489) (writing took 4.010337166022509 seconds)
+2022-01-13 16:10:31 | INFO | fairseq_cli.train | end of epoch 38 (average epoch stats below)
+2022-01-13 16:10:31 | INFO | train | epoch 038 | loss 8.72 | ppl 421.81 | wps 7324.5 | ups 5.94 | wpb 1232.9 | bsz 63.5 | num_updates 1898 | lr 5.694e-06 | gnorm 7.447 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 371
+2022-01-13 16:10:31 | INFO | fairseq.trainer | begin training epoch 39
+2022-01-13 16:10:31 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:10:31 | INFO | train_inner | epoch 039:      2 / 50 loss=8.76, ppl=433.48, wps=4321.9, ups=3.18, wpb=1357.8, bsz=62.7, num_updates=1900, lr=5.7e-06, gnorm=7.385, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=371
+2022-01-13 16:10:32 | INFO | train_inner | epoch 039:     22 / 50 loss=8.66, ppl=404.52, wps=17956.5, ups=12.88, wpb=1394.3, bsz=62.7, num_updates=1920, lr=5.76e-06, gnorm=7.404, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=372
+2022-01-13 16:10:34 | INFO | train_inner | epoch 039:     42 / 50 loss=8.679, ppl=409.79, wps=13311.2, ups=12.06, wpb=1103.3, bsz=64, num_updates=1940, lr=5.82e-06, gnorm=7.47, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=374
+2022-01-13 16:10:35 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:10:36 | INFO | valid | epoch 039 | valid on 'valid' subset | loss 8.371 | ppl 330.97 | wps 26976.6 | wpb 556.6 | bsz 30.3 | num_updates 1948 | best_loss 8.371
+2022-01-13 16:10:36 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 39 @ 1948 updates
+2022-01-13 16:10:36 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:10:38 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:10:40 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 39 @ 1948 updates, score 8.371) (writing took 4.564471570076421 seconds)
+2022-01-13 16:10:40 | INFO | fairseq_cli.train | end of epoch 39 (average epoch stats below)
+2022-01-13 16:10:40 | INFO | train | epoch 039 | loss 8.623 | ppl 394.21 | wps 6542 | ups 5.31 | wpb 1232.9 | bsz 63.5 | num_updates 1948 | lr 5.844e-06 | gnorm 7.454 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 380
+2022-01-13 16:10:40 | INFO | fairseq.trainer | begin training epoch 40
+2022-01-13 16:10:40 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:10:41 | INFO | train_inner | epoch 040:     12 / 50 loss=8.468, ppl=354.2, wps=3326, ups=2.87, wpb=1158.2, bsz=62.7, num_updates=1960, lr=5.88e-06, gnorm=7.667, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=381
+2022-01-13 16:10:43 | INFO | train_inner | epoch 040:     32 / 50 loss=8.6, ppl=388.06, wps=16215.4, ups=13.58, wpb=1193.9, bsz=64, num_updates=1980, lr=5.94e-06, gnorm=7.286, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=383
+2022-01-13 16:10:44 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:10:45 | INFO | valid | epoch 040 | valid on 'valid' subset | loss 8.359 | ppl 328.42 | wps 25789.3 | wpb 556.6 | bsz 30.3 | num_updates 1998 | best_loss 8.359
+2022-01-13 16:10:45 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 40 @ 1998 updates
+2022-01-13 16:10:45 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:10:47 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:10:49 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 40 @ 1998 updates, score 8.359) (writing took 4.422414128202945 seconds)
+2022-01-13 16:10:49 | INFO | fairseq_cli.train | end of epoch 40 (average epoch stats below)
+2022-01-13 16:10:49 | INFO | train | epoch 040 | loss 8.554 | ppl 375.94 | wps 6908.7 | ups 5.6 | wpb 1232.9 | bsz 63.5 | num_updates 1998 | lr 5.994e-06 | gnorm 7.422 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 389
+2022-01-13 16:10:49 | INFO | fairseq.trainer | begin training epoch 41
+2022-01-13 16:10:49 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:10:49 | INFO | train_inner | epoch 041:      2 / 50 loss=8.543, ppl=373.01, wps=3903, ups=2.95, wpb=1325.2, bsz=64, num_updates=2000, lr=6e-06, gnorm=7.283, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=389
+2022-01-13 16:10:49 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:10:50 | INFO | valid | epoch 041 | valid on 'valid' subset | loss 8.283 | ppl 311.4 | wps 27538.8 | wpb 556.6 | bsz 30.3 | num_updates 2000 | best_loss 8.283
+2022-01-13 16:10:50 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 41 @ 2000 updates
+2022-01-13 16:10:50 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_41_2000.pt
+2022-01-13 16:10:52 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_41_2000.pt
+2022-01-13 16:11:00 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_41_2000.pt (epoch 41 @ 2000 updates, score 8.283) (writing took 9.639275103108957 seconds)
+2022-01-13 16:11:01 | INFO | train_inner | epoch 041:     22 / 50 loss=8.504, ppl=363.03, wps=2179.8, ups=1.67, wpb=1308.8, bsz=64, num_updates=2020, lr=6.06e-06, gnorm=7.23, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=401
+2022-01-13 16:11:03 | INFO | train_inner | epoch 041:     42 / 50 loss=8.451, ppl=349.86, wps=15604.2, ups=13.06, wpb=1194.7, bsz=62.7, num_updates=2040, lr=6.12e-06, gnorm=7.374, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=403
+2022-01-13 16:11:04 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:11:04 | INFO | valid | epoch 041 | valid on 'valid' subset | loss 8.289 | ppl 312.71 | wps 26983.3 | wpb 556.6 | bsz 30.3 | num_updates 2048 | best_loss 8.283
+2022-01-13 16:11:04 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 41 @ 2048 updates
+2022-01-13 16:11:04 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_last.pt
+2022-01-13 16:11:07 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_last.pt
+2022-01-13 16:11:07 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_last.pt (epoch 41 @ 2048 updates, score 8.289) (writing took 2.782855710014701 seconds)
+2022-01-13 16:11:07 | INFO | fairseq_cli.train | end of epoch 41 (average epoch stats below)
+2022-01-13 16:11:07 | INFO | train | epoch 041 | loss 8.453 | ppl 350.35 | wps 3412.4 | ups 2.77 | wpb 1232.9 | bsz 63.5 | num_updates 2048 | lr 6.144e-06 | gnorm 7.295 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 407
+2022-01-13 16:11:07 | INFO | fairseq.trainer | begin training epoch 42
+2022-01-13 16:11:07 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:11:08 | INFO | train_inner | epoch 042:     12 / 50 loss=8.347, ppl=325.52, wps=4706.6, ups=3.87, wpb=1217.2, bsz=64, num_updates=2060, lr=6.18e-06, gnorm=7.363, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=408
+2022-01-13 16:11:10 | INFO | train_inner | epoch 042:     32 / 50 loss=8.433, ppl=345.67, wps=16015.5, ups=12.84, wpb=1247.2, bsz=64, num_updates=2080, lr=6.24e-06, gnorm=7.501, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=410
+2022-01-13 16:11:11 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:11:12 | INFO | valid | epoch 042 | valid on 'valid' subset | loss 8.137 | ppl 281.45 | wps 30256.7 | wpb 556.6 | bsz 30.3 | num_updates 2098 | best_loss 8.137
+2022-01-13 16:11:12 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 42 @ 2098 updates
+2022-01-13 16:11:12 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:11:14 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:11:16 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 42 @ 2098 updates, score 8.137) (writing took 4.345485378988087 seconds)
+2022-01-13 16:11:16 | INFO | fairseq_cli.train | end of epoch 42 (average epoch stats below)
+2022-01-13 16:11:16 | INFO | train | epoch 042 | loss 8.402 | ppl 338.38 | wps 6854.6 | ups 5.56 | wpb 1232.9 | bsz 63.5 | num_updates 2098 | lr 6.294e-06 | gnorm 7.467 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 416
+2022-01-13 16:11:16 | INFO | fairseq.trainer | begin training epoch 43
+2022-01-13 16:11:16 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:11:16 | INFO | train_inner | epoch 043:      2 / 50 loss=8.318, ppl=319.2, wps=3537.6, ups=2.99, wpb=1182.5, bsz=62.7, num_updates=2100, lr=6.3e-06, gnorm=7.432, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=416
+2022-01-13 16:11:18 | INFO | train_inner | epoch 043:     22 / 50 loss=8.177, ppl=289.45, wps=16532.8, ups=13.51, wpb=1223.8, bsz=62.7, num_updates=2120, lr=6.36e-06, gnorm=7.531, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=418
+2022-01-13 16:11:19 | INFO | train_inner | epoch 043:     42 / 50 loss=8.548, ppl=374.37, wps=16729.1, ups=13.01, wpb=1286.2, bsz=64, num_updates=2140, lr=6.42e-06, gnorm=7.07, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=419
+2022-01-13 16:11:20 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:11:21 | INFO | valid | epoch 043 | valid on 'valid' subset | loss 8.136 | ppl 281.38 | wps 27232.9 | wpb 556.6 | bsz 30.3 | num_updates 2148 | best_loss 8.136
+2022-01-13 16:11:21 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 43 @ 2148 updates
+2022-01-13 16:11:21 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:11:24 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:11:25 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 43 @ 2148 updates, score 8.136) (writing took 4.420745020965114 seconds)
+2022-01-13 16:11:25 | INFO | fairseq_cli.train | end of epoch 43 (average epoch stats below)
+2022-01-13 16:11:25 | INFO | train | epoch 043 | loss 8.313 | ppl 317.92 | wps 6704.3 | ups 5.44 | wpb 1232.9 | bsz 63.5 | num_updates 2148 | lr 6.444e-06 | gnorm 7.325 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 425
+2022-01-13 16:11:25 | INFO | fairseq.trainer | begin training epoch 44
+2022-01-13 16:11:25 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:11:26 | INFO | train_inner | epoch 044:     12 / 50 loss=8.121, ppl=278.34, wps=3163.3, ups=2.92, wpb=1083.7, bsz=62.7, num_updates=2160, lr=6.48e-06, gnorm=7.573, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=426
+2022-01-13 16:11:28 | INFO | train_inner | epoch 044:     32 / 50 loss=8.235, ppl=301.22, wps=16333.8, ups=12.91, wpb=1265.7, bsz=64, num_updates=2180, lr=6.54e-06, gnorm=7.183, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=428
+2022-01-13 16:11:29 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:11:30 | INFO | valid | epoch 044 | valid on 'valid' subset | loss 8.064 | ppl 267.6 | wps 28635.2 | wpb 556.6 | bsz 30.3 | num_updates 2198 | best_loss 8.064
+2022-01-13 16:11:30 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 44 @ 2198 updates
+2022-01-13 16:11:30 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:11:33 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:11:35 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 44 @ 2198 updates, score 8.064) (writing took 4.677682719193399 seconds)
+2022-01-13 16:11:35 | INFO | fairseq_cli.train | end of epoch 44 (average epoch stats below)
+2022-01-13 16:11:35 | INFO | train | epoch 044 | loss 8.246 | ppl 303.65 | wps 6578.2 | ups 5.34 | wpb 1232.9 | bsz 63.5 | num_updates 2198 | lr 6.594e-06 | gnorm 7.281 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 435
+2022-01-13 16:11:35 | INFO | fairseq.trainer | begin training epoch 45
+2022-01-13 16:11:35 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:11:35 | INFO | train_inner | epoch 045:      2 / 50 loss=8.289, ppl=312.74, wps=3579.7, ups=2.8, wpb=1277.9, bsz=64, num_updates=2200, lr=6.6e-06, gnorm=7.232, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=435
+2022-01-13 16:11:36 | INFO | train_inner | epoch 045:     22 / 50 loss=8.118, ppl=277.89, wps=16832.3, ups=13.79, wpb=1220.5, bsz=62.7, num_updates=2220, lr=6.66e-06, gnorm=7.418, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=436
+2022-01-13 16:11:38 | INFO | train_inner | epoch 045:     42 / 50 loss=8.123, ppl=278.72, wps=16909.4, ups=13.81, wpb=1224.2, bsz=64, num_updates=2240, lr=6.72e-06, gnorm=7.486, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=438
+2022-01-13 16:11:38 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:11:39 | INFO | valid | epoch 045 | valid on 'valid' subset | loss 7.984 | ppl 253.12 | wps 26321.5 | wpb 556.6 | bsz 30.3 | num_updates 2248 | best_loss 7.984
+2022-01-13 16:11:39 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 45 @ 2248 updates
+2022-01-13 16:11:39 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:11:42 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:11:44 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 45 @ 2248 updates, score 7.984) (writing took 4.313323424896225 seconds)
+2022-01-13 16:11:44 | INFO | fairseq_cli.train | end of epoch 45 (average epoch stats below)
+2022-01-13 16:11:44 | INFO | train | epoch 045 | loss 8.153 | ppl 284.65 | wps 7001.8 | ups 5.68 | wpb 1232.9 | bsz 63.5 | num_updates 2248 | lr 6.744e-06 | gnorm 7.412 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 443
+2022-01-13 16:11:44 | INFO | fairseq.trainer | begin training epoch 46
+2022-01-13 16:11:44 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:11:44 | INFO | train_inner | epoch 046:     12 / 50 loss=8.342, ppl=324.52, wps=3920.8, ups=3.02, wpb=1296.3, bsz=62.7, num_updates=2260, lr=6.78e-06, gnorm=7.174, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=444
+2022-01-13 16:11:46 | INFO | train_inner | epoch 046:     32 / 50 loss=7.947, ppl=246.77, wps=16123.6, ups=13.55, wpb=1189.8, bsz=64, num_updates=2280, lr=6.84e-06, gnorm=7.652, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=446
+2022-01-13 16:11:47 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:11:48 | INFO | valid | epoch 046 | valid on 'valid' subset | loss 7.968 | ppl 250.4 | wps 27339.4 | wpb 556.6 | bsz 30.3 | num_updates 2298 | best_loss 7.968
+2022-01-13 16:11:48 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 46 @ 2298 updates
+2022-01-13 16:11:48 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:11:51 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:11:52 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 46 @ 2298 updates, score 7.968) (writing took 4.097854980966076 seconds)
+2022-01-13 16:11:52 | INFO | fairseq_cli.train | end of epoch 46 (average epoch stats below)
+2022-01-13 16:11:53 | INFO | train | epoch 046 | loss 8.086 | ppl 271.68 | wps 7038.4 | ups 5.71 | wpb 1232.9 | bsz 63.5 | num_updates 2298 | lr 6.894e-06 | gnorm 7.444 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 452
+2022-01-13 16:11:54 | INFO | fairseq.trainer | begin training epoch 47
+2022-01-13 16:11:54 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:11:54 | INFO | train_inner | epoch 047:      2 / 50 loss=8.117, ppl=277.68, wps=3279.6, ups=2.57, wpb=1275.9, bsz=64, num_updates=2300, lr=6.9e-06, gnorm=7.698, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=454
+2022-01-13 16:11:55 | INFO | train_inner | epoch 047:     22 / 50 loss=8.119, ppl=278.04, wps=17783.4, ups=14.28, wpb=1245.6, bsz=64, num_updates=2320, lr=6.96e-06, gnorm=7.318, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=455
+2022-01-13 16:11:57 | INFO | train_inner | epoch 047:     42 / 50 loss=7.939, ppl=245.34, wps=17622, ups=13.83, wpb=1274.3, bsz=62.7, num_updates=2340, lr=7.02e-06, gnorm=7.391, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=457
+2022-01-13 16:11:57 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:11:58 | INFO | valid | epoch 047 | valid on 'valid' subset | loss 7.843 | ppl 229.65 | wps 26060.8 | wpb 556.6 | bsz 30.3 | num_updates 2348 | best_loss 7.843
+2022-01-13 16:11:58 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 47 @ 2348 updates
+2022-01-13 16:11:58 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:12:01 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:12:02 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 47 @ 2348 updates, score 7.843) (writing took 4.281112919095904 seconds)
+2022-01-13 16:12:02 | INFO | fairseq_cli.train | end of epoch 47 (average epoch stats below)
+2022-01-13 16:12:02 | INFO | train | epoch 047 | loss 8.031 | ppl 261.61 | wps 7133.3 | ups 5.79 | wpb 1232.9 | bsz 63.5 | num_updates 2348 | lr 7.044e-06 | gnorm 7.469 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 462
+2022-01-13 16:12:02 | INFO | fairseq.trainer | begin training epoch 48
+2022-01-13 16:12:02 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:12:03 | INFO | train_inner | epoch 048:     12 / 50 loss=7.919, ppl=241.94, wps=3815.9, ups=3.08, wpb=1239.3, bsz=62.7, num_updates=2360, lr=7.08e-06, gnorm=9.644, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=463
+2022-01-13 16:12:05 | INFO | train_inner | epoch 048:     32 / 50 loss=7.847, ppl=230.21, wps=16414.4, ups=13.94, wpb=1177.8, bsz=64, num_updates=2380, lr=7.14e-06, gnorm=8.052, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=464
+2022-01-13 16:12:06 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:12:07 | INFO | valid | epoch 048 | valid on 'valid' subset | loss 7.761 | ppl 216.96 | wps 26199.4 | wpb 556.6 | bsz 30.3 | num_updates 2398 | best_loss 7.761
+2022-01-13 16:12:07 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 48 @ 2398 updates
+2022-01-13 16:12:07 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:12:09 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:12:12 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 48 @ 2398 updates, score 7.761) (writing took 5.027700481005013 seconds)
+2022-01-13 16:12:12 | INFO | fairseq_cli.train | end of epoch 48 (average epoch stats below)
+2022-01-13 16:12:12 | INFO | train | epoch 048 | loss 7.932 | ppl 244.17 | wps 6489.4 | ups 5.26 | wpb 1232.9 | bsz 63.5 | num_updates 2398 | lr 7.194e-06 | gnorm 8.748 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 472
+2022-01-13 16:12:12 | INFO | fairseq.trainer | begin training epoch 49
+2022-01-13 16:12:12 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:12:12 | INFO | train_inner | epoch 049:      2 / 50 loss=7.993, ppl=254.71, wps=3073.5, ups=2.58, wpb=1192.6, bsz=64, num_updates=2400, lr=7.2e-06, gnorm=7.797, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=472
+2022-01-13 16:12:14 | INFO | train_inner | epoch 049:     22 / 50 loss=7.819, ppl=225.86, wps=18038.5, ups=13.52, wpb=1334.5, bsz=64, num_updates=2420, lr=7.26e-06, gnorm=7.082, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=474
+2022-01-13 16:12:15 | INFO | train_inner | epoch 049:     42 / 50 loss=7.893, ppl=237.66, wps=15250.2, ups=13.4, wpb=1138.3, bsz=62.7, num_updates=2440, lr=7.32e-06, gnorm=10.43, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=475
+2022-01-13 16:12:16 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:12:17 | INFO | valid | epoch 049 | valid on 'valid' subset | loss 7.75 | ppl 215.26 | wps 27477.2 | wpb 556.6 | bsz 30.3 | num_updates 2448 | best_loss 7.75
+2022-01-13 16:12:17 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 49 @ 2448 updates
+2022-01-13 16:12:17 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:12:20 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:12:24 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 49 @ 2448 updates, score 7.75) (writing took 6.951026380993426 seconds)
+2022-01-13 16:12:24 | INFO | fairseq_cli.train | end of epoch 49 (average epoch stats below)
+2022-01-13 16:12:24 | INFO | train | epoch 049 | loss 7.901 | ppl 239.06 | wps 5250.4 | ups 4.26 | wpb 1232.9 | bsz 63.5 | num_updates 2448 | lr 7.344e-06 | gnorm 8.476 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 483
+2022-01-13 16:12:24 | INFO | fairseq.trainer | begin training epoch 50
+2022-01-13 16:12:24 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:12:25 | INFO | train_inner | epoch 050:     12 / 50 loss=7.935, ppl=244.74, wps=2738.1, ups=2.14, wpb=1276.5, bsz=62.7, num_updates=2460, lr=7.38e-06, gnorm=7.32, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=485
+2022-01-13 16:12:26 | INFO | train_inner | epoch 050:     32 / 50 loss=7.874, ppl=234.54, wps=16877.8, ups=13.26, wpb=1273.2, bsz=64, num_updates=2480, lr=7.44e-06, gnorm=7.515, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=486
+2022-01-13 16:12:28 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:12:28 | INFO | valid | epoch 050 | valid on 'valid' subset | loss 7.689 | ppl 206.29 | wps 27047.5 | wpb 556.6 | bsz 30.3 | num_updates 2498 | best_loss 7.689
+2022-01-13 16:12:28 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 50 @ 2498 updates
+2022-01-13 16:12:28 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:12:31 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:12:32 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 50 @ 2498 updates, score 7.689) (writing took 4.139003769960254 seconds)
+2022-01-13 16:12:32 | INFO | fairseq_cli.train | end of epoch 50 (average epoch stats below)
+2022-01-13 16:12:32 | INFO | train | epoch 050 | loss 7.832 | ppl 227.86 | wps 6958.1 | ups 5.64 | wpb 1232.9 | bsz 63.5 | num_updates 2498 | lr 7.494e-06 | gnorm 7.37 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 492
+2022-01-13 16:12:32 | INFO | fairseq.trainer | begin training epoch 51
+2022-01-13 16:12:32 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:12:33 | INFO | train_inner | epoch 051:      2 / 50 loss=7.842, ppl=229.4, wps=3624.7, ups=3.05, wpb=1188, bsz=64, num_updates=2500, lr=7.5e-06, gnorm=7.233, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=493
+2022-01-13 16:12:33 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:12:33 | INFO | valid | epoch 051 | valid on 'valid' subset | loss 7.631 | ppl 198.27 | wps 27071.8 | wpb 556.6 | bsz 30.3 | num_updates 2500 | best_loss 7.631
+2022-01-13 16:12:33 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 51 @ 2500 updates
+2022-01-13 16:12:33 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_51_2500.pt
+2022-01-13 16:12:36 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_51_2500.pt
+2022-01-13 16:12:42 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_51_2500.pt (epoch 51 @ 2500 updates, score 7.631) (writing took 8.39964364701882 seconds)
+2022-01-13 16:12:44 | INFO | train_inner | epoch 051:     22 / 50 loss=7.839, ppl=229, wps=2271.9, ups=1.83, wpb=1242.9, bsz=64, num_updates=2520, lr=7.56e-06, gnorm=7.368, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=504
+2022-01-13 16:12:45 | INFO | train_inner | epoch 051:     42 / 50 loss=7.727, ppl=211.93, wps=13503.6, ups=10.78, wpb=1252.8, bsz=62.7, num_updates=2540, lr=7.62e-06, gnorm=7.282, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=505
+2022-01-13 16:12:46 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:12:47 | INFO | valid | epoch 051 | valid on 'valid' subset | loss 7.639 | ppl 199.31 | wps 27398.3 | wpb 556.6 | bsz 30.3 | num_updates 2548 | best_loss 7.631
+2022-01-13 16:12:47 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 51 @ 2548 updates
+2022-01-13 16:12:47 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_last.pt
+2022-01-13 16:12:50 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_last.pt
+2022-01-13 16:12:50 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_last.pt (epoch 51 @ 2548 updates, score 7.639) (writing took 2.8562494858633727 seconds)
+2022-01-13 16:12:50 | INFO | fairseq_cli.train | end of epoch 51 (average epoch stats below)
+2022-01-13 16:12:50 | INFO | train | epoch 051 | loss 7.765 | ppl 217.47 | wps 3560.3 | ups 2.89 | wpb 1232.9 | bsz 63.5 | num_updates 2548 | lr 7.644e-06 | gnorm 7.384 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 510
+2022-01-13 16:12:50 | INFO | fairseq.trainer | begin training epoch 52
+2022-01-13 16:12:50 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:12:51 | INFO | train_inner | epoch 052:     12 / 50 loss=7.654, ppl=201.47, wps=4490.8, ups=3.82, wpb=1176.3, bsz=62.7, num_updates=2560, lr=7.68e-06, gnorm=7.704, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=511
+2022-01-13 16:12:52 | INFO | train_inner | epoch 052:     32 / 50 loss=7.736, ppl=213.22, wps=16047.8, ups=13.47, wpb=1191, bsz=64, num_updates=2580, lr=7.74e-06, gnorm=7.258, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=512
+2022-01-13 16:12:53 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:12:54 | INFO | valid | epoch 052 | valid on 'valid' subset | loss 7.614 | ppl 195.94 | wps 25819.1 | wpb 556.6 | bsz 30.3 | num_updates 2598 | best_loss 7.614
+2022-01-13 16:12:54 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 52 @ 2598 updates
+2022-01-13 16:12:54 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:12:57 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:12:59 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 52 @ 2598 updates, score 7.614) (writing took 4.360743889817968 seconds)
+2022-01-13 16:12:59 | INFO | fairseq_cli.train | end of epoch 52 (average epoch stats below)
+2022-01-13 16:12:59 | INFO | train | epoch 052 | loss 7.712 | ppl 209.65 | wps 6971.8 | ups 5.65 | wpb 1232.9 | bsz 63.5 | num_updates 2598 | lr 7.794e-06 | gnorm 7.467 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 518
+2022-01-13 16:12:59 | INFO | fairseq.trainer | begin training epoch 53
+2022-01-13 16:12:59 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:12:59 | INFO | train_inner | epoch 053:      2 / 50 loss=7.686, ppl=205.88, wps=3851.5, ups=3.03, wpb=1271.5, bsz=64, num_updates=2600, lr=7.8e-06, gnorm=7.638, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=519
+2022-01-13 16:13:00 | INFO | train_inner | epoch 053:     22 / 50 loss=7.714, ppl=210.03, wps=17902.4, ups=13.63, wpb=1313.8, bsz=64, num_updates=2620, lr=7.86e-06, gnorm=7.042, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=520
+2022-01-13 16:13:02 | INFO | train_inner | epoch 053:     42 / 50 loss=7.551, ppl=187.55, wps=15547.8, ups=13.46, wpb=1154.8, bsz=62.7, num_updates=2640, lr=7.92e-06, gnorm=7.727, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=522
+2022-01-13 16:13:02 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:13:03 | INFO | valid | epoch 053 | valid on 'valid' subset | loss 7.473 | ppl 177.71 | wps 27355.1 | wpb 556.6 | bsz 30.3 | num_updates 2648 | best_loss 7.473
+2022-01-13 16:13:03 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 53 @ 2648 updates
+2022-01-13 16:13:03 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:13:05 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:13:07 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 53 @ 2648 updates, score 7.473) (writing took 3.8562265541404486 seconds)
+2022-01-13 16:13:07 | INFO | fairseq_cli.train | end of epoch 53 (average epoch stats below)
+2022-01-13 16:13:07 | INFO | train | epoch 053 | loss 7.625 | ppl 197.36 | wps 7384.9 | ups 5.99 | wpb 1232.9 | bsz 63.5 | num_updates 2648 | lr 7.944e-06 | gnorm 7.394 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 527
+2022-01-13 16:13:07 | INFO | fairseq.trainer | begin training epoch 54
+2022-01-13 16:13:07 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:13:08 | INFO | train_inner | epoch 054:     12 / 50 loss=7.592, ppl=192.88, wps=3972.9, ups=3.2, wpb=1242.8, bsz=64, num_updates=2660, lr=7.98e-06, gnorm=7.365, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=528
+2022-01-13 16:13:09 | INFO | train_inner | epoch 054:     32 / 50 loss=7.59, ppl=192.72, wps=17855.5, ups=14.36, wpb=1243.4, bsz=64, num_updates=2680, lr=8.04e-06, gnorm=7.408, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=529
+2022-01-13 16:13:11 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:13:11 | INFO | valid | epoch 054 | valid on 'valid' subset | loss 7.484 | ppl 179 | wps 28413.3 | wpb 556.6 | bsz 30.3 | num_updates 2698 | best_loss 7.473
+2022-01-13 16:13:11 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 54 @ 2698 updates
+2022-01-13 16:13:11 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_last.pt
+2022-01-13 16:13:14 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_last.pt
+2022-01-13 16:13:14 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_last.pt (epoch 54 @ 2698 updates, score 7.484) (writing took 2.5603727689012885 seconds)
+2022-01-13 16:13:14 | INFO | fairseq_cli.train | end of epoch 54 (average epoch stats below)
+2022-01-13 16:13:14 | INFO | train | epoch 054 | loss 7.553 | ppl 187.85 | wps 8895 | ups 7.21 | wpb 1232.9 | bsz 63.5 | num_updates 2698 | lr 8.094e-06 | gnorm 7.379 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 534
+2022-01-13 16:13:14 | INFO | fairseq.trainer | begin training epoch 55
+2022-01-13 16:13:14 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:13:14 | INFO | train_inner | epoch 055:      2 / 50 loss=7.427, ppl=172.14, wps=4951.5, ups=4.19, wpb=1182.4, bsz=62.7, num_updates=2700, lr=8.1e-06, gnorm=7.373, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=534
+2022-01-13 16:13:16 | INFO | train_inner | epoch 055:     22 / 50 loss=7.272, ppl=154.52, wps=14923.3, ups=13.99, wpb=1066.3, bsz=62.7, num_updates=2720, lr=8.16e-06, gnorm=7.8, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=536
+2022-01-13 16:13:17 | INFO | train_inner | epoch 055:     42 / 50 loss=7.566, ppl=189.53, wps=17768.6, ups=13.75, wpb=1291.8, bsz=64, num_updates=2740, lr=8.22e-06, gnorm=7.07, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=537
+2022-01-13 16:13:18 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:13:18 | INFO | valid | epoch 055 | valid on 'valid' subset | loss 7.407 | ppl 169.77 | wps 26186.7 | wpb 556.6 | bsz 30.3 | num_updates 2748 | best_loss 7.407
+2022-01-13 16:13:18 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 55 @ 2748 updates
+2022-01-13 16:13:18 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:13:21 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:13:23 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 55 @ 2748 updates, score 7.407) (writing took 4.511528666131198 seconds)
+2022-01-13 16:13:23 | INFO | fairseq_cli.train | end of epoch 55 (average epoch stats below)
+2022-01-13 16:13:23 | INFO | train | epoch 055 | loss 7.466 | ppl 176.84 | wps 6886.5 | ups 5.59 | wpb 1232.9 | bsz 63.5 | num_updates 2748 | lr 8.244e-06 | gnorm 7.343 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 543
+2022-01-13 16:13:23 | INFO | fairseq.trainer | begin training epoch 56
+2022-01-13 16:13:23 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:13:24 | INFO | train_inner | epoch 056:     12 / 50 loss=7.544, ppl=186.62, wps=3937.4, ups=2.96, wpb=1332, bsz=64, num_updates=2760, lr=8.28e-06, gnorm=7.184, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=544
+2022-01-13 16:13:25 | INFO | train_inner | epoch 056:     32 / 50 loss=7.389, ppl=167.56, wps=17904.2, ups=13.8, wpb=1297, bsz=62.7, num_updates=2780, lr=8.34e-06, gnorm=7.493, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=545
+2022-01-13 16:13:27 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:13:27 | INFO | valid | epoch 056 | valid on 'valid' subset | loss 7.34 | ppl 162.03 | wps 26327.5 | wpb 556.6 | bsz 30.3 | num_updates 2798 | best_loss 7.34
+2022-01-13 16:13:27 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 56 @ 2798 updates
+2022-01-13 16:13:27 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:13:30 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:13:32 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 56 @ 2798 updates, score 7.34) (writing took 4.353646798990667 seconds)
+2022-01-13 16:13:32 | INFO | fairseq_cli.train | end of epoch 56 (average epoch stats below)
+2022-01-13 16:13:32 | INFO | train | epoch 056 | loss 7.451 | ppl 174.93 | wps 6955.9 | ups 5.64 | wpb 1232.9 | bsz 63.5 | num_updates 2798 | lr 8.394e-06 | gnorm 7.433 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 552
+2022-01-13 16:13:32 | INFO | fairseq.trainer | begin training epoch 57
+2022-01-13 16:13:32 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:13:32 | INFO | train_inner | epoch 057:      2 / 50 loss=7.527, ppl=184.47, wps=3423.8, ups=2.85, wpb=1200.4, bsz=64, num_updates=2800, lr=8.4e-06, gnorm=7.354, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=552
+2022-01-13 16:13:34 | INFO | train_inner | epoch 057:     22 / 50 loss=7.296, ppl=157.17, wps=18587, ups=14.25, wpb=1304.7, bsz=64, num_updates=2820, lr=8.46e-06, gnorm=7.394, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=554
+2022-01-13 16:13:35 | INFO | train_inner | epoch 057:     42 / 50 loss=7.427, ppl=172.06, wps=16458.7, ups=14.04, wpb=1172.3, bsz=62.7, num_updates=2840, lr=8.52e-06, gnorm=7.617, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=555
+2022-01-13 16:13:36 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:13:37 | INFO | valid | epoch 057 | valid on 'valid' subset | loss 7.28 | ppl 155.41 | wps 27213.2 | wpb 556.6 | bsz 30.3 | num_updates 2848 | best_loss 7.28
+2022-01-13 16:13:37 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 57 @ 2848 updates
+2022-01-13 16:13:37 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:13:39 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:13:41 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 57 @ 2848 updates, score 7.28) (writing took 4.000386480009183 seconds)
+2022-01-13 16:13:41 | INFO | fairseq_cli.train | end of epoch 57 (average epoch stats below)
+2022-01-13 16:13:41 | INFO | train | epoch 057 | loss 7.388 | ppl 167.51 | wps 7241.4 | ups 5.87 | wpb 1232.9 | bsz 63.5 | num_updates 2848 | lr 8.544e-06 | gnorm 7.517 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 561
+2022-01-13 16:13:41 | INFO | fairseq.trainer | begin training epoch 58
+2022-01-13 16:13:41 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:13:42 | INFO | train_inner | epoch 058:     12 / 50 loss=7.412, ppl=170.29, wps=3865, ups=3.16, wpb=1224.3, bsz=64, num_updates=2860, lr=8.58e-06, gnorm=7.526, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=562
+2022-01-13 16:13:43 | INFO | train_inner | epoch 058:     32 / 50 loss=7.298, ppl=157.41, wps=16586.6, ups=14.18, wpb=1169.8, bsz=62.7, num_updates=2880, lr=8.64e-06, gnorm=7.549, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=563
+2022-01-13 16:13:44 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:13:45 | INFO | valid | epoch 058 | valid on 'valid' subset | loss 7.129 | ppl 140.02 | wps 24879.7 | wpb 556.6 | bsz 30.3 | num_updates 2898 | best_loss 7.129
+2022-01-13 16:13:45 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 58 @ 2898 updates
+2022-01-13 16:13:45 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:13:47 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:13:49 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 58 @ 2898 updates, score 7.129) (writing took 3.902147063985467 seconds)
+2022-01-13 16:13:49 | INFO | fairseq_cli.train | end of epoch 58 (average epoch stats below)
+2022-01-13 16:13:49 | INFO | train | epoch 058 | loss 7.33 | ppl 160.9 | wps 7347.2 | ups 5.96 | wpb 1232.9 | bsz 63.5 | num_updates 2898 | lr 8.694e-06 | gnorm 7.467 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 569
+2022-01-13 16:13:49 | INFO | fairseq.trainer | begin training epoch 59
+2022-01-13 16:13:49 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:13:49 | INFO | train_inner | epoch 059:      2 / 50 loss=7.333, ppl=161.19, wps=4078.2, ups=3.21, wpb=1271, bsz=62.7, num_updates=2900, lr=8.7e-06, gnorm=7.482, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=569
+2022-01-13 16:13:51 | INFO | train_inner | epoch 059:     22 / 50 loss=7.177, ppl=144.74, wps=17024.7, ups=14.03, wpb=1213.8, bsz=64, num_updates=2920, lr=8.76e-06, gnorm=7.498, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=571
+2022-01-13 16:13:52 | INFO | train_inner | epoch 059:     42 / 50 loss=7.246, ppl=151.84, wps=16724.5, ups=13.88, wpb=1205.3, bsz=64, num_updates=2940, lr=8.82e-06, gnorm=7.388, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=572
+2022-01-13 16:13:53 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:13:53 | INFO | valid | epoch 059 | valid on 'valid' subset | loss 7.105 | ppl 137.7 | wps 25309.5 | wpb 556.6 | bsz 30.3 | num_updates 2948 | best_loss 7.105
+2022-01-13 16:13:53 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 59 @ 2948 updates
+2022-01-13 16:13:53 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:13:56 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:13:57 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 59 @ 2948 updates, score 7.105) (writing took 3.966971711954102 seconds)
+2022-01-13 16:13:57 | INFO | fairseq_cli.train | end of epoch 59 (average epoch stats below)
+2022-01-13 16:13:57 | INFO | train | epoch 059 | loss 7.241 | ppl 151.23 | wps 7308.2 | ups 5.93 | wpb 1232.9 | bsz 63.5 | num_updates 2948 | lr 8.844e-06 | gnorm 7.427 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 577
+2022-01-13 16:13:57 | INFO | fairseq.trainer | begin training epoch 60
+2022-01-13 16:13:57 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:13:58 | INFO | train_inner | epoch 060:     12 / 50 loss=7.267, ppl=154, wps=4317.4, ups=3.15, wpb=1369, bsz=64, num_updates=2960, lr=8.88e-06, gnorm=7.296, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=578
+2022-01-13 16:14:00 | INFO | train_inner | epoch 060:     32 / 50 loss=7.274, ppl=154.81, wps=17903, ups=13.97, wpb=1281.2, bsz=62.7, num_updates=2980, lr=8.94e-06, gnorm=7.473, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=580
+2022-01-13 16:14:01 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:14:02 | INFO | valid | epoch 060 | valid on 'valid' subset | loss 7.103 | ppl 137.51 | wps 25294.3 | wpb 556.6 | bsz 30.3 | num_updates 2998 | best_loss 7.103
+2022-01-13 16:14:02 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 60 @ 2998 updates
+2022-01-13 16:14:02 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:14:04 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:14:06 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 60 @ 2998 updates, score 7.103) (writing took 4.383154954062775 seconds)
+2022-01-13 16:14:06 | INFO | fairseq_cli.train | end of epoch 60 (average epoch stats below)
+2022-01-13 16:14:06 | INFO | train | epoch 060 | loss 7.186 | ppl 145.57 | wps 6911.9 | ups 5.61 | wpb 1232.9 | bsz 63.5 | num_updates 2998 | lr 8.994e-06 | gnorm 7.489 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 586
+2022-01-13 16:14:06 | INFO | fairseq.trainer | begin training epoch 61
+2022-01-13 16:14:06 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:14:07 | INFO | train_inner | epoch 061:      2 / 50 loss=7.114, ppl=138.56, wps=3206.2, ups=2.95, wpb=1087.5, bsz=64, num_updates=3000, lr=9e-06, gnorm=7.546, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=587
+2022-01-13 16:14:07 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:14:07 | INFO | valid | epoch 061 | valid on 'valid' subset | loss 7.155 | ppl 142.48 | wps 28446.7 | wpb 556.6 | bsz 30.3 | num_updates 3000 | best_loss 7.103
+2022-01-13 16:14:07 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 61 @ 3000 updates
+2022-01-13 16:14:07 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_61_3000.pt
+2022-01-13 16:14:10 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_61_3000.pt
+2022-01-13 16:14:11 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_61_3000.pt (epoch 61 @ 3000 updates, score 7.155) (writing took 4.007071870146319 seconds)
+2022-01-13 16:14:13 | INFO | train_inner | epoch 061:     22 / 50 loss=7.134, ppl=140.5, wps=3663, ups=3.1, wpb=1181.2, bsz=62.7, num_updates=3020, lr=9.06e-06, gnorm=7.758, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=593
+2022-01-13 16:14:15 | INFO | train_inner | epoch 061:     42 / 50 loss=7.174, ppl=144.38, wps=15567.3, ups=12.1, wpb=1286.7, bsz=64, num_updates=3040, lr=9.12e-06, gnorm=7.543, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=595
+2022-01-13 16:14:16 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:14:16 | INFO | valid | epoch 061 | valid on 'valid' subset | loss 7.13 | ppl 140.04 | wps 26763.2 | wpb 556.6 | bsz 30.3 | num_updates 3048 | best_loss 7.103
+2022-01-13 16:14:16 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 61 @ 3048 updates
+2022-01-13 16:14:16 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_last.pt
+2022-01-13 16:14:19 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_last.pt
+2022-01-13 16:14:19 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_last.pt (epoch 61 @ 3048 updates, score 7.13) (writing took 2.425368594005704 seconds)
+2022-01-13 16:14:19 | INFO | fairseq_cli.train | end of epoch 61 (average epoch stats below)
+2022-01-13 16:14:19 | INFO | train | epoch 061 | loss 7.147 | ppl 141.77 | wps 5032.4 | ups 4.08 | wpb 1232.9 | bsz 63.5 | num_updates 3048 | lr 9.144e-06 | gnorm 7.58 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 599
+2022-01-13 16:14:19 | INFO | fairseq.trainer | begin training epoch 62
+2022-01-13 16:14:19 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:14:20 | INFO | train_inner | epoch 062:     12 / 50 loss=7.211, ppl=148.12, wps=5454.1, ups=4.15, wpb=1314.8, bsz=64, num_updates=3060, lr=9.18e-06, gnorm=7.136, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=600
+2022-01-13 16:14:21 | INFO | train_inner | epoch 062:     32 / 50 loss=6.871, ppl=117.06, wps=15097, ups=13.84, wpb=1090.7, bsz=64, num_updates=3080, lr=9.24e-06, gnorm=7.801, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=601
+2022-01-13 16:14:22 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:14:23 | INFO | valid | epoch 062 | valid on 'valid' subset | loss 7.051 | ppl 132.58 | wps 27969 | wpb 556.6 | bsz 30.3 | num_updates 3098 | best_loss 7.051
+2022-01-13 16:14:23 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 62 @ 3098 updates
+2022-01-13 16:14:23 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:14:25 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:14:27 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 62 @ 3098 updates, score 7.051) (writing took 3.8703499040566385 seconds)
+2022-01-13 16:14:27 | INFO | fairseq_cli.train | end of epoch 62 (average epoch stats below)
+2022-01-13 16:14:27 | INFO | train | epoch 062 | loss 7.091 | ppl 136.32 | wps 7467 | ups 6.06 | wpb 1232.9 | bsz 63.5 | num_updates 3098 | lr 9.294e-06 | gnorm 7.458 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 607
+2022-01-13 16:14:27 | INFO | fairseq.trainer | begin training epoch 63
+2022-01-13 16:14:27 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:14:27 | INFO | train_inner | epoch 063:      2 / 50 loss=7.208, ppl=147.8, wps=4457.8, ups=3.28, wpb=1357.5, bsz=62.7, num_updates=3100, lr=9.3e-06, gnorm=7.551, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=607
+2022-01-13 16:14:29 | INFO | train_inner | epoch 063:     22 / 50 loss=7.018, ppl=129.61, wps=17364, ups=13.71, wpb=1267, bsz=64, num_updates=3120, lr=9.36e-06, gnorm=7.317, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=609
+2022-01-13 16:14:30 | INFO | train_inner | epoch 063:     42 / 50 loss=7, ppl=127.96, wps=16197.2, ups=13.93, wpb=1162.7, bsz=62.7, num_updates=3140, lr=9.42e-06, gnorm=7.997, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=610
+2022-01-13 16:14:31 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:14:31 | INFO | valid | epoch 063 | valid on 'valid' subset | loss 6.924 | ppl 121.46 | wps 26643.7 | wpb 556.6 | bsz 30.3 | num_updates 3148 | best_loss 6.924
+2022-01-13 16:14:31 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 63 @ 3148 updates
+2022-01-13 16:14:31 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:14:34 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:14:37 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 63 @ 3148 updates, score 6.924) (writing took 5.0752614790108055 seconds)
+2022-01-13 16:14:37 | INFO | fairseq_cli.train | end of epoch 63 (average epoch stats below)
+2022-01-13 16:14:37 | INFO | train | epoch 063 | loss 7.02 | ppl 129.79 | wps 6412.6 | ups 5.2 | wpb 1232.9 | bsz 63.5 | num_updates 3148 | lr 9.444e-06 | gnorm 7.741 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 616
+2022-01-13 16:14:37 | INFO | fairseq.trainer | begin training epoch 64
+2022-01-13 16:14:37 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:14:38 | INFO | train_inner | epoch 064:     12 / 50 loss=6.956, ppl=124.17, wps=3181.1, ups=2.68, wpb=1186.6, bsz=64, num_updates=3160, lr=9.48e-06, gnorm=7.598, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=617
+2022-01-13 16:14:39 | INFO | train_inner | epoch 064:     32 / 50 loss=7.119, ppl=138.97, wps=17852.6, ups=14.26, wpb=1252.2, bsz=64, num_updates=3180, lr=9.54e-06, gnorm=7.707, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=619
+2022-01-13 16:14:40 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:14:41 | INFO | valid | epoch 064 | valid on 'valid' subset | loss 6.933 | ppl 122.18 | wps 27222.8 | wpb 556.6 | bsz 30.3 | num_updates 3198 | best_loss 6.924
+2022-01-13 16:14:41 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 64 @ 3198 updates
+2022-01-13 16:14:41 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_last.pt
+2022-01-13 16:14:44 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_last.pt
+2022-01-13 16:14:44 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_last.pt (epoch 64 @ 3198 updates, score 6.933) (writing took 2.620714506134391 seconds)
+2022-01-13 16:14:44 | INFO | fairseq_cli.train | end of epoch 64 (average epoch stats below)
+2022-01-13 16:14:44 | INFO | train | epoch 064 | loss 6.989 | ppl 127 | wps 8742.7 | ups 7.09 | wpb 1232.9 | bsz 63.5 | num_updates 3198 | lr 9.594e-06 | gnorm 7.571 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 623
+2022-01-13 16:14:44 | INFO | fairseq.trainer | begin training epoch 65
+2022-01-13 16:14:44 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:14:44 | INFO | train_inner | epoch 065:      2 / 50 loss=6.893, ppl=118.87, wps=5045.2, ups=4.09, wpb=1234.3, bsz=62.7, num_updates=3200, lr=9.6e-06, gnorm=7.485, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=624
+2022-01-13 16:14:45 | INFO | train_inner | epoch 065:     22 / 50 loss=6.801, ppl=111.49, wps=17900.8, ups=13.97, wpb=1281.6, bsz=64, num_updates=3220, lr=9.66e-06, gnorm=7.353, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=625
+2022-01-13 16:14:47 | INFO | train_inner | epoch 065:     42 / 50 loss=6.883, ppl=118.04, wps=16901.7, ups=13.51, wpb=1250.8, bsz=64, num_updates=3240, lr=9.72e-06, gnorm=7.533, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=627
+2022-01-13 16:14:47 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:14:48 | INFO | valid | epoch 065 | valid on 'valid' subset | loss 6.826 | ppl 113.47 | wps 26266.4 | wpb 556.6 | bsz 30.3 | num_updates 3248 | best_loss 6.826
+2022-01-13 16:14:48 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 65 @ 3248 updates
+2022-01-13 16:14:48 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:14:50 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:14:52 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 65 @ 3248 updates, score 6.826) (writing took 4.1442303659860045 seconds)
+2022-01-13 16:14:52 | INFO | fairseq_cli.train | end of epoch 65 (average epoch stats below)
+2022-01-13 16:14:52 | INFO | train | epoch 065 | loss 6.89 | ppl 118.57 | wps 7175.4 | ups 5.82 | wpb 1232.9 | bsz 63.5 | num_updates 3248 | lr 9.744e-06 | gnorm 7.496 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 632
+2022-01-13 16:14:52 | INFO | fairseq.trainer | begin training epoch 66
+2022-01-13 16:14:52 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:14:53 | INFO | train_inner | epoch 066:     12 / 50 loss=6.948, ppl=123.49, wps=3881, ups=3.13, wpb=1240.5, bsz=62.7, num_updates=3260, lr=9.78e-06, gnorm=7.594, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=633
+2022-01-13 16:14:55 | INFO | train_inner | epoch 066:     32 / 50 loss=6.802, ppl=111.62, wps=18003.3, ups=13.99, wpb=1286.8, bsz=64, num_updates=3280, lr=9.84e-06, gnorm=7.914, clip=100, loss_scale=32, train_wall=1, gb_free=20.8, wall=634
+2022-01-13 16:14:56 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:14:57 | INFO | valid | epoch 066 | valid on 'valid' subset | loss 6.769 | ppl 109.03 | wps 25176.8 | wpb 556.6 | bsz 30.3 | num_updates 3298 | best_loss 6.769
+2022-01-13 16:14:57 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 66 @ 3298 updates
+2022-01-13 16:14:57 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:14:59 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:15:00 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 66 @ 3298 updates, score 6.769) (writing took 3.8774605200160295 seconds)
+2022-01-13 16:15:00 | INFO | fairseq_cli.train | end of epoch 66 (average epoch stats below)
+2022-01-13 16:15:00 | INFO | train | epoch 066 | loss 6.885 | ppl 118.16 | wps 7420.2 | ups 6.02 | wpb 1232.9 | bsz 63.5 | num_updates 3298 | lr 9.894e-06 | gnorm 7.755 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 640
+2022-01-13 16:15:01 | INFO | fairseq.trainer | begin training epoch 67
+2022-01-13 16:15:01 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:15:01 | INFO | train_inner | epoch 067:      2 / 50 loss=6.981, ppl=126.33, wps=3786.6, ups=3.25, wpb=1165.1, bsz=62.7, num_updates=3300, lr=9.9e-06, gnorm=7.689, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=641
+2022-01-13 16:15:02 | INFO | train_inner | epoch 067:     22 / 50 loss=6.867, ppl=116.77, wps=17056.3, ups=13.66, wpb=1248.2, bsz=64, num_updates=3320, lr=9.96e-06, gnorm=7.413, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=642
+2022-01-13 16:15:04 | INFO | train_inner | epoch 067:     42 / 50 loss=6.827, ppl=113.54, wps=16466.4, ups=14.19, wpb=1160.2, bsz=62.7, num_updates=3340, lr=1.002e-05, gnorm=7.797, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=644
+2022-01-13 16:15:04 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:15:05 | INFO | valid | epoch 067 | valid on 'valid' subset | loss 6.801 | ppl 111.5 | wps 26137.7 | wpb 556.6 | bsz 30.3 | num_updates 3348 | best_loss 6.769
+2022-01-13 16:15:05 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 67 @ 3348 updates
+2022-01-13 16:15:05 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_last.pt
+2022-01-13 16:15:07 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_last.pt
+2022-01-13 16:15:07 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_last.pt (epoch 67 @ 3348 updates, score 6.801) (writing took 2.5771543020382524 seconds)
+2022-01-13 16:15:07 | INFO | fairseq_cli.train | end of epoch 67 (average epoch stats below)
+2022-01-13 16:15:07 | INFO | train | epoch 067 | loss 6.809 | ppl 112.15 | wps 8808.9 | ups 7.15 | wpb 1232.9 | bsz 63.5 | num_updates 3348 | lr 1.0044e-05 | gnorm 7.633 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 647
+2022-01-13 16:15:08 | INFO | fairseq.trainer | begin training epoch 68
+2022-01-13 16:15:08 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:15:08 | INFO | train_inner | epoch 068:     12 / 50 loss=6.672, ppl=101.97, wps=5768, ups=4.13, wpb=1396.4, bsz=64, num_updates=3360, lr=1.008e-05, gnorm=7.473, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=648
+2022-01-13 16:15:10 | INFO | train_inner | epoch 068:     32 / 50 loss=6.765, ppl=108.76, wps=16973.8, ups=13.6, wpb=1247.9, bsz=62.7, num_updates=3380, lr=1.014e-05, gnorm=7.725, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=650
+2022-01-13 16:15:11 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:15:12 | INFO | valid | epoch 068 | valid on 'valid' subset | loss 6.755 | ppl 108 | wps 26198.4 | wpb 556.6 | bsz 30.3 | num_updates 3398 | best_loss 6.755
+2022-01-13 16:15:12 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 68 @ 3398 updates
+2022-01-13 16:15:12 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:15:14 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:15:16 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 68 @ 3398 updates, score 6.755) (writing took 3.872889523860067 seconds)
+2022-01-13 16:15:16 | INFO | fairseq_cli.train | end of epoch 68 (average epoch stats below)
+2022-01-13 16:15:16 | INFO | train | epoch 068 | loss 6.74 | ppl 106.92 | wps 7393.7 | ups 6 | wpb 1232.9 | bsz 63.5 | num_updates 3398 | lr 1.0194e-05 | gnorm 7.578 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 656
+2022-01-13 16:15:16 | INFO | fairseq.trainer | begin training epoch 69
+2022-01-13 16:15:16 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:15:16 | INFO | train_inner | epoch 069:      2 / 50 loss=6.698, ppl=103.81, wps=3486.5, ups=3.24, wpb=1076.8, bsz=64, num_updates=3400, lr=1.02e-05, gnorm=7.644, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=656
+2022-01-13 16:15:18 | INFO | train_inner | epoch 069:     22 / 50 loss=6.801, ppl=111.49, wps=17688.4, ups=12.84, wpb=1377.8, bsz=64, num_updates=3420, lr=1.026e-05, gnorm=7.17, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=658
+2022-01-13 16:15:19 | INFO | train_inner | epoch 069:     42 / 50 loss=6.594, ppl=96.63, wps=16251.7, ups=13.88, wpb=1170.5, bsz=62.7, num_updates=3440, lr=1.032e-05, gnorm=7.768, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=659
+2022-01-13 16:15:20 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:15:21 | INFO | valid | epoch 069 | valid on 'valid' subset | loss 6.625 | ppl 98.73 | wps 26391.5 | wpb 556.6 | bsz 30.3 | num_updates 3448 | best_loss 6.625
+2022-01-13 16:15:21 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 69 @ 3448 updates
+2022-01-13 16:15:21 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:15:23 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt
+2022-01-13 16:15:25 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_best.pt (epoch 69 @ 3448 updates, score 6.625) (writing took 3.9896547191310674 seconds)
+2022-01-13 16:15:25 | INFO | fairseq_cli.train | end of epoch 69 (average epoch stats below)
+2022-01-13 16:15:25 | INFO | train | epoch 069 | loss 6.675 | ppl 102.22 | wps 7095.6 | ups 5.76 | wpb 1232.9 | bsz 63.5 | num_updates 3448 | lr 1.0344e-05 | gnorm 7.563 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 664
+2022-01-13 16:15:25 | INFO | fairseq.trainer | begin training epoch 70
+2022-01-13 16:15:25 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:15:26 | INFO | train_inner | epoch 070:     12 / 50 loss=6.707, ppl=104.47, wps=3812.4, ups=3.12, wpb=1221.6, bsz=62.7, num_updates=3460, lr=1.038e-05, gnorm=7.845, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=665
+2022-01-13 16:15:27 | INFO | train_inner | epoch 070:     32 / 50 loss=6.524, ppl=92.03, wps=16901.9, ups=14.05, wpb=1203.3, bsz=64, num_updates=3480, lr=1.044e-05, gnorm=7.546, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=667
+2022-01-13 16:15:28 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:15:29 | INFO | valid | epoch 070 | valid on 'valid' subset | loss 6.717 | ppl 105.22 | wps 27867.3 | wpb 556.6 | bsz 30.3 | num_updates 3498 | best_loss 6.625
+2022-01-13 16:15:29 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 70 @ 3498 updates
+2022-01-13 16:15:29 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_last.pt
+2022-01-13 16:15:32 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_last.pt
+2022-01-13 16:15:32 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_last.pt (epoch 70 @ 3498 updates, score 6.717) (writing took 2.5344681250862777 seconds)
+2022-01-13 16:15:32 | INFO | fairseq_cli.train | end of epoch 70 (average epoch stats below)
+2022-01-13 16:15:32 | INFO | train | epoch 070 | loss 6.609 | ppl 97.6 | wps 8852.7 | ups 7.18 | wpb 1232.9 | bsz 63.5 | num_updates 3498 | lr 1.0494e-05 | gnorm 7.512 | clip 100 | loss_scale 32 | train_wall 3 | gb_free 20.9 | wall 671
+2022-01-13 16:15:32 | INFO | fairseq.trainer | begin training epoch 71
+2022-01-13 16:15:32 | INFO | fairseq_cli.train | Start iterating over samples
+2022-01-13 16:15:32 | INFO | train_inner | epoch 071:      2 / 50 loss=6.685, ppl=102.91, wps=5199.8, ups=4.16, wpb=1248.8, bsz=64, num_updates=3500, lr=1.05e-05, gnorm=7.301, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=672
+2022-01-13 16:15:32 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:15:32 | INFO | valid | epoch 071 | valid on 'valid' subset | loss 6.722 | ppl 105.6 | wps 27954.9 | wpb 556.6 | bsz 30.3 | num_updates 3500 | best_loss 6.625
+2022-01-13 16:15:32 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 71 @ 3500 updates
+2022-01-13 16:15:32 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_71_3500.pt
+2022-01-13 16:15:35 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_71_3500.pt
+2022-01-13 16:15:36 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_71_3500.pt (epoch 71 @ 3500 updates, score 6.722) (writing took 4.007647620048374 seconds)
+2022-01-13 16:15:38 | INFO | train_inner | epoch 071:     22 / 50 loss=6.547, ppl=93.53, wps=3558, ups=3.04, wpb=1169.3, bsz=64, num_updates=3520, lr=1.056e-05, gnorm=7.828, clip=100, loss_scale=32, train_wall=2, gb_free=20.9, wall=678
+2022-01-13 16:15:40 | INFO | train_inner | epoch 071:     42 / 50 loss=6.582, ppl=95.81, wps=16583.3, ups=13.7, wpb=1210.1, bsz=64, num_updates=3540, lr=1.062e-05, gnorm=7.678, clip=100, loss_scale=32, train_wall=1, gb_free=20.9, wall=680
+2022-01-13 16:15:41 | INFO | fairseq_cli.train | begin validation on "valid" subset
+2022-01-13 16:15:41 | INFO | valid | epoch 071 | valid on 'valid' subset | loss 6.665 | ppl 101.48 | wps 27130 | wpb 556.6 | bsz 30.3 | num_updates 3548 | best_loss 6.625
+2022-01-13 16:15:41 | INFO | fairseq_cli.train | early stop since valid performance hasn't improved for last 3 runs
+2022-01-13 16:15:41 | INFO | fairseq.checkpoint_utils | Preparing to save checkpoint for epoch 71 @ 3548 updates
+2022-01-13 16:15:41 | INFO | fairseq.trainer | Saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_last.pt
+2022-01-13 16:15:44 | INFO | fairseq.trainer | Finished saving checkpoint to bartabst/checkpoints/bart.mlm/dev/checkpoint_last.pt
+2022-01-13 16:15:44 | INFO | fairseq.checkpoint_utils | Saved checkpoint bartabst/checkpoints/bart.mlm/dev/checkpoint_last.pt (epoch 71 @ 3548 updates, score 6.665) (writing took 2.46215064288117 seconds)
+2022-01-13 16:15:44 | INFO | fairseq_cli.train | end of epoch 71 (average epoch stats below)
+2022-01-13 16:15:44 | INFO | train | epoch 071 | loss 6.616 | ppl 98.1 | wps 5065 | ups 4.11 | wpb 1232.9 | bsz 63.5 | num_updates 3548 | lr 1.0644e-05 | gnorm 7.696 | clip 100 | loss_scale 32 | train_wall 4 | gb_free 20.9 | wall 684
+2022-01-13 16:15:44 | INFO | fairseq_cli.train | done training in 679.1 seconds

@@ -87,10 +87,10 @@ def make_builder(out_file, impl, vocab_size=None):
         return IndexedDatasetBuilder(out_file)
 
 
-def make_dataset(path, impl, fix_lua_indexing=False, dictionary=None):
+def make_dataset(path, impl, aos_path=None, fix_lua_indexing=False, dictionary=None):
     if impl == "raw" and IndexedRawTextDataset.exists(path):
         assert dictionary is not None
-        return IndexedRawTextDataset(path, dictionary)
+        return IndexedRawTextDataset(path, dictionary, aos_path)
     elif impl == "lazy" and IndexedDataset.exists(path):
         return IndexedDataset(path, fix_lua_indexing=fix_lua_indexing)
     elif impl == "cached" and IndexedDataset.exists(path):
@@ -279,7 +279,7 @@ class IndexedRawTextDataset(FairseqDataset):
     """Takes a text file as input and binarizes it in memory at instantiation.
     Original lines are also kept in memory"""
 
-    def __init__(self, path, dictionary, append_eos=True, reverse_order=False):
+    def __init__(self, path, dictionary, aos_path=None, append_eos=True, reverse_order=False):
         self.tokens_list = []
         self.lines = []
         self.sizes = []
@@ -288,7 +288,9 @@ class IndexedRawTextDataset(FairseqDataset):
         self.append_eos = append_eos
         self.reverse_order = reverse_order
         # self.read_data(path, dictionary)
-        self.get_aos(path, dictionary)
+        if aos_path:
+            self.use_transfer_aos = True
+        self.get_aos(path, dictionary, aos_path)
         self.size = len(self.tokens_list)
 
     def read_data(self, path, dictionary):
@@ -334,7 +336,7 @@ class IndexedRawTextDataset(FairseqDataset):
     def exists(path):
         return PathManager.exists(path)
     
-    def get_aos(self, path, dictionary):
+    def get_aos(self, path, dictionary, aos_path):
         '''
         本当にaosが正しくつくられてるか確認して
         '''
@@ -342,7 +344,8 @@ class IndexedRawTextDataset(FairseqDataset):
         gpt2_vocab_bpe = os.path.join(os.path.dirname(path), 'gpt2_bpe/vocab.bpe')
         bpe = GPT2BPE(gpt2_encoder_json, gpt2_vocab_bpe)
         moses = MosesTokenizer(lang='en')
-        aos_path = path + '_asp.txt'       
+        if not self.use_transfer_aos:
+            aos_path = path + '_asp.txt'       
         
         with open(path, "r", encoding="utf-8") as f:
             for line in f:

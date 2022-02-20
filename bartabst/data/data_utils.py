@@ -70,7 +70,7 @@ def collate_tokens(
     return res
 
 def load_indexed_dataset(
-    path, dictionary=None, dataset_impl=None, combine=False, default="cached"
+    path, aos_path=None, dictionary=None, dataset_impl=None,  combine=False, default="cached"
 ):
     """A helper function for loading indexed datasets.
 
@@ -105,6 +105,7 @@ def load_indexed_dataset(
         dataset = indexed_dataset.make_dataset(
             path_k,
             impl=dataset_impl_k or default,
+            aos_path=aos_path,
             fix_lua_indexing=True,
             dictionary=dictionary,
         )

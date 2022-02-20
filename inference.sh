@@ -6,11 +6,13 @@ PREFIX='semeval-pengb'
 DOMAIN='analyzed'
 INPUT_PATH="$DATA_PATH/$PREFIX/$DOMAIN"
 OUTPUT_PATH="/home/drrndrrnprn/nlp/ABST/outputs/$PREFIX"
+AOS_FILE_NAME="test_rev_asp.txt"
 
 mkdir -p $OUTPUT_PATH
 
 cp $USER_DIR/checkpoints/bart.base/dict.txt  $MODEL_DIR
 python $USER_DIR/inference.py "$INPUT_PATH/data-raw" \
+    --transfer_aos_path "$INPUT_PATH/$AOS_FILE_NAME" \
     --model-dir $MODEL_DIR \
     --model-file checkpoint_best.pt \
     --task=aspect_base_denoising \

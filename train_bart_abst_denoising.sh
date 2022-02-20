@@ -18,7 +18,7 @@ fairseq-train "$INPUT_PATH/data-raw" \
     --lr-scheduler=polynomial_decay \
     --task=aspect_base_denoising  \
     --insert=0.1 \
-    --mask=0.1 \
+    --mask=0.0 \
     --mask-length='subword' \
     --mask-random=0.1 \
     --permute=0.0 \
@@ -26,6 +26,7 @@ fairseq-train "$INPUT_PATH/data-raw" \
     --poisson-lambda=3.0 \
     --replace-length=1 \
     --rotate=0.0 \
+    --warmup_epoch 5 \
     --skip-invalid-size-inputs-valid-test \
     --max-tokens=8192 \
     --required-batch-size-multiple=1 \
@@ -40,7 +41,7 @@ fairseq-train "$INPUT_PATH/data-raw" \
     --update-freq=1 \
     --lr 3e-5 \
     --stop-min-lr -1 \
-    --patience 3 \
+    --patience 2 \
     --keep-last-epochs=10 \
     --best-checkpoint-metric=loss \
     --adam-betas="(0.9, 0.98)" \
