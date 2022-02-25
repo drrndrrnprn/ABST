@@ -41,11 +41,14 @@ def process_aos(output, mapping, data=None):
         line = list(line)
         line = line[1:-1]
         if len(line) % 5 != 0:
-            p_line.append('error')
+            p_line.append([995, 996, 997, 998, 999])
         else:
             for i in range(len(line)//5):
                 l = line[i*5:i*5+5]
                 sent = l[-1] - 2
+                if sent > len(mapping):
+                    p_line.append([995, 996, 997, 998, 999])
+                    continue
                 l = l[0:-1]
                 l = list(map(lambda x: x-offset, l))
                 l[1] += 1
@@ -59,7 +62,7 @@ def process_aos(output, mapping, data=None):
         for l_aos, t in zip(aos, target_span):
             ll_aos_ins = list()
             for ll_aos, l_t in zip(l_aos, t):
-                if ll_aos == 'error':
+                if ll_aos == [995, 996, 997, 998, 999]:
                     continue           
                 ll_aos[-1] = mapping[l_t[-1]-2]
                 ll_aos_ins.append(ll_aos)
@@ -80,6 +83,8 @@ def output_json(data, aos, output_path):
             if aos_ins[i][1] > len(raw_words) or aos_ins[i][3] > len(raw_words):
                 f = True #何も入ってないやつしたで消して
         if f:
+            json_ins = {'error':999}
+            json_out.append(json_ins)
             continue
         aspects = list()
         opinions = list()

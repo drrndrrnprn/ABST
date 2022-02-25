@@ -45,6 +45,12 @@ def main():
         type=str,
         help="path savedir for output",
     )
+    parser.add_argument(
+        "--transfer_aos_path",
+        default=None,
+        type=str,
+        help="path to transfer aos file",
+    )
     args = options.parse_args_and_arch(parser)
     
     args.mask = 0.0

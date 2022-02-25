@@ -290,6 +290,11 @@ class IndexedRawTextDataset(FairseqDataset):
         # self.read_data(path, dictionary)
         if aos_path:
             self.use_transfer_aos = True
+            print(f"aos file path: {aos_path}")
+        else:
+            self.use_transfer_aos = False
+            print("no aos file, no transfer aos used")
+            
         self.get_aos(path, dictionary, aos_path)
         self.size = len(self.tokens_list)
 

@@ -19,7 +19,23 @@ pip install --editable ./
 wget https://dl.fbaipublicfiles.com/fairseq/models/bart.base.tar.gz
 tar -xvzf bart.base.tar.gz
 ```
-### 3. 
+### 3. Setup Dataset
+
+```
+# 0. concatenate json datum
+concat_json.ipynb
+
+# 1. separate json file to train, dev and test
+sep_json.ipynb
+
+# 2. extract aos (raw, reversed, reversed first) and make text files
+make_aos.ipynb
+
+# 3. analyze triplets in aos file
+count.ipynb
+```
+
+
 
 ## Training
 

@@ -39,12 +39,12 @@ class AspectBaseDenoisingTask(LegacyFairseqTask):
     def add_args(parser):
         """Add task-specific arguments to the parser."""
         parser.add_argument("data", help="path to data directory")
-        parser.add_argument(
-            "--transfer_aos_path",
-            default=None,
-            type=str,
-            help="path to transfer aos file",
-        )
+        # parser.add_argument(
+        #     "--transfer_aos_path",
+        #     default=None,
+        #     type=str,
+        #     help="path to transfer aos file",
+        # )
         parser.add_argument(
             "--tokens-per-sample",
             default=512,
@@ -269,10 +269,10 @@ class AspectBaseDenoisingTask(LegacyFairseqTask):
             sizes=[np.array(src_lengths)],
         )
         
-    def mask_dataset_for_inference(self, args, combine=False, **kwargs):
+    def mask_dataset_for_inference(self, args, aos_path=None, combine=False, **kwargs):
         split = 'test'
         paths = utils.split_paths(self.args.data)
-        aos_path = self.args.transfer_aos_path
+        
         assert len(paths) > 0
         data_path = paths[0]
         split_path = os.path.join(data_path, split)

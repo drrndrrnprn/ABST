@@ -6,7 +6,7 @@ PREFIX='semeval-pengb'
 DOMAIN='analyzed'
 INPUT_PATH="$DATA_PATH/$PREFIX/$DOMAIN"
 OUTPUT_PATH="/home/drrndrrnprn/nlp/ABST/outputs/$PREFIX"
-AOS_FILE_NAME="data-raw/rev_test_asp.txt"
+AOS_FILE_NAME="data-raw/revf_test_asp.txt"
 
 mkdir -p $OUTPUT_PATH
 
