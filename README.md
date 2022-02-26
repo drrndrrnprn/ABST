@@ -28,10 +28,13 @@ concat_json.ipynb
 # 1. separate json file to train, dev and test
 sep_json.ipynb
 
-# 2. extract aos (raw, reversed, reversed first) and make text files
+# 2. extract aos and make text files
+sep_json.ipynb
+
+# 3. make various aos files (reversed, reversed first) 
 make_aos.ipynb
 
-# 3. analyze triplets in aos file
+# 4. analyze triplets in aos file
 count.ipynb
 ```
 
@@ -59,6 +62,9 @@ bash train_bart_abst_denoising.sh
 
 ## Evaluation
 
+```shell
+bash inference.sh
+```
 ### BARTABSA
 
 ```shell

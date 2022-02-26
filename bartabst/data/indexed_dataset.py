@@ -365,13 +365,14 @@ class IndexedRawTextDataset(FairseqDataset):
         # edit aos_list for translation
         self.ob_raw_aos_list = raw_aos_list
 
+        c = 0
         for idx, (line, raw_aos_line) in enumerate(zip(self.lines, self.ob_raw_aos_list)):
             raw_line = bpe.decode(line).split(' ') if line.isdecimal() else moses.tokenize(line)
-            
             aos_line = []
+            #flag = True
             for raw_aos in raw_aos_line:
-                if idx==len(self.tokens_list):
-                    flag = True
+                # if idx==len(self.tokens_list):
+                #     flag = True
                 # if aos_idx == 0:
                 #     cout += 1 
                 a_s, a_e, o_s, o_e = int(raw_aos[0]), int(raw_aos[1]), int(raw_aos[2]), int(raw_aos[3])
@@ -410,15 +411,24 @@ class IndexedRawTextDataset(FairseqDataset):
                 
                 encoded_line = encoded_line[1:] # remove init value
                 tokens = encoded_line.long()
-                if flag:
-                    flag = False
+
+                # if flag==True:
+                #     c += 1
+                #     flag = False
+                #     self.tokens_list.append(tokens)
+                #     self.sizes.append(len(tokens))
+                # if len(self.tokens_list) == 0: 
+                #     self.tokens_list.append(tokens)
+                #     self.sizes.append(len(tokens))
+                if len(aos_line) == 0:
                     self.tokens_list.append(tokens)
                     self.sizes.append(len(tokens))
+                    
                 encoded_line = list(map(int,encoded_line.tolist()))
                 sentence = bpe.decode(dictionary.string(encoded_line))
                 raw_sentence = ' '.join(raw_line)
-                assert sentence == raw_sentence, 'bpe encodeing error'
-                assert self.tokens_list[-1].tolist()==tokens.tolist(), 'append error'
+                assert sentence == raw_sentence, 'bpe error'
+                #assert self.tokens_list[-1].tolist == tokens.tolist(), 'appending error'
                 
                 if a_s > o_s:
                     buf_s, buf_e = aos[0], aos[1]
@@ -431,13 +441,30 @@ class IndexedRawTextDataset(FairseqDataset):
                 o_p = bpe.decode(dictionary.string(encoded_line[aos[2]:aos[3]]))
                 r_a_t = ' '.join(raw_line[a_s:a_e])
                 r_o_p = ' '.join(raw_line[o_s:o_e])
-                assert a_t.strip() == r_a_t, 'bpe encoding error'
-                assert o_p.strip() == r_o_p, 'bpe encoding error'
+                assert a_t.strip() == r_a_t, 'bpe error'
+                assert o_p.strip() == r_o_p, 'bpe error'
                 
                 aos_line.append(aos)
             self.aos_list.append(aos_line)
             
-        assert len(self.aos_list) == len(self.tokens_list), 'read_data error'
+            if idx > 5:
+                last_aos = self.aos_list[-1], self.aos_list[-2], self.aos_list[-3]
+                assert last_aos[0] == aos_line, 'aos_list length error' 
+            if len(self.aos_list) - len(self.tokens_list) == 1:
+                self.aos_list = self.aos_list[:-1]
+            elif len(self.aos_list) - len(self.tokens_list) == -1:
+                self.tokens_list = self.tokens_list[:-1]
+                self.self.sizes = self.sizes[:-1]
+            assert len(self.aos_list) == len(self.tokens_list), 'read_data error'
+            
+        last_tokens = self.tokens_list[-1].tolist()
+        last_aos = self.aos_list[-1][-1]
+        a_t = bpe.decode(dictionary.string(last_tokens[last_aos[0]:last_aos[1]]))
+        o_p = bpe.decode(dictionary.string(last_tokens[last_aos[2]:last_aos[3]]))
+        r_a_t = ' '.join(raw_line[a_s:a_e])
+        r_o_p = ' '.join(raw_line[o_s:o_e])
+        assert a_t.strip() == r_a_t, 'read_data error'
+        assert o_p.strip() == r_o_p, 'bpe error'
         assert len(self.aos_list) == len(self.sizes), 'read_data error'
         self.sizes = np.array(self.sizes)
 
