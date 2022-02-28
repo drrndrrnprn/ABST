@@ -1,0 +1,13 @@
+{
+  "triple_f": 70.8,
+  "triple_rec": 71.13000000000001,
+  "triple_pre": 70.47,
+  "oe_ae_f": 73.32,
+  "oe_ae_rec": 73.66,
+  "oe_ae_pre": 72.98,
+  "ae_sc_f": 75.58,
+  "ae_sc_rec": 76.07000000000001,
+  "ae_sc_pre": 75.11,
+  "em": 0.6273,
+  "invalid": 0.0185
+}

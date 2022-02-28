@@ -75,6 +75,8 @@ class BartBPEABSAPipe(Pipe):
 
         def prepare_target(ins):
             raw_words = ins['raw_words']
+            # muriyari kaihi shitayo kiwotsukete !!!!!!!!!!!!!
+            raw_words = list(map(lambda x: '?' if x=='' else x, raw_words))
             word_bpes = [[self.tokenizer.bos_token_id]]
             for word in raw_words:
                 bpes = self.tokenizer.tokenize(word, add_prefix_space=True)
@@ -103,7 +105,8 @@ class BartBPEABSAPipe(Pipe):
                 # 这里需要evaluate是否是对齐的
                 for idx, word in zip((o_start_bpe, o_end_bpe, a_start_bpe, a_end_bpe),
                                      (opinions['term'][0], opinions['term'][-1], aspects['term'][0], aspects['term'][-1])):
-                    assert _word_bpes[idx] == self.tokenizer.convert_tokens_to_ids(self.tokenizer.tokenize(word, add_prefix_space=True)[:1])[0] or \
+                    if not '?' in raw_words:
+                        assert _word_bpes[idx] == self.tokenizer.convert_tokens_to_ids(self.tokenizer.tokenize(word, add_prefix_space=True)[:1])[0] or \
                            _word_bpes[idx] == self.tokenizer.convert_tokens_to_ids(self.tokenizer.tokenize(word, add_prefix_space=True)[-1:])[0]
 
                 if self.opinion_first:

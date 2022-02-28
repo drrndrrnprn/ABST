@@ -121,7 +121,7 @@ class AspectBaseDenoisingTask(LegacyFairseqTask):
         )
         parser.add_argument(
             "--warmup_epoch",
-            default=15,
+            default=10,
             type=int,
             help="use only one aos for each line initially",
         )

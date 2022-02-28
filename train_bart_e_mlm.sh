@@ -14,13 +14,14 @@ fairseq-train "$INPUT_PATH" \
         --arch bart_abst --layernorm-embedding \
         --task bart_e_mlm \
         --criterion masked_lm \
+        --warmup_epoch 999 \
         --optimizer adam \
         --adam-eps 1e-06 \
         --adam-betas '(0.9, 0.98)' \
         --lr-scheduler polynomial_decay \
         --lr 3e-05 \
         --stop-min-lr -1 \
-        --patience 3 \
+        --patience 2 \
         --warmup-updates 10000 \
         --total-num-update 40000 \
         --dropout 0.3 \

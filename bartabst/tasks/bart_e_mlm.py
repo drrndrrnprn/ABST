@@ -89,7 +89,7 @@ class MaskedLMConfig(FairseqDataclass):
         metadata={"help": "stdev of the mask length"},
     )
     warmup_epoch: int = field(
-        default=10,
+        default=5,
         metadata={"help": "use only one aos for each line initially"},
     )
     shorten_method: SHORTEN_METHOD_CHOICES = field(

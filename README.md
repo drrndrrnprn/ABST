@@ -42,11 +42,11 @@ count.ipynb
 
 ## Training
 
-### Preprocess data
+<!-- ### Preprocess data
 
 ```shell
 bash preprocess.sh
-```
+``` -->
 
 ### Fine-tune mlm BART encoder 
 

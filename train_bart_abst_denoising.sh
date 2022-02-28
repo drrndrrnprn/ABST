@@ -26,7 +26,7 @@ fairseq-train "$INPUT_PATH/data-raw" \
     --poisson-lambda=3.0 \
     --replace-length=1 \
     --rotate=0.0 \
-    --warmup_epoch 5 \
+    --warmup_epoch 999 \
     --skip-invalid-size-inputs-valid-test \
     --max-tokens=8192 \
     --required-batch-size-multiple=1 \
