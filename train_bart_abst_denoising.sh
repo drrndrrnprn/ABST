@@ -17,16 +17,16 @@ fairseq-train "$INPUT_PATH/data-raw" \
     --optimizer=adam \
     --lr-scheduler=polynomial_decay \
     --task=aspect_base_denoising  \
-    --insert=0.1 \
+    --insert=0.0 \
     --mask=0.0 \
     --mask-length='subword' \
     --mask-random=0.1 \
     --permute=0.0 \
     --permute-sentences=0.0 \
-    --poisson-lambda=3.0 \
+    --poisson-lambda=0.0 \
     --replace-length=1 \
     --rotate=0.0 \
-    --warmup_epoch 999 \
+    --warmup_epoch 15 \
     --skip-invalid-size-inputs-valid-test \
     --max-tokens=8192 \
     --required-batch-size-multiple=1 \

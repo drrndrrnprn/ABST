@@ -1,7 +1,7 @@
 #!/bin/bash
 USER_DIR='/home/drrndrrnprn/nlp/ABST/bartabst'
 DATA_PATH='/home/drrndrrnprn/nlp/ABST/datasets'
-MODEL_DIR="$USER_DIR/checkpoints/bart.abst/dev"
+MODEL_DIR="$USER_DIR/checkpoints/bart.abst/onlymask"
 PREFIX='semeval-pengb'
 DOMAIN='analyzed'
 INPUT_PATH="$DATA_PATH/$PREFIX/$DOMAIN"

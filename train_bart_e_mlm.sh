@@ -14,7 +14,6 @@ fairseq-train "$INPUT_PATH" \
         --arch bart_abst --layernorm-embedding \
         --task bart_e_mlm \
         --criterion masked_lm \
-        --warmup_epoch 999 \
         --optimizer adam \
         --adam-eps 1e-06 \
         --adam-betas '(0.9, 0.98)' \

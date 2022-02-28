@@ -51,6 +51,10 @@ def main():
         type=str,
         help="path to transfer aos file",
     )
+    parser.add_argument(
+        "--match_source_len",
+        action='store_true',
+    )
     args = options.parse_args_and_arch(parser)
     
     args.mask = 0.0
